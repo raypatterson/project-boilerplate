@@ -1,0 +1,24 @@
+enabled: false
+
+environments:
+
+  localhost:
+    tablet: "localhost:8888"
+    mobile: "localhost:9999"
+
+  development:
+    enabled: false
+    tablet: "dev-project-bp.hostname.com"
+    mobile: "m-dev-project-bp.hostname.com"
+
+  review:
+    tablet: "review-project-bp.hostname.com"
+    mobile: "m-review-project-bp.hostname.com"
+
+  staging:
+    tablet: "staging-project-bp.hostname.com"
+    mobile: "m-staging-project-bp.hostname.com"
+
+  production:
+    tablet: "project-bp.hostname.com"
+    mobile: "m-project-bp.hostname.com"

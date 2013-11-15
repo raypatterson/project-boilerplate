@@ -1,0 +1,12 @@
+<script id="menu_tmpl" type="text/html">
+	{{#menuItems}}
+		{{> menu_item_tmpl}}
+	{{/menuItems}}
+</script>
+<script id="menu_item_tmpl" type="text/html">
+	<div class="menu_item_title">{{title}}</div>
+	<div class="menu_item_description">{{description}}</div>
+	<div class="menu_item_route"><a href="#{{videoRoute}}">{{videoRoute}}</a></div>
+	<div class="menu_item_route"><a href="#{{detailRoute}}">{{detailRoute}}</a></div>
+	</br>
+</script>

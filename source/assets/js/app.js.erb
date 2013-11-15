@@ -1,0 +1,42 @@
+//= require ../bower_components/modernizr/modernizr
+//= require ../bower_components/jquery/jquery
+//= require ./vendor/_require
+//= require_self
+//= require ./project/config
+//= require ./lib/_require
+//= require ./project/_require
+
+// Create closure to protect global namespace
+;
+(function() {
+
+  // Assign application properties
+  var debugFlag = '<%= debug_flag %>' || false;
+  var buildVersion = '<%= build_version %>' || 'no version'
+  var environmentType = '<%= environment_type %>' || 'localhost'
+
+  // Configure Logger
+  Logger.useDefaults();
+
+  if (debugFlag === false) {
+    Logger.setLevel(Logger.ERROR);
+  }
+
+  // Create module namespace
+  var namespace = '<%= site_namespace %>.App';
+
+  // Create module logger
+  var logger = Logger.get(namespace);
+
+  logger.info('Debug Flag --> ', debugFlag);
+  logger.info('Build Version --> ', buildVersion);
+  logger.info('Environment Type --> ', environmentType);
+
+  // Create module
+  var App = Namespace(namespace);
+
+  App.debugFlag = debugFlag;
+  App.buildVersion = buildVersion;
+  App.environmentType = environmentType;
+
+}());

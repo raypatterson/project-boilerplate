@@ -1,0 +1,36 @@
+account: "ops"
+
+language: "ruby"
+# language: "nodejs"
+# language: "python"
+  
+collaborators:
+  - "your.name@hostname.com"
+
+active:
+  - "development"
+  - "review"
+  - "staging"
+  - "production"
+  
+environments:
+  
+  development:
+    app: "dev-hostname"
+    domains:
+      - "origin-dev.hostname.com"
+  
+  review:
+    app: "review-hostname"
+    domains:
+      - "origin-review.hostname.com"
+  
+  staging:
+    app: "staging-hostname"
+    domains:
+      - "origin-staging.hostname.com"
+  
+  production:
+    app: "hostname"
+    domains:
+      - "origin.hostname.com"

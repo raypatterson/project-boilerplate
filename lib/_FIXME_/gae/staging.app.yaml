@@ -1,0 +1,28 @@
+application: staging-project-boilerplate
+version: master
+runtime: python27
+threadsafe: false
+api_version: 1
+
+default_expiration: "30m"
+ 
+handlers:
+  
+  # Application Index file 
+- url: /
+  mime_type: text/html
+  static_files: index.html 
+  upload: index.html
+
+  # Application files, compiled
+- url: /app
+  static_dir: app
+
+  # Misc static files, loaded post runtime, on demand, on condition, etc.
+- url: /public
+  static_dir: public
+
+  # 404?
+- url: /.*
+  static_files: 404.html
+  upload: /404.html

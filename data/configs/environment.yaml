@@ -1,0 +1,5 @@
+localhost: "localhost"
+development: "development"
+review: "review"
+staging: "staging"
+production: "production"

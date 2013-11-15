@@ -1,0 +1,36 @@
+access_key: "undefined"
+secret_key: "undefined"
+elasticbeanstalk:
+  name: "undefined"
+  region: "us-west-1"
+  stack: "64bit Amazon Linux running Tomcat 7"
+localhost: 
+  region: "undefined"
+  bucket: "undefined"
+  subdomain: "undefined"
+  distribution_id: "undefined"
+  elasticbeanstalk: "undefined"
+development: 
+  region: "us-west-1"
+  bucket: "undefined-development"
+  subdomain: "undefined"
+  distribution_id: "undefined"
+  elasticbeanstalk: "dev"
+review: 
+  region: "us-west-1"
+  bucket: "undefined-review"
+  subdomain: "undefined"
+  distribution_id: "undefined"
+  elasticbeanstalk: "rev"
+staging: 
+  region: "us-west-1"
+  bucket: "undefined-staging"
+  subdomain: "undefined"
+  distribution_id: "undefined"
+  elasticbeanstalk: "stg"
+production: 
+  region: "us-west-1"
+  bucket: "undefined"
+  subdomain: "undefined"
+  distribution_id: "undefined"
+  elasticbeanstalk: "prd"

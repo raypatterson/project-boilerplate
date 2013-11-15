@@ -1,0 +1,2 @@
+//= require ./logger
+//= require ./Namespace

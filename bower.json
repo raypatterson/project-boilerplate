@@ -1,0 +1,7 @@
+{
+  "name": "project-boilerplate",
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "modernizr": "~2.6.3"
+  }
+}

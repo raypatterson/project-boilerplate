@@ -1,0 +1,9 @@
+<!-- for Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="<%= data.site.social.twitter_id %>"> 
+<!-- for Facebook --> 
+<meta property="og:type" content="website" />
+<%= tag :meta, :property => "og:image", :content => share_image %>
+<meta property="og:title" content="<%= data.site.social.title %>" />
+<meta property="og:description" content="<%= data.site.social.description %>" />
+<meta property="og:url" content="<%= site_url %>" />
