@@ -122,15 +122,11 @@ Don't worry, it's safe to leave them in your project.
 
 This is a configured Middleman project. The project utilizes MM to "build" or "compile" the code base for deployment. Commands have been wrapped in Rake tasks to target development and production build types.
 
-#### Startup
-
-This system defines a solution for a sequence of async events in which initializes different areas of concern within the project structure. It's currently using [Nimble](http://caolan.github.io/nimble/) but should be converted to jQuery [Promises](http://api.jquery.com/promise/).
-
 #### Configuration
 
 The `data/config.yaml` file contains some externalized data that is used by Middleman in `config.rb`, some of the deployment tasks in `lib/tasks` and can also be read directly into Middleman templates though the [data](http://middlemanapp.com/advanced/local-data/) object.
 
-The Middleman `config.rb` can also be used to pass the values from `data/config.yaml` into the application templates. An example of this can be seen in `source/assets/js/project/config-js` where the helper `<%= build_version %>` is used to assigned the build version ID to a JavaScript variable.
+The Middleman `config.rb` can also be used to pass the values from `data/config.yaml` into the application templates. An example of this can be seen in `source/assets/js/app.js` where the helper `<%= build_version %>` is used to assigned the build version ID to a JavaScript variable.
 
 > **INFO**
 <br>
