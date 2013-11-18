@@ -8,8 +8,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     builder (3.2.2)
     chunky_png (1.2.8)
     cloudfront-invalidator (0.2.0)
@@ -166,7 +164,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
   cloudfront-invalidator (~> 0.2.0)
   eb_deployer
   middleman
