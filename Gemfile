@@ -14,8 +14,6 @@ gem "middleman-imageoptim", "~> 0.0.4"
 gem "middleman-favicon-maker", "~> 3.2"
 gem "middleman-s3_sync"
 
-gem "bootstrap-sass"
-
 # Deploy #
 ##########
 gem "middleman-s3_sync"
