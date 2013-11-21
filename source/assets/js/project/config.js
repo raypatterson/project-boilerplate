@@ -1,14 +1,17 @@
 ;
-(function() {
+(function(win) {
+
+  // Get site namespace
+  var site_namespace = win.__site_namespace__;
 
   // Create module namespace
-  var namespace = '<%= site_namespace %>.Config';
+  var namespace = site_namespace + '.Config';
 
   // Create module logger
   var logger = Logger.get(namespace);
 
   // Access App module
-  var App = Namespace('<%= site_namespace %>.App');
+  var App = Namespace(site_namespace + '.App');
 
   // Create module
   var Config = Namespace(namespace);
@@ -19,4 +22,4 @@
   // Example feature specific configuration
   Config.touch = Modernizr.touch;
 
-}());
+}(window));
