@@ -1,5 +1,11 @@
-//= require ../bower_components/modernizr/modernizr
-//= require ../bower_components/jquery/jquery
+/**
+ * Bower Directory
+ */
+//= require modernizr/modernizr
+//= require jquery/jquery
+/**
+ * App Directory
+ */
 //= require ./vendor/_require
 //= require_self
 //= require ./project/config
@@ -8,7 +14,7 @@
 
 // Create closure to protect global namespace
 ;
-(function() {
+(function(win) {
 
   // Assign application properties
   var debugFlag = '<%= debug_flag %>' || false;
@@ -22,8 +28,11 @@
     Logger.setLevel(Logger.ERROR);
   }
 
+  // Alias site namespace
+  win.__site_namespace__ = '<%= site_namespace %>';
+
   // Create module namespace
-  var namespace = '<%= site_namespace %>.App';
+  var namespace = win.__site_namespace__ + '.App';
 
   // Create module logger
   var logger = Logger.get(namespace);
@@ -39,4 +48,4 @@
   App.buildVersion = buildVersion;
   App.environmentType = environmentType;
 
-}());
+}(window));

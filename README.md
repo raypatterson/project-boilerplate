@@ -52,6 +52,32 @@ To run the server on a different port:
 $ rake mm:s[1234]
 ```
 
+### Rbenv Fun
+
+If you don't have [rbenv](https://github.com/sstephenson/rbenv), now's the time to get it.
+
+```
+$ brew update; brew install rbenv ruby-build rbenv-gemset
+```
+
+Homebrew will prompt you to add the following to your `.bash_profile`.
+
+```
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+```
+
+Also add `/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:` to your command search path.
+
+You path needs to look something like:
+
+`PATH="/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:/usr/local/bin:/usr/bin:/bin:$PATH"`
+
+```
+$ mkdir /usr/local/var/rbenv/plugins; git clone https://github.com/sstephenson/rbenv-gem-rehash.git /usr/local/var/rbenv/plugins/rbenv-gem-rehash
+$ rbenv install 1.9.3-p385
+```
+
 ### Building Files
 
 This will require installing a few things if you want the [Favicon Maker](https://github.com/follmann/middleman-favicon-maker) and [Image Optim](https://github.com/plasticine/middleman-imageoptim) extensions to work.

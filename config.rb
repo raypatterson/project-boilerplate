@@ -9,14 +9,6 @@ require "./lib/extensions/invalidator"
 $env = ENV[ 'ENVIRONMENT' ] || Cfg.get_localhost_env
 $deploy = ENV[ 'DEPLOY' ] || false
 
-# Add bower's directory to sprockets asset path
-after_configuration do
-  
-  @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
-  sprockets.append_path File.join "#{root}", @bower_config["directory"]
-
-end
-
 activate :livereload
 
 # Paths #
@@ -31,7 +23,20 @@ set :fonts_dir, "#{@asset_path}font"
 
 set :build_dir, "build"
 
-@cache_path = "#{images_dir}/cache"
+@cache_path = "/#{images_dir}/cache"
+
+# Add bower's directory to Sprockets and Compass asset path
+
+$bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
+$bower_dir = File.join "#{root}", $bower_config["directory"]
+
+after_configuration do
+  sprockets.append_path $bower_dir
+end
+
+compass_config do | config |
+  config.add_import_path $bower_dir
+end
 
 # Ignore #
 ##########
@@ -75,7 +80,7 @@ helpers do
     @asset_path
   end
   def cache_path
-    "#{@cache_path}/"
+    "#{@cache_path}"
   end
   def favicon_image( href, rel, sizes = nil )
     tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_path}/#{href}"
