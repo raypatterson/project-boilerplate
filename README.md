@@ -25,7 +25,7 @@ From the command line:
 
 ```
 $ git clone git@github.com:RayPatterson/project-boilerplate.git; cd project-boilerplate
-$ gem install bundler; bundle install; rake mm:s
+$ ./setup.sh
 ```
 
 After the gem bundling is complete, <br>
