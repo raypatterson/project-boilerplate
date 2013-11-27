@@ -9,38 +9,6 @@ $bp-ipad-landscape: (min-device-width 768px) (max-device-width 1024px) (orientat
 
 /*
  * Resolution Specific Breakpoints
- *
-
-  Notes from: 
-
-  Custom Gadget Developer Guidelines
-
-  https://support.google.com/youtube/answer/1727240
-
-  Please note that the fixed width 970px and 640px 
-  gadget sizes will be deprecated by June 2014, 
-  and the following gadget specifications will apply:
-
-  ... minimum width of 640 pixels 
-  (shown on browser windows less than 1000 pixels wide).
-
-  1000 px = 640 px center column (minimum desktop width)
-  1210 px = 850 px center column
-  1420 px = 1060 px center column
-
-  New Specs Update (Effective by end of year - Q4 2013):
-
-  minimum gadget width has been increased from 
-  640px to 850px in the new layout. Please note 
-  that if you have an existing fixed width or flex 
-  width gadget you do not need to take any action.
-
-  Size Specifications: 
-  
-  Width (flex-width gadgets): Ranges from 850px to 1060px
-  Width (fixed-width gadgets): Fixed at 970px. This option will be deprecated in June 2014
-  Height: Specified by developer
-
  */
 
 $slicer-breakpoints: 0 320px 480px 768px 1024px 1280px 1600px;

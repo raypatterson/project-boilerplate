@@ -13,7 +13,6 @@ set :build_version, Cfg.get_build_version
 set :debug_flag, Cfg.get_debug_flag( environment_type )
 
 set :site_namespace, Site.get_namespace
-set :site_title, Site.get_title
 set :site_name, Site.get_name
 set :site_description, Site.get_description
 set :site_keywords, Site.get_keywords
@@ -59,6 +58,9 @@ end
 ###########
 
 helpers do
+  def site_title( page_name = nil )
+    page_name == nil ? Site.get_title : "#{page_name} | #{Site.get_title}"
+  end
   def favicon_image( href, rel, sizes = nil )
     tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_dir}/#{href}"
   end

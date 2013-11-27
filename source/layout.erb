@@ -12,6 +12,13 @@
 		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
+    <meta name="description" content="<%= site_description %>">
+    <meta name="keywords" content="<%= site_keywords %>">
+    <link rel="canonical" href="<%= site_url %>">
+
+    <%= partial "library/partials/helpers/embed-icons" %>
+    <%= partial "library/partials/helpers/social-tags" %>
+
 		<%= yield_content :head %>
 
 	  <%= stylesheet_link_tag "main" %>
@@ -27,7 +34,17 @@
     data-environment-type="<%= environment_type %>"
     >
 
-		<%= yield %>
+    <div class="top-level-container main-region">
+
+		  <%= yield_content :page_header %>
+
+      <%= partial "project/modules/video-selector/_partial" %>
+      <%= partial "project/modules/video-player/_partial" %>
+      <%= partial "project/modules/video-grid/_partial" %>
+
+    </div>
+
+    <%= partial "library/media/_youtube" %>
 
 	</body>
 
