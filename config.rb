@@ -20,6 +20,7 @@ set :site_keywords, Site.get_keywords
 set :site_url, Site.get_url( environment_type )
 
 activate :livereload
+activate :directory_indexes
 
 # Paths #
 #########

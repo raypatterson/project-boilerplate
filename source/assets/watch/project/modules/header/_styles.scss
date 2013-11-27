@@ -1,0 +1,45 @@
+.module-header {
+
+  .header {
+
+    margin: 0;
+    padding: 0;
+
+    p {
+      padding: 5px 0;
+      width: 7rem;
+      text-align: center;
+      margin-right: 1px;
+    }
+
+    a {
+      float: left;
+      text-decoration: none;
+
+      p {
+        color: white;
+        background: grey;
+      }
+    }
+
+    a:hover {
+
+      p {
+        color: green;
+        background: greenyellow;
+      }
+    }
+    
+    .selected {
+
+      a {
+        cursor: default;
+      }
+
+      p {
+        color: white !important;
+        background-color: red !important;
+      }
+    }
+  }
+}
