@@ -21,31 +21,66 @@ namespace :mm do
   namespace :build do
     
     desc "Middleman : Build : DEVELOPMENT"
-    task :development, [:version, :tag] do | t, args |
-      build Cfg.get_development_env
+    task :development, [:deploy, :increment, :tag, :msg] do | t, args |
+
+      env = Cfg.get_development_env
+      deploy = args.deploy || false
+      increment = args.increment || false
+      tag = args.tag || false
+      msg = args.msg || env
+
+      build env, deploy, increment, tag, msg
+
     end
     
     desc "Middleman : Build : REVIEW"
-    task :review, [:version, :tag] do | t, args |
-      build Cfg.get_review_env
+    task :review, [:deploy, :increment, :tag, :msg] do | t, args |
+
+      env = Cfg.get_review_env
+      deploy = args.deploy || true
+      increment = args.increment || false
+      tag = args.tag || false
+      msg = args.msg || env
+
+      build env, deploy, increment, tag, msg
+
     end
     
     desc "Middleman : Build : STAGING"
-    task :staging, [:version, :tag] do | t, args |
-      build Cfg.get_staging_env, ( args.version || true ), ( args.tag || true ), "Staging"
+    task :staging, [:deploy, :increment, :tag, :msg] do | t, args |
+
+      env = Cfg.get_staging_env
+      deploy = args.deploy || true
+      increment = args.increment || true
+      tag = args.tag || false
+      msg = args.msg || env
+
+      build env, deploy, increment, tag, msg
+
     end
     
     desc "Middleman : Build : PRODUCTION"
-    task :production, [:version, :tag] do | t, args |
-      build Cfg.get_production_env, ( args.version || true ), ( args.tag || true ), "Production"
+    task :production, [:deploy, :increment, :tag, :msg] do | t, args |
+
+      env = Cfg.get_production_env
+      deploy = args.deploy || true
+      increment = args.increment || true
+      tag = args.tag || true
+      msg = args.msg || env
+
+      build env, deploy, increment, tag, msg
+
     end
     
   end
   
 end
 
-def build( env, increment = false, tag = false, message = nil )
+def build( env, deploy = false, increment = false, tag = false, message = nil )
   
+  ENV[ 'DEPLOY' ] = ( deploy == true ) ? 'true' : 'false'
+  ENV[ 'ENVIRONMENT' ] = env
+
   if increment === true
     Version.increment_build_version
   end
@@ -53,8 +88,6 @@ def build( env, increment = false, tag = false, message = nil )
   if tag === true
     Version.tag_build message
   end
-  
-  ENV[ 'ENVIRONMENT' ] = env
 
   sh %{middleman build --verbose}
     

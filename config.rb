@@ -6,24 +6,38 @@ require "./lib/extensions/invalidator"
 # Config #
 ##########
 
-$env = ENV[ 'ENVIRONMENT' ] || Cfg.get_localhost_env
-$deploy = ENV[ 'DEPLOY' ] || false
+set :environment_type, ENV[ 'ENVIRONMENT' ] || Cfg.get_localhost_env
+set :deploy, ( ENV[ 'DEPLOY' ] == 'true' ) || false
+
+set :build_version, Cfg.get_build_version
+set :debug_flag, Cfg.get_debug_flag( environment_type )
+
+set :site_namespace, Site.get_namespace
+set :site_title, Site.get_title
+set :site_name, Site.get_name
+set :site_description, Site.get_description
+set :site_keywords, Site.get_keywords
+set :site_url, Site.get_url( environment_type )
 
 activate :livereload
 
 # Paths #
 #########
 
-@asset_path = "assets/"
-
-set :images_dir, "#{@asset_path}img"
-set :css_dir, "#{@asset_path}css"
-set :js_dir, "#{@asset_path}js"
-set :fonts_dir, "#{@asset_path}font"
+set :relative_assets, true
 
 set :build_dir, "build"
+set :asset_dir, "assets"
+set :watch_dir, "#{asset_dir}/watch"
+set :js_dir, "#{asset_dir}"
+set :css_dir, "#{asset_dir}"
+set :data_dir, "#{asset_dir}/data"
+set :fonts_dir, "#{asset_dir}/fonts"
+set :images_dir, "#{asset_dir}/images"
+set :cache_dir, "/#{images_dir}/cache"
+set :partials_dir, "#{watch_dir}"
 
-@cache_path = "/#{images_dir}/cache"
+ignore "#{watch_dir}/**/*"
 
 # Add bower's directory to Sprockets and Compass asset path
 
@@ -32,61 +46,23 @@ $bower_dir = File.join "#{root}", $bower_config["directory"]
 
 after_configuration do
   sprockets.append_path $bower_dir
+  sprockets.append_path watch_dir
 end
 
-compass_config do | config |
+compass_config do |config|
   config.add_import_path $bower_dir
+  config.add_import_path watch_dir
 end
-
-# Ignore #
-##########
-
-ignore "app/**/*"
-ignore "#{@asset_path}js/**/*"
-ignore "#{@asset_path}css/**/*"
 
 # Helpers #
 ###########
 
 helpers do
-  def environment_type
-    $env
-  end
-  def build_version
-    Cfg.get_build_version
-  end
-  def debug_flag
-    Cfg.get_debug_flag $env
-  end
-  def site_namespace
-    Site.get_namespace
-  end
-  def site_title
-    Site.get_title
-  end
-  def site_name
-    Site.get_name
-  end
-  def site_description
-    Site.get_description
-  end
-  def site_keywords
-    Site.get_keywords
-  end
-  def site_url
-    Site.get_url $env
-  end
-  def asset_dir
-    @asset_path
-  end
-  def cache_path
-    "#{@cache_path}"
-  end
   def favicon_image( href, rel, sizes = nil )
-    tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_path}/#{href}"
+    tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_dir}/#{href}"
   end
   def share_image
-    "http:#{AWS.cloudfront_url( $env )}/#{@images_dir}#{data.site.social.image}"
+    "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{data.site.social.image}"
   end
 end
 
@@ -98,11 +74,11 @@ configure :build do
   activate :relative_assets
 
   activate :favicon_maker, {
-    :favicon_maker_input_dir => "#{source}/#{@cache_path}",
-    :favicon_maker_output_dir => "#{build_dir}/#{@cache_path}"
+    :favicon_maker_input_dir => "#{source}#{cache_dir}",
+    :favicon_maker_output_dir => "#{build_dir}#{cache_dir}"
   }
 
-  activate :asset_hash, {:ignore => [ "#{@cache_path}/*" ] }
+  activate :asset_hash, {:ignore => [ "#{cache_dir}/*" ] }
   
   activate :minify_css
   activate :minify_javascript
@@ -133,11 +109,11 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  if $deploy != false
+  if deploy != false
 
     activate :s3_sync do | s3_sync |
-      s3_sync.bucket = AWS.bucket $env # The name of the S3 bucket you are targetting. This is globally unique.
-      s3_sync.region = AWS.region $env # The AWS region for your bucket.
+      s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
+      s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
       s3_sync.aws_access_key_id = AWS.access_key
       s3_sync.aws_secret_access_key = AWS.secret_key
       s3_sync.delete = true # We delete stray files by default.
@@ -148,7 +124,7 @@ configure :build do
     activate :invalidator do | invalidator |
       invalidator.access_key = AWS.access_key
       invalidator.secret_key = AWS.secret_key
-      invalidator.distribution_id = AWS.distribution_id $env
+      invalidator.distribution_id = AWS.distribution_id environment_type
     end
 
   end
