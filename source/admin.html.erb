@@ -1,0 +1,30 @@
+<% content_for :head do %> 
+
+  <title><%= site_title "Admin" %></title>
+
+  <% content_for :page_stylesheet do %> 
+
+    <%= stylesheet_link_tag "admin" %>
+    
+  <% end %>
+  
+<% end %>
+
+<% content_for :page_header do %> 
+
+  <%= partial( 
+    "project/modules/header/_partial", 
+      :locals => { 
+        :home_classes => "", 
+        :admin_classes => "selected" 
+      } 
+    ) 
+  %>
+  
+<% end %>
+
+<% content_for :page_javascript do %> 
+
+  <%= javascript_include_tag "admin" %>
+  
+<% end %>

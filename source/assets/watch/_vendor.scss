@@ -1,4 +1,10 @@
 // --------------------------------------------------
+// Vendor
+// --------------------------------------------------
+@import "vendor/bourbon/_vars-bourbon";
+@import "vendor/mediaelement/_mediaelementplayer";
+@import "vendor/bxslider/jquery.bxslider";
+// --------------------------------------------------
 // Gems
 // --------------------------------------------------
 @import "compass";
@@ -11,9 +17,3 @@
 // --------------------------------------------------
 @import "normalize-css/normalize";
 @import "flexslider/flexslider";
-// --------------------------------------------------
-// Vendor
-// --------------------------------------------------
-@import "vendor/bourbon/_vars-bourbon";
-@import "vendor/mediaelement/_mediaelementplayer";
-@import "vendor/bxslider/jquery.bxslider";

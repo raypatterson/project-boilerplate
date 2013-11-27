@@ -1,21 +1,18 @@
 <% content_for :head do %> 
 
   <title><%= site_title %></title>
-  <meta name="description" content="<%= site_description %>">
-  <meta name="keywords" content="<%= site_keywords %>">
-	<link rel="canonical" href="<%= site_url %>">
-
-  <%= partial "library/partials/helpers/embed-icons" %>
-  <%= partial "library/partials/helpers/social-tags" %>
   
 <% end %>
 
-<div class="top-level-container main-region">
+<% content_for :page_header do %> 
 
-  <%= partial "project/modules/video-selector/_partial" %>
-  <%= partial "project/modules/video-player/_partial" %>
-  <%= partial "project/modules/video-grid/_partial" %>
-
-</div>
-
-<%= partial "library/media/_youtube" %>
+  <%= partial( 
+    "project/modules/header/_partial", 
+      :locals => { 
+        :home_classes => "selected", 
+        :admin_classes => "" 
+      } 
+    ) 
+  %>
+  
+<% end %>
