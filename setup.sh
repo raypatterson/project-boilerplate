@@ -9,6 +9,7 @@ echo '.'
 echo '.'
 bower install
 gem install bundler
+rm -f Gemfile.lock
 bundle install
 echo '.'
 echo '.'

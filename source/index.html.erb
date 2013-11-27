@@ -1,18 +1,21 @@
 <% content_for :head do %> 
 
-  <title><%= data.site.title %></title>
+  <title><%= site_title %></title>
   <meta name="description" content="<%= site_description %>">
   <meta name="keywords" content="<%= site_keywords %>">
 	<link rel="canonical" href="<%= site_url %>">
 
-  <%= partial "app/partials/helpers/embed-icons" %>
-  <%= partial "app/partials/helpers/social-tags" %>
+  <%= partial "library/partials/helpers/embed-icons" %>
+  <%= partial "library/partials/helpers/social-tags" %>
   
 <% end %>
 
-<!-- TODO: REMOVE BOILERPLATE HELLO -->
-<p style="padding:10px;font:15px arial,sans-serif;font-size:50px;color:green">You are using <%= data.site.id %>.</p>
+<div class="top-level-container main-region">
 
-<%= partial "app/partials/views/structure/main" %>
-<%= partial "app/partials/views/structure/header" %>
-<%= partial "app/partials/views/structure/footer" %>
+  <%= partial "project/modules/video-selector/_partial" %>
+  <%= partial "project/modules/video-player/_partial" %>
+  <%= partial "project/modules/video-grid/_partial" %>
+
+</div>
+
+<%= partial "library/media/_youtube" %>
