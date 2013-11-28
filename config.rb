@@ -3,6 +3,8 @@ require './lib/modules/site'
 require './lib/modules/aws'
 require "./lib/extensions/invalidator"
 
+require "sass-globbing"
+
 # Config #
 ##########
 
@@ -49,24 +51,9 @@ after_configuration do
   sprockets.append_path watch_dir
 end
 
-compass_config do |config|
+compass_config do | config |
   config.add_import_path $bower_dir
   config.add_import_path watch_dir
-end
-
-# Helpers #
-###########
-
-helpers do
-  def site_title( page_name = nil )
-    page_name == nil ? Site.get_title : "#{page_name} | #{Site.get_title}"
-  end
-  def favicon_image( href, rel, sizes = nil )
-    tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_dir}/#{href}"
-  end
-  def share_image
-    "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{data.site.social.image}"
-  end
 end
 
 # Build #
