@@ -44,8 +44,11 @@
 
   var createPlayer = function($playerTarget, videoId) {
 
-    var template = Handlebars.compile($("#video-player-template")
-      .html());
+    // var template = Handlebars.compile($("#video-player-template")
+    // .html());
+    var template = HandlebarsTemplates["watch/handlebars/youtube"];
+
+    console.log('Template:', template);
 
     var attributes = '';
     attributes += ' controls';

@@ -54,8 +54,11 @@
     }
   };
 
+  var template = HandlebarsTemplates["watch/handlebars/video_grid"];
+
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
-    template: '#video-grid-template',
+    template: template,
+    // template: '#video-grid-template',
     tagName: 'li',
     events: {},
     initialize: function() {

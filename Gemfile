@@ -13,6 +13,7 @@ gem "middleman-minify-html"
 gem "middleman-imageoptim", "~> 0.0.4"
 gem "middleman-favicon-maker", "~> 3.2"
 gem "sass-globbing"
+gem "handlebars_assets"
 
 # Deploy #
 ##########

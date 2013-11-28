@@ -43,7 +43,8 @@
   };
 
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
-    template: '#video-selector-template',
+    template: HandlebarsTemplates["watch/handlebars/video_selector"],
+    // template: '#video-selector-template',
     tagName: 'li',
     events: {
       'click .selector': function(event) {
