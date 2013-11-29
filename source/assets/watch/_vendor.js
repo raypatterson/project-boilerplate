@@ -2,7 +2,6 @@
 // Bower
 // --------------------------------------------------------------
 //= require modernizr/modernizr
-// require handlebars/handlebars
 //= require handlebars/handlebars.runtime
 //= require jquery/jquery
 //= require flexslider/jquery.flexslider
@@ -16,4 +15,3 @@
 //
 // --------------------------------------------------------------
 //= require_tree ./vendor
-//= require_tree ./handlebars

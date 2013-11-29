@@ -24,6 +24,8 @@ set :site_url, Site.get_url( environment_type )
 activate :livereload
 activate :directory_indexes
 
+HandlebarsAssets::Config.template_namespace = 'JST'
+
 # Paths #
 #########
 

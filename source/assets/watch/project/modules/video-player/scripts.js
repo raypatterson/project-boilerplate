@@ -1,3 +1,4 @@
+//= require_tree ./
 ;
 (function(win) {
 

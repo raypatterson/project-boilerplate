@@ -11,20 +11,8 @@
 
   Config.touch = Modernizr.touch;
 
-  // Activate Handlebars
-  // Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
-  //   return Handlebars.compile(rawTemplate);
-  // };
-
   Backbone.Marionette.Renderer.render = function(template, data) {
-    var compiled = template(data);
-    console.log('template : ', template);
-    console.log('data : ', data);
-    console.log('compiled : ', compiled);
-    return compiled;
+    return template(data);
   };
-
-  // Handlebars.logger.log = Logger.get('Handlebars')
-  //   .info;
 
 }(window));

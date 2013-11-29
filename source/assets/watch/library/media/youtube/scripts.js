@@ -1,3 +1,4 @@
+//= require_tree ./
 ;
 (function(win) {
 
@@ -44,11 +45,6 @@
 
   var createPlayer = function($playerTarget, videoId) {
 
-    // var template = Handlebars.compile($("#video-player-template")
-    // .html());
-    var template = HandlebarsTemplates["watch/handlebars/youtube"];
-
-    console.log('Template:', template);
 
     var attributes = '';
     attributes += ' controls';
@@ -69,6 +65,7 @@
       options.defaultVideoHeight = '100%';
     }
 
+    var template = JST['watch/library/media/youtube/templates/player'];
     var html = template({
       id: videoId,
       attributes: attributes
