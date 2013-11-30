@@ -1,6 +1,6 @@
 require "./lib/modules/config"
-require './lib/modules/site'
-require './lib/modules/aws'
+require "./lib/modules/site"
+require "./lib/modules/aws"
 require "./lib/extensions/invalidator"
 
 require "sass-globbing"
