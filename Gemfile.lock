@@ -58,6 +58,10 @@ GEM
     fssm (0.2.10)
     haml (4.0.4)
       tilt
+    handlebars_assets (0.14.1)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.5)
@@ -158,6 +162,8 @@ GEM
     ruby-hmac (0.4.0)
     ruby-progressbar (1.2.0)
     sass (3.2.12)
+    sass-globbing (1.1.0)
+      sass (>= 3.1)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -187,6 +193,7 @@ DEPENDENCIES
   breakpoint-slicer
   cloudfront-invalidator (~> 0.2.0)
   eb_deployer
+  handlebars_assets
   middleman (~> 3.2.0)
   middleman-bourbon
   middleman-favicon-maker (~> 3.2)
@@ -200,3 +207,4 @@ DEPENDENCIES
   rack-contrib
   rack-mobile-detect
   rake
+  sass-globbing

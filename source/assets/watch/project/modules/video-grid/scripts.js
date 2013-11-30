@@ -1,3 +1,4 @@
+//= require_tree ./
 ;
 (function(win) {
 
@@ -55,7 +56,7 @@
   };
 
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
-    template: '#video-grid-template',
+    template: JST['watch/project/modules/video-grid/templates/item'],
     tagName: 'li',
     events: {},
     initialize: function() {
