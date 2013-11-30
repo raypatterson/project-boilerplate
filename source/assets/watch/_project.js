@@ -1,12 +1,15 @@
 //= require project/app/config
 //= require project/app/init
 
-//= require project/models/video-collection-test
+// --------------------------------------------------------------
+// NOTE: Dependencies must be declared before 'require_tree'
+// --------------------------------------------------------------
+//= require_tree ./project/models
+//= require_tree ./project/modules
 
-//= require project/modules/video-selector/scripts
-//= require project/modules/video-player/scripts
-//= require project/modules/video-grid/scripts
-
+// --------------------------------------------------------------
+// NOTE: Order is significant
+// --------------------------------------------------------------
 //= require project/routers/notfound
 //= require project/routers/video
 

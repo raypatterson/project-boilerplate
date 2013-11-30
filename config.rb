@@ -25,6 +25,7 @@ activate :livereload
 activate :directory_indexes
 
 HandlebarsAssets::Config.template_namespace = 'JST'
+HandlebarsAssets::Config.path_prefix = site_namespace
 
 # Paths #
 #########

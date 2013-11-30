@@ -27,15 +27,16 @@
   logger.info('Debug Flag --> ', debugFlag);
   logger.info('Build Version --> ', buildVersion);
   logger.info('Environment Type --> ', environmentType);
-  logger.info('Images Directory --> ', imagesDir);
-  logger.info('Data Directory --> ', dataDir);
 
   var Main = Namespace(namespace);
 
   Main.debugFlag = debugFlag;
   Main.buildVersion = buildVersion;
   Main.environmentType = environmentType;
-  Main.imagesDir = imagesDir;
-  Main.dataDir = dataDir;
+
+  Main.Directory = {
+    images: imagesDir,
+    data: dataDir
+  }
 
 }(window));
