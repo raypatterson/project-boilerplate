@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
-<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--><html class="no-js"><!--<![endif]-->
 
 	<head>
 
@@ -22,8 +22,7 @@
 		<%= yield_content :head %>
 
 	  <%= stylesheet_link_tag "main" %>
-
-    <%= yield_content :page_stylesheet %>
+    <%= stylesheet_link_tag current_resource.path.sub current_resource.ext, "" %>
 	  
 	</head>
 
@@ -45,8 +44,7 @@
 
 	</body>
 
-	<%= javascript_include_tag "main" %>
-
-  <%= yield_content :page_javascript %>
+  <%= javascript_include_tag "main" %>
+  <%= javascript_include_tag current_resource.path.sub current_resource.ext, "" %>
 
 </html>

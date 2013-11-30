@@ -53,7 +53,6 @@ $bower_dir = File.join "#{root}", $bower_config["directory"]
 after_configuration do
   sprockets.append_path $bower_dir
   sprockets.append_path watch_dir
-  sprockets.append_path HandlebarsAssets.path
 end
 
 compass_config do | config |
