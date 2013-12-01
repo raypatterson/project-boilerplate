@@ -9,8 +9,8 @@ require "handlebars_assets"
 # Config #
 ##########
 
-set :environment_type, ENV[ 'ENVIRONMENT' ] || Cfg.get_localhost_env
-set :deploy, ( ENV[ 'DEPLOY' ] == 'true' ) || false
+set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
+set :deploy, ( ENV[ "DEPLOY" ] == "true" ) || false
 
 set :build_version, Cfg.get_build_version
 set :debug_flag, Cfg.get_debug_flag( environment_type )
@@ -24,8 +24,7 @@ set :site_url, Site.get_url( environment_type )
 activate :livereload
 activate :directory_indexes
 
-HandlebarsAssets::Config.template_namespace = 'JST'
-HandlebarsAssets::Config.path_prefix = site_namespace
+HandlebarsAssets::Config.template_namespace = "JST"
 
 # Paths #
 #########
@@ -46,17 +45,15 @@ set :partials_dir, "#{watch_dir}"
 ignore "#{watch_dir}/**/*"
 
 # Add bower's directory to Sprockets and Compass asset path
-
-$bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
-$bower_dir = File.join "#{root}", $bower_config["directory"]
+set :bower_dir, ( File.join "#{root}", JSON.parse( IO.read( "#{root}/.bowerrc" ) )[ "directory" ] )
 
 after_configuration do
-  sprockets.append_path $bower_dir
+  sprockets.append_path bower_dir
   sprockets.append_path watch_dir
 end
 
 compass_config do | config |
-  config.add_import_path $bower_dir
+  config.add_import_path bower_dir
   config.add_import_path watch_dir
 end
 
