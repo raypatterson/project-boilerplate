@@ -2,7 +2,7 @@
 
   <title><%= site_title %></title>
 
-  <% content_for :page_stylesheet do %> 
+  <% content_for :stylesheet do %> 
 
     <%= stylesheet_link_tag "index" %>
     
@@ -10,7 +10,7 @@
   
 <% end %>
 
-<% content_for :page_header do %> 
+<% content_for :header do %> 
 
   <%= partial( 
     "project/modules/header/_partial", 
@@ -25,7 +25,7 @@
 
 <%= partial "project/common/partials/_video-content" %>
 
-<% content_for :page_javascript do %> 
+<% content_for :javascript do %> 
 
   <%= javascript_include_tag "index" %>
   
