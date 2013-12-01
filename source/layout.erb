@@ -22,7 +22,7 @@
 		<%= yield_content :head %>
 
 	  <%= stylesheet_link_tag "main" %>
-    <%= stylesheet_link_tag current_resource.path.sub current_resource.ext, "" %>
+    <%= yield_content :page_stylesheet %>
 	  
 	</head>
 
@@ -45,6 +45,6 @@
 	</body>
 
   <%= javascript_include_tag "main" %>
-  <%= javascript_include_tag current_resource.path.sub current_resource.ext, "" %>
+  <%= yield_content :page_javascript %>
 
 </html>

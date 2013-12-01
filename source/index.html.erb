@@ -1,6 +1,12 @@
 <% content_for :head do %> 
 
   <title><%= site_title %></title>
+
+  <% content_for :page_stylesheet do %> 
+
+    <%= stylesheet_link_tag "index" %>
+    
+  <% end %>
   
 <% end %>
 
@@ -18,3 +24,9 @@
 <% end %>
 
 <%= partial "project/common/partials/_video-content" %>
+
+<% content_for :page_javascript do %> 
+
+  <%= javascript_include_tag "index" %>
+  
+<% end %>
