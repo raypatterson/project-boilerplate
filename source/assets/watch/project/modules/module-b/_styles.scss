@@ -1,0 +1,19 @@
+.module-module-b {
+
+  background: lightgrey;
+
+  @include span-columns($grid-columns / 2);
+
+  .module-b {
+
+    padding: 0 0 2em 0;
+
+    @include shift(4);
+    @include span-columns(16);
+
+    img {
+      width: 100%;
+      margin: 0 0 2em 0;
+    }
+  }
+}
