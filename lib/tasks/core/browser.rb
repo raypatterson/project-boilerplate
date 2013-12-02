@@ -21,7 +21,7 @@ namespace :browser do
     sh %{open -a Safari #{url}}
   end
 
-  desc "Browser : Open Safari"
+  desc "Browser : Open All"
   task :all do
     Rake::Task[ 'browser:chrome' ].invoke
     Rake::Task[ 'browser:firefox' ].invoke

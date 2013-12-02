@@ -6,7 +6,7 @@ module Site
 
   include Load
 
-  path = File.expand_path "." + "/data/site"
+  path = File.expand_path "." + "/data/project/site"
 
   @@site = Load.yaml path
 

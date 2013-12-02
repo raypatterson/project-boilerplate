@@ -6,7 +6,7 @@ module AWS
 
   include Load
 
-  path = File.expand_path "." + "/data"
+  path = File.expand_path "." + "/data/project"
 
   @@aws = Load.yaml "#{path}/aws"
 
