@@ -18,7 +18,7 @@
   });
 
   Main.debugFlag = Main.QueryString.debugFlag || <%= debug_flag %> || false;
-  Main.buildVersion = '<%= build_version %>' || 'no version';
+  Main.buildVersion = '<%= build_version %>' || 'v0000';
   Main.environmentType = '<%= environment_type %>' || 'localhost';
 
   // Directories for runtime asset requests
@@ -28,9 +28,9 @@
     data: '<%= data_dir %>' || ''
   };
 
-  // Boostrap Models
+  // Bootstrap model data?
 
-  Main.Models = JSON.parse('<%= data.project.models.to_json %>') || {};
+  // Main.Data = <%= data.project.models.to_json %> || {};?
 
   // Configure Logger
 
@@ -45,6 +45,5 @@
   logger.info('Debug Flag --> ', Main.debugFlag);
   logger.info('Build Version --> ', Main.buildVersion);
   logger.info('Environment Type --> ', Main.environmentType);
-  logger.info('Bootstrapped Models  --> ', Main.Models);
 
 }(window, location));
