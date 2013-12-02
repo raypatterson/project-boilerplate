@@ -6,8 +6,8 @@ def favicon_image( href, rel, sizes = nil )
   tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_dir}/#{href}"
 end
 
-def share_image
-  "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{data.site.social.image}"
+def share_icon
+  "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{Social.get_share_icon}"
 end
 
 def is_production

@@ -1,0 +1,9 @@
+image: "/cache/share_icon.jpg"
+title: "Project Boilerplate"
+description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
+twitter:
+  id: "@projectboilerplate"
+  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
+  hashtags:
+    - "#project"
+    - "#boilerplate"

@@ -10,11 +10,11 @@ module Cfg
   include Load
   include Version
 
-  path = File.expand_path "." + "/data/configs"
+  path = File.expand_path "." + "/data/core"
 
-  @@defaults = Load.yaml "#{path}/default"
-  @@env = Load.yaml "#{path}/environment"
   @@debug = Load.yaml "#{path}/debug"
+  @@defaults = Load.yaml "#{path}/default"
+  @@environment = Load.yaml "#{path}/environment"
 
   def self.get_build_version
     Version.get_version()
@@ -33,23 +33,23 @@ module Cfg
   end
 
   def self.get_localhost_env
-    @@env[ 'localhost' ]
+    @@environment[ 'localhost' ]
   end
 
   def self.get_development_env
-    @@env[ 'development' ]
+    @@environment[ 'development' ]
   end
 
   def self.get_review_env
-    @@env[ 'review' ]
+    @@environment[ 'review' ]
   end
 
   def self.get_staging_env
-    @@env[ 'staging' ]
+    @@environment[ 'staging' ]
   end
 
   def self.get_production_env
-    @@env[ 'production' ]
+    @@environment[ 'production' ]
   end
 
 end
