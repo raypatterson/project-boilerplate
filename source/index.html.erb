@@ -1,32 +1,19 @@
 <% content_for :head do %> 
 
-  <title><%= site_title %></title>
-
-  <% content_for :stylesheet do %> 
-
-    <%= stylesheet_link_tag "index" %>
-    
-  <% end %>
+  <title><%= site_title "Home" %></title>
   
 <% end %>
 
-<% content_for :header do %> 
-
-  <%= partial( 
-    "project/modules/header/_partial", 
-      :locals => { 
-        :home_classes => "selected", 
-        :admin_classes => "" 
-      } 
-    ) 
-  %>
-  
-<% end %>
-
-<%= partial "project/common/partials/_video-content" %>
-
-<% content_for :javascript do %> 
-
-  <%= javascript_include_tag "index" %>
-  
-<% end %>
+<div class="row">
+  <%= partial "project/modules/header/_partial" %>
+</div>
+<div class="row">
+  <%= partial "project/modules/module-a/_partial" %>
+</div>
+<div class="row">
+  <%= partial "project/modules/module-b/_partial" %>
+  <%= partial "project/modules/module-c/_partial" %>
+</div>
+<div class="row">
+  <%= partial "project/modules/footer/_partial" %>
+</div>

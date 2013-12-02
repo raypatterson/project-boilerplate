@@ -1,9 +1,7 @@
 // --------------------------------------------------------------
 // Vendor
 // --------------------------------------------------------------
-@import "vendor/bourbon/_vars-bourbon";
-@import "vendor/mediaelement/_mediaelementplayer";
-@import "vendor/bxslider/jquery.bxslider";
+@import "vendor/styles/**/*";
 // --------------------------------------------------------------
 // Gems
 // --------------------------------------------------------------
@@ -16,4 +14,3 @@
 // Bower
 // --------------------------------------------------------------
 @import "normalize-css/normalize";
-@import "flexslider/flexslider";
