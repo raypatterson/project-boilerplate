@@ -9,10 +9,13 @@
 
   var Config = Namespace(namespace);
 
-  Config.touch = Modernizr.touch;
+  // Access objects though Namespace
+  var Main = Namespace(site_namespace + '.Main');
 
-  Backbone.Marionette.Renderer.render = function(template, data) {
-    return template(data);
-  };
+  // Environment detection
+  var isUsingMockData = (Main.enviriomentType === 'localhost') ? true : false;
+
+  // Feature detection
+  Config.touch = Modernizr.touch;
 
 }(window));
