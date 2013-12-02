@@ -1,4 +1,5 @@
 require "./lib/modules/config"
+require "./lib/modules/social"
 require "./lib/modules/site"
 require "./lib/modules/aws"
 require "./lib/extensions/invalidator"
