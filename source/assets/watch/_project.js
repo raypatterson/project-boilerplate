@@ -7,4 +7,10 @@
 //= require_tree ./project/models
 //= require_tree ./project/modules
 
+// --------------------------------------------------------------
+// NOTE: Order is significant
+// --------------------------------------------------------------
+//= require project/routers/notfound
+//= require project/routers/video
+
 //= require project/app/start

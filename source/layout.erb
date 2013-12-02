@@ -39,9 +39,15 @@
 
     <div class="top-level-container main-region">
 
-		  <%= yield_content :header %>
+      <div class="row">
+        <%= partial "project/modules/header/_partial" %>
+      </div>
 
       <%= yield %>
+
+      <div class="row">
+        <%= partial "project/modules/footer/_partial" %>
+      </div>
 
     </div>
 

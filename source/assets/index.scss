@@ -1,5 +1,14 @@
 // --------------------------------------------------------------
-// Library
+// Home
 // --------------------------------------------------------------
-//= require library/util/promise-maker
-//= require library/media/youtube/scripts
+
+body {
+  
+  .header {
+    .home {
+      p {
+        background: red;
+      }
+    }
+  }
+}
