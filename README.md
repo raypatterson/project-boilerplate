@@ -43,7 +43,7 @@ Open you broswer to [http://localhost:8888](http://localhost:8888) or run:
 ```
 $ rake browser:chrome
 ```
-The browser should display "You are using project-boilerplate."
+The browser should display a small set of modules.
 
 > **INFO**
 <br>
@@ -135,11 +135,6 @@ Don't worry, it's safe to leave them in your project.
 - [.jsbeautifyrc](https://github.com/einars/js-beautify#options) - For use with [jsFormat](https://github.com/jdc0589/JsFormat) Sublime Text plugin.
 - [.rbenv-gemsets](https://github.com/jf/rbenv-gemset#usage) - Specifies [Gemset](http://rvm.io/gemsets/basics) name for [rbenv](https://github.com/sstephenson/rbenv) Gemset [plugin](https://github.com/jf/rbenv-gemset).
 
-######Deprecated
-
-- [config.ru](http://middlemanapp.com/getting-started/#toc_5) - Heroku related [Rack](https://devcenter.heroku.com/articles/rack) middleware configuration that provides basic auth, device detection and redirect functionality.
-- [.env](http://ddollar.github.io/foreman/#ENVIRONMENT) & [Procfile](http://ddollar.github.io/foreman/#PROCFILE)- [Heroku](https://devcenter.heroku.com/articles/procfile) related [Foreman](http://ddollar.github.io/foreman/) configurations.
-
 ---
 	
 ## Boilerplate
@@ -150,7 +145,7 @@ This is a configured Middleman project. The project utilizes MM to "build" or "c
 
 #### Configuration
 
-The `data/config.yaml` file contains some externalized data that is used by Middleman in `config.rb`, some of the deployment tasks in `lib/tasks` and can also be read directly into Middleman templates though the [data](http://middlemanapp.com/advanced/local-data/) object.
+The `data` folder contains some externalized data that is used by Middleman in `config.rb`, some of the deployment tasks in `lib/tasks` and can also be read directly into Middleman templates though the [data](http://middlemanapp.com/advanced/local-data/) object.
 
 The Middleman `config.rb` can also be used to pass the values from `data/config.yaml` into the application templates. An example of this can be seen in `source/assets/js/app.js` where the helper `<%= build_version %>` is used to assigned the build version ID to a JavaScript variable.
 
@@ -168,14 +163,6 @@ The relationships between desktop/tablet/mobile apps for each environment are se
 
 <span style="color:red">In both the middleware and client-side soltions, Android tablets are treated the same as Android mobile devices.</span>
 
-###### _Rack Middleware Solution_
-
-If you are deploying to a hosting service such as Heroku that supports Rack middleware, you may use a middleware based solution. 
-
-The current solution in place is <https://github.com/talison/rack-mobile-detect>
-
-There is some additional configuration that can take place within the Rack config `config.ru` file.
-
 ###### _Client-Side JavaScript Solution_
 
 If the redirect needs to rely on JavaScript you may follow these steps:
@@ -190,6 +177,14 @@ If the redirect needs to rely on JavaScript you may follow these steps:
 > **INFO**
 <br>
 Once the redirects have been verified, it's recommended for optimial performance that you minify this script and replace the embed of the external file and copy the minified code block into the script tags.
+
+###### _Rack Middleware Solution_
+
+If you are deploying to a hosting service such as Heroku that supports Rack middleware, you may use a middleware based solution. 
+
+The current solution in place is <https://github.com/talison/rack-mobile-detect>
+
+There is some additional configuration that can take place within the Rack config `config.ru` file.
 
 ---
 
