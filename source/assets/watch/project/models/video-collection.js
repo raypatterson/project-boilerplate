@@ -29,6 +29,6 @@
   });
 
   // Expose model
-  Models.videoCollection = new Collection(Main.Data.video_collection);
+  Models.videoCollection = new Collection();
 
 }(window));

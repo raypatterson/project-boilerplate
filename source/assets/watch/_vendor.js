@@ -14,4 +14,7 @@
 // NOTE: Dependencies must be declared before 'require_tree'
 //
 // --------------------------------------------------------------
-//= require_tree ./vendor
+//= require vendor/backbone/backbone.picky
+//= require vendor/util/logger
+//= require vendor/util/kwerystring
+//= require vendor/util/Namespace
