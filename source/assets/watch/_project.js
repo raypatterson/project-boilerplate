@@ -1,10 +1,19 @@
+// --------------------------------------------------------------
+// Project
+// --------------------------------------------------------------
 //= require project/app/config
 //= require project/app/init
 
+//= require project/modules/header/scripts
+//= require project/modules/footer/scripts
+
+//= require project/modules/module-a/scripts
+//= require project/modules/module-b/scripts
+//= require project/modules/module-c/scripts
+
 // --------------------------------------------------------------
-// NOTE: Dependencies must be declared before 'require_tree'
+// NOTE: Order is significant for routers
 // --------------------------------------------------------------
-//= require_tree ./project/models
-//= require_tree ./project/modules
+//= require project/routers/notfound
 
 //= require project/app/start

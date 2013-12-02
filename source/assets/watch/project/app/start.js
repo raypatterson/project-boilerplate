@@ -9,12 +9,25 @@
 
   var App = Namespace(namespace);
 
+  var Util = Namespace(site_namespace + '.Util');
+
+  App.on('start', function(options) {
+    Backbone.history.start();
+  });
+
   $(function() {
 
-    logger.info('DOM Ready');
+    var done = function() {
+      logger.info('Start Success');
 
-    App.start();
+      App.start();
+    };
 
+    var fail = function() {
+      logger.error('!!! Start Failure !!!');
+    };
+
+    Util.PromiseMaker.checkPromises(done, fail);
   });
 
 }(window));
