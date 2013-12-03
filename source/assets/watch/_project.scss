@@ -5,5 +5,7 @@
 // Globbing *should* work as module styles rules *should* 
 // only override common and page level style rules.
 // --------------------------------------------------------------
+
 @import "project/common/**/*";
-@import "project/modules/**/*";
+@import "project/modules/header/**/*";
+@import "project/modules/footer/**/*";

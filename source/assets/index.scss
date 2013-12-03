@@ -1,6 +1,26 @@
 // --------------------------------------------------------------
+// Vendor
+// --------------------------------------------------------------
+
+@import "vendor/styles/vars-bourbon";
+
+// --------------------------------------------------------------
+// Gems
+// --------------------------------------------------------------
+
+@import "compass";
+@import "bourbon";
+@import "neat";
+@import "breakpoint";
+@import "breakpoint-slicer";
+
+// --------------------------------------------------------------
 // Home
 // --------------------------------------------------------------
+
+@import "project/modules/module-a/styles";
+@import "project/modules/module-b/styles";
+@import "project/modules/module-c/styles";
 
 body {
   

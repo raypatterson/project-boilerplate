@@ -1,11 +1,31 @@
 // --------------------------------------------------------------
+// Vendor
+// --------------------------------------------------------------
+
+@import "vendor/styles/vars-bourbon";
+
+// --------------------------------------------------------------
+// Gems
+// --------------------------------------------------------------
+
+@import "compass";
+@import "bourbon";
+@import "neat";
+@import "breakpoint";
+@import "breakpoint-slicer";
+
+// --------------------------------------------------------------
 // Page 1
 // --------------------------------------------------------------
 
 @import "flexslider/flexslider";
-@import "vendor/mediaelement/_mediaelementplayer";
+@import "vendor/mediaelement/mediaelementplayer";
 @import "vendor/bxslider/jquery.bxslider";
 @import "vendor/bxslider/jquery.bxslider-overrides";
+
+@import "project/modules/video-selector/styles";
+@import "project/modules/video-player/styles";
+@import "project/modules/video-grid/styles";
 
 body {
   
