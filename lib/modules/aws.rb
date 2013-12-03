@@ -8,7 +8,7 @@ module AWS
 
   path = File.expand_path "." + "/data/project"
 
-  @@aws = Load.yaml "#{path}/aws"
+  @@aws = Load.yaml "#{path}/aws.ignore"
 
   def self.access_key
     @@aws[ "access_key" ]
