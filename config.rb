@@ -63,23 +63,25 @@ end
 
 activate :deploy do | deploy |
   deploy.method = :git
-  # Optional Settings
-  # deploy.remote = "custom-remote" # remote name or git url, default: origin
-  # deploy.branch = "custom-branch" # default: gh-pages
 end
 
-class MyFeature < Middleman::Extension
+class DeployDevelopment < Middleman::Extension
 
   def initialize(app, options_hash={}, &block)
+
     super
-    app.after_build do |builder|
-      builder.run 'middelman deploy'
+
+    app.after_build do | builder |
+
+      puts "Deploy to GitHub Pages"
+
+      `middleman deploy`
+
     end
   end
 end
 
-## Two ways to configure this extension
-activate :my_feature
+::Middleman::Extensions.register(:deploy_development, DeployDevelopment)
 
 configure :build do
 
@@ -121,6 +123,9 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
+  puts "Deploy Flag"
+  puts deploy_flag
+
   if deploy_flag != false
 
     activate :s3_sync do | s3_sync |
@@ -138,6 +143,10 @@ configure :build do
       invalidator.secret_key = AWS.secret_key
       invalidator.distribution_id = AWS.distribution_id environment_type
     end
+
+  else
+
+    activate :deploy_development
 
   end
 
