@@ -11,7 +11,7 @@ require "handlebars_assets"
 ##########
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
-set :deploy, ( ENV[ "DEPLOY" ] == "true" ) || false
+set :deploy_flag, ( ENV[ "DEPLOY" ] == "true" ) || false
 
 set :build_version, Cfg.get_build_version
 set :debug_flag, Cfg.get_debug_flag( environment_type )
@@ -61,6 +61,26 @@ end
 # Build #
 #########
 
+activate :deploy do | deploy |
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote = "custom-remote" # remote name or git url, default: origin
+  # deploy.branch = "custom-branch" # default: gh-pages
+end
+
+class MyFeature < Middleman::Extension
+
+  def initialize(app, options_hash={}, &block)
+    super
+    app.after_build do |builder|
+      builder.run 'middelman deploy'
+    end
+  end
+end
+
+## Two ways to configure this extension
+activate :my_feature
+
 configure :build do
 
   activate :relative_assets
@@ -71,7 +91,7 @@ configure :build do
   }
 
   activate :asset_hash, {:ignore => [ "#{cache_dir}/*" ] }
-  
+
   activate :minify_css
   activate :minify_javascript
   activate :minify_html
@@ -101,7 +121,7 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  if deploy != false
+  if deploy_flag != false
 
     activate :s3_sync do | s3_sync |
       s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
