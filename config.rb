@@ -11,7 +11,7 @@ require "handlebars_assets"
 ##########
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
-set :deploy, ( ENV[ "DEPLOY" ] == "true" ) || false
+set :deploy_flag, ( ENV[ "DEPLOY" ] == "true" ) || false
 
 set :build_version, Cfg.get_build_version
 set :debug_flag, Cfg.get_debug_flag( environment_type )
@@ -61,6 +61,28 @@ end
 # Build #
 #########
 
+activate :deploy do | deploy |
+  deploy.method = :git
+end
+
+class DeployDevelopment < Middleman::Extension
+
+  def initialize(app, options_hash={}, &block)
+
+    super
+
+    app.after_build do | builder |
+
+      puts "Deploy to GitHub Pages"
+
+      `middleman deploy`
+
+    end
+  end
+end
+
+::Middleman::Extensions.register(:deploy_development, DeployDevelopment)
+
 configure :build do
 
   activate :relative_assets
@@ -71,7 +93,7 @@ configure :build do
   }
 
   activate :asset_hash, {:ignore => [ "#{cache_dir}/*" ] }
-  
+
   activate :minify_css
   activate :minify_javascript
   activate :minify_html
@@ -101,7 +123,10 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  if deploy != false
+  puts "Deploy Flag"
+  puts deploy_flag
+
+  if deploy_flag != false
 
     activate :s3_sync do | s3_sync |
       s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
@@ -118,6 +143,10 @@ configure :build do
       invalidator.secret_key = AWS.secret_key
       invalidator.distribution_id = AWS.distribution_id environment_type
     end
+
+  else
+
+    activate :deploy_development
 
   end
 
