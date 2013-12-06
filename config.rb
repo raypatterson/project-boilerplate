@@ -18,7 +18,7 @@ HandlebarsAssets::Config.template_namespace = "JST"
 
 activate :livereload
 activate :directory_indexes
-# activate :clowncar
+activate :clowncar
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
 set :deploy_flag, ( ENV[ "DEPLOY" ] == "true" ) || false
@@ -35,6 +35,8 @@ set :site_url, Site.get_url( environment_type )
 # Paths #
 #########
 
+set :host, "localhost:8888"
+
 set :relative_assets, true
 
 set :build_dir, "build"
@@ -46,6 +48,7 @@ set :data_dir, "#{asset_dir}/data"
 set :fonts_dir, "#{asset_dir}/fonts"
 set :images_dir, "#{asset_dir}/images"
 set :cache_dir, "#{images_dir}/cache"
+set :clowncar_dir, "#{images_dir}/clowncar"
 set :partials_dir, "#{watch_dir}"
 
 ignore "#{watch_dir}/**/*"

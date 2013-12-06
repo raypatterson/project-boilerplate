@@ -4,7 +4,6 @@
 //= require modernizr/modernizr
 //= require handlebars/handlebars.runtime
 //= require jquery/jquery
-//= require flexslider/jquery.flexslider
 //= require lodash/dist/lodash.underscore
 //= require backbone/backbone
 //= require backbone.marionette/lib/backbone.marionette
