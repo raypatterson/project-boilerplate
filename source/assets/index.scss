@@ -23,9 +23,16 @@
 @import "project/modules/module-c/styles";
 
 body {
-  
+
   .header {
+
     .home {
+
+      a {
+        pointer-events: none;
+        cursor: default;
+      }
+
       p {
         background: red;
       }
