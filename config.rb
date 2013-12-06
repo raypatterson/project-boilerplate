@@ -2,13 +2,23 @@ require "./lib/modules/config"
 require "./lib/modules/social"
 require "./lib/modules/site"
 require "./lib/modules/aws"
-require "./lib/extensions/invalidator"
+require "./lib/extensions/aws_cloudfront_invalidate"
+require "./lib/extensions/github_pages_deploy"
 
 require "sass-globbing"
 require "handlebars_assets"
 
 # Config #
 ##########
+
+Middleman::Extensions.register(:aws_cloudfront_invalidate, AwsCloudfrontInvalidate)
+Middleman::Extensions.register(:github_pages_deploy, GitHubPagesDeploy)
+
+HandlebarsAssets::Config.template_namespace = "JST"
+
+activate :livereload
+activate :directory_indexes
+# activate :clowncar
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
 set :deploy_flag, ( ENV[ "DEPLOY" ] == "true" ) || false
@@ -21,11 +31,6 @@ set :site_name, Site.get_name
 set :site_description, Site.get_description
 set :site_keywords, Site.get_keywords
 set :site_url, Site.get_url( environment_type )
-
-activate :livereload
-activate :directory_indexes
-
-HandlebarsAssets::Config.template_namespace = "JST"
 
 # Paths #
 #########
@@ -40,7 +45,7 @@ set :css_dir, "#{asset_dir}"
 set :data_dir, "#{asset_dir}/data"
 set :fonts_dir, "#{asset_dir}/fonts"
 set :images_dir, "#{asset_dir}/images"
-set :cache_dir, "/#{images_dir}/cache"
+set :cache_dir, "#{images_dir}/cache"
 set :partials_dir, "#{watch_dir}"
 
 ignore "#{watch_dir}/**/*"
@@ -65,34 +70,17 @@ activate :deploy do | deploy |
   deploy.method = :git
 end
 
-class DeployDevelopment < Middleman::Extension
-
-  def initialize(app, options_hash={}, &block)
-
-    super
-
-    app.after_build do | builder |
-
-      puts "Deploy to GitHub Pages"
-
-      `middleman deploy`
-
-    end
-  end
-end
-
-::Middleman::Extensions.register(:deploy_development, DeployDevelopment)
-
 configure :build do
 
   activate :relative_assets
 
   activate :favicon_maker, {
-    :favicon_maker_input_dir => "#{source}#{cache_dir}",
-    :favicon_maker_output_dir => "#{build_dir}#{cache_dir}"
+    :favicon_maker_input_dir => "#{source}/#{cache_dir}",
+    :favicon_maker_output_dir => "#{build_dir}/#{cache_dir}"
   }
 
   activate :asset_hash, {:ignore => [ "#{cache_dir}/*" ] }
+  # activate :asset_hash, {:ignore => [ "#{source}/#{cache_dir}/**/*" ] }
 
   activate :minify_css
   activate :minify_javascript
@@ -123,9 +111,6 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  puts "Deploy Flag"
-  puts deploy_flag
-
   if deploy_flag != false
 
     activate :s3_sync do | s3_sync |
@@ -138,7 +123,7 @@ configure :build do
     end
 
     # Invalidate CloudFront
-    activate :invalidator do | invalidator |
+    activate :aws_cloudfront_invalidate do | invalidator |
       invalidator.access_key = AWS.access_key
       invalidator.secret_key = AWS.secret_key
       invalidator.distribution_id = AWS.distribution_id environment_type
@@ -146,7 +131,7 @@ configure :build do
 
   else
 
-    activate :deploy_development
+    activate :github_pages_deploy
 
   end
 

@@ -28,9 +28,15 @@
 @import "project/modules/video-grid/styles";
 
 body {
-  
+
   .header {
     .page-1 {
+
+      a {
+        pointer-events: none;
+        cursor: default;
+      }
+
       p {
         background: red;
       }

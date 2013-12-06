@@ -91,6 +91,8 @@ GEM
       uglifier (~> 2.1.0)
     middleman-bourbon (0.0.2)
       bourbon (>= 2.1.0)
+    middleman-clowncar (0.0.1)
+      middleman-core (>= 3.1.5)
     middleman-core (3.2.0)
       activesupport (~> 3.2.6)
       bundler (~> 1.1)
@@ -203,6 +205,7 @@ DEPENDENCIES
   handlebars_assets
   middleman (~> 3.2.0)
   middleman-bourbon
+  middleman-clowncar
   middleman-deploy
   middleman-favicon-maker (~> 3.2)
   middleman-imageoptim (~> 0.0.4)
