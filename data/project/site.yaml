@@ -4,9 +4,9 @@ name: "Project Boilerplate"
 title: "Project Boilerplate"
 description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
 keywords: "Lorem, Ipsum, Dolor, Sit, Amet"
-url: 
+url:
   localhost: "http://localhost:8888"
-  development: "http://development.project-boilerplate.com"
+  development: "http://raypatterson.github.io/project-boilerplate"
   review: "http://review.project-boilerplate.com"
   staging: "http://staging.project-boilerplate.com"
   production: "http://project-boilerplate.com"
