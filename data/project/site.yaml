@@ -7,6 +7,6 @@ keywords: "Lorem, Ipsum, Dolor, Sit, Amet"
 url:
   localhost: "http://localhost:8888"
   development: "http://raypatterson.github.io/project-boilerplate"
-  review: "http://review.project-boilerplate.com"
+  review: "http://raypatterson.github.io/project-boilerplate"
   staging: "http://staging.project-boilerplate.com"
   production: "http://project-boilerplate.com"
