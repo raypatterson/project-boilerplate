@@ -1,4 +1,5 @@
 require "./lib/modules/config"
+require "./lib/modules/deployment"
 require "./lib/modules/social"
 require "./lib/modules/site"
 require "./lib/modules/aws"
@@ -21,7 +22,9 @@ activate :directory_indexes
 activate :clowncar
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
-set :deploy_flag, ( ENV[ "DEPLOY" ] == "true" ) || false
+# set :deploy_active, ( ENV[ "DEPLOY" ] == "true" ) || false
+set :deploy_active, Deployment.get_active( environment_type ) || false
+set :deploy_target, Deployment.get_target( environment_type )
 
 set :build_version, Cfg.get_build_version
 set :debug_flag, Cfg.get_debug_flag( environment_type )
@@ -114,27 +117,37 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  if deploy_flag != false
+  if deploy_active == true
 
-    activate :s3_sync do | s3_sync |
-      s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
-      s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
-      s3_sync.aws_access_key_id = AWS.access_key
-      s3_sync.aws_secret_access_key = AWS.secret_key
-      s3_sync.delete = true # We delete stray files by default.
-      s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
+    if deploy_target == Deployment.TARGET_AWS
+
+      activate :s3_sync do | s3_sync |
+        s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
+        s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
+        s3_sync.aws_access_key_id = AWS.access_key
+        s3_sync.aws_secret_access_key = AWS.secret_key
+        s3_sync.delete = true # We delete stray files by default.
+        s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
+      end
+
+      # Invalidate CloudFront
+      activate :aws_cloudfront_invalidate do | invalidator |
+        invalidator.access_key = AWS.access_key
+        invalidator.secret_key = AWS.secret_key
+        invalidator.distribution_id = AWS.distribution_id environment_type
+      end
+
+    elsif deploy_target == Deployment.TARGET_GITHUB_PAGES
+
+      activate :github_pages_deploy
+
+    else
+
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      puts "Unknown Deploy Target: #{deploy_target}"
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
     end
-
-    # Invalidate CloudFront
-    activate :aws_cloudfront_invalidate do | invalidator |
-      invalidator.access_key = AWS.access_key
-      invalidator.secret_key = AWS.secret_key
-      invalidator.distribution_id = AWS.distribution_id environment_type
-    end
-
-  else
-
-    activate :github_pages_deploy
 
   end
 

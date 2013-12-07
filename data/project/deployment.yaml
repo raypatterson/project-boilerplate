@@ -1,0 +1,19 @@
+targets:
+  aws: "aws"
+  github_pages: "github_pages"
+environments:
+  localhost:
+    active: false
+    target: nil
+  development:
+    active: false
+    target: "github_pages"
+  review:
+    active: true
+    target: "github_pages"
+  staging:
+    active: true
+    target: "aws"
+  production:
+    active: true
+    target: "aws"
