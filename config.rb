@@ -22,7 +22,6 @@ activate :directory_indexes
 activate :clowncar
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
-# set :deploy_active, ( ENV[ "DEPLOY" ] == "true" ) || false
 set :deploy_active, Deployment.get_active( environment_type ) || false
 set :deploy_target, Deployment.get_target( environment_type )
 
