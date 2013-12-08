@@ -1,22 +1,31 @@
 language: ruby
 rvm:
-  - 2.0.0-p247
+- 2.0.0-p247
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush
-  - wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
-  - tar -xzf pngout-*-linux.tar.gz
-  - mv pngout-*-linux pngout-linux
+- sudo apt-get update -qq
+- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng
+  pngcrush
+- wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
+- tar -xzf pngout-*-linux.tar.gz
+- mv pngout-*-linux pngout-linux
 env:
-  - PATH=pngout-linux/x86_64:$PATH
+- PATH=pngout-linux/x86_64:$PATH
 install: bundle install
 before_script:
-  - npm install -g bower
-  - bower install
+- npm install -g bower
+- bower install
 script: middleman build
-
-# whitelist
 branches:
   only:
-    - master
-    - develop
+  - master
+  - develop
+deploy:
+  provider: s3
+  access_key_id: AKIAI2L5BZUIYEJDUBJQ
+  secret_access_key:
+    secure: PoKAcx7p5hdrn6UC3Iiy+y8O3p4Go94V1NM7GSP0+tfoLYwWiGWbbxA+sqeEM1c8uSLWCzar3T83WoC8026VWOchcVybpeXO1aXY4z8dUg4GA5yRm/ghxViZHvPha9aqu8UuFL0Ars3vzODoZBOVmbMd4eqCEjR8XNXDu26XqV8=
+  bucket: project-boilerplate-production
+  local-dir: build
+  on:
+    repo: RayPatterson/project-boilerplate
+    branch: master
