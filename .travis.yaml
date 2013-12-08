@@ -6,3 +6,9 @@ before_script:
   - bower install
 script: rake mm:build:development
 install: bundle install
+
+# whitelist
+branches:
+  only:
+    - master
+    - develop
