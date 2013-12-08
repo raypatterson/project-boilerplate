@@ -110,7 +110,7 @@ configure :build do
     # compressor worker options, individual optimisers can be disabled by passing
     # false instead of a hash
     image_optim.pngcrush_options  = {:chunks => ["alla"], :fix => false, :brute => false}
-    image_optim.pngout_options    = {:copy_chunks => false, :strategy => 0}
+    # image_optim.pngout_options    = {:copy_chunks => false, :strategy => 0}
     image_optim.optipng_options   = {:level => 6, :interlace => false}
     image_optim.advpng_options    = {:level => 4}
     image_optim.jpegoptim_options = {:strip => ["all"], :max_quality => 100}

@@ -7,6 +7,8 @@ echo 'This is good time to get a coffee.'
 echo '.'
 echo '.'
 echo '.'
+brew update
+brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush
 bower install
 gem install bundler
 rm -f Gemfile.lock
