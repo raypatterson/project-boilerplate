@@ -18,7 +18,6 @@ gem "handlebars_assets"
 
 # Deploy #
 ##########
-gem "travis"
 gem "middleman-deploy"
 gem "middleman-s3_sync"
 gem "cloudfront-invalidator", "~> 0.2.0"
