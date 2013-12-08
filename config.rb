@@ -6,8 +6,10 @@ require "./lib/modules/aws"
 require "./lib/extensions/aws_cloudfront_invalidate"
 require "./lib/extensions/github_pages_deploy"
 
-require "sass-globbing"
 require "handlebars_assets"
+require "sass-globbing"
+require "semantic-ui-sass"
+require "susy"
 
 # Config #
 ##########
@@ -22,7 +24,6 @@ activate :directory_indexes
 activate :clowncar
 
 set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
-# set :deploy_active, ( ENV[ "DEPLOY" ] == "true" ) || false
 set :deploy_active, Deployment.get_active( environment_type ) || false
 set :deploy_target, Deployment.get_target( environment_type )
 

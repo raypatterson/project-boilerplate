@@ -4,6 +4,8 @@
     "jquery": "~2.0.3",
     "modernizr": "~2.6.3",
     "normalize-css": "~2.1.3",
-    "json3": "~3.2.6"
+    "json3": "~3.2.6",
+    "sass-bootstrap": "~3.0.2",
+    "foundation": "zurb/bower-foundation#~5.0.2"
   }
 }
