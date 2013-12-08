@@ -6,8 +6,10 @@ require "./lib/modules/aws"
 require "./lib/extensions/aws_cloudfront_invalidate"
 require "./lib/extensions/github_pages_deploy"
 
-require "sass-globbing"
 require "handlebars_assets"
+require "sass-globbing"
+require "semantic-ui-sass"
+require "susy"
 
 # Config #
 ##########
