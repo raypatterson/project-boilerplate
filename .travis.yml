@@ -1,10 +1,13 @@
 language: ruby
 rvm:
   - 2.0.0-p247
-before_install: brew update
-install:
- - brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush
- - bundle install
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush
+  - wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
+  - tar -xzf pngout-*-linux.tar.gz
+  - mv pngout-*-linux pngout-linux
+install: bundle install
 before_script:
   - npm install -g bower
   - bower install
