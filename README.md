@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=master)](https://travis-ci.org/RayPatterson/project-boilerplate)
+
 ## Objectives
 
 For small-to-mid sized projects - centralize and define:
