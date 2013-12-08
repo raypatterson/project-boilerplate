@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.0.0-p247
+before_script:
+  - npm install -g bower
+  - bower install
+script: middleman build
+install: bundle install
+
+# whitelist
+branches:
+  only:
+    - master
+    - develop
