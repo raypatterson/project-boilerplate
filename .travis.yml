@@ -1,10 +1,10 @@
 language: ruby
 rvm:
-  - 2.0.0-p247
+  - 2.0.0
 before_script:
   - npm install -g bower
   - bower install
-script: rake mm:build:development
+script: middleman build
 install: bundle install
 
 # whitelist
