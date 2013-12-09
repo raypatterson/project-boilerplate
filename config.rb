@@ -41,14 +41,7 @@ set :site_url, Site.get_url( environment_type )
 
 set :relative_assets, true
 
-set :build_dir, "deploy"
-
-# if ENV['CI'] == true
-#   set :build_dir, "deploy"
-# else
-#   set :build_dir, "build"
-# end
-
+set :build_dir, "build"
 set :asset_dir, "assets"
 set :watch_dir, "#{asset_dir}/watch"
 set :js_dir, "#{asset_dir}"
