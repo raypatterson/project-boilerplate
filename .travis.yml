@@ -8,23 +8,27 @@ before_install:
 - tar -xzf pngout-*-linux.tar.gz
 - mv pngout-*-linux pngout-linux
 env:
-- PATH=pngout-linux/x86_64:$PATH
+  matrix:
+  - PATH=pngout-linux/x86_64:$PATH
+  global:
+  - secure: MdTkOLKi3OpPxrJb0E6kTgau3wj0B5GDPfHO08Zz2EI8ayvzlwRnISZgXaI9wSWzF3JpFFRrhvaW4k5om7l4KBQQwD+/J8xRxHzReiMkzXF0o1IBqUYeF0NrMlRLLNFRr7py46hERBA0TBgm2PlM1uMznuhGsJZHIuulwERmpyA=
+  - secure: SXxPzeVlVr9qMrYeG/PRZMAl7aIDHCHbodknTTYAG0F435TPa6M7Im+XfCkdWiBY/rbJWuxPPT9E9vxbirk2sAMoo/2w8ytVJnVEqWFPvgYj7EiF5NdViI1gogizjhQEzWFqoobb1CqmE98abc3PRAWpzOjsmFcstX6NMRYH//I=
 install: bundle install
 before_script:
 - npm install -g bower
 - bower install
-script: middleman build
+script: rake mm:build:$TRAVIS_BRANCH
 branches:
   only:
-  - master
-  - develop
-deploy:
-  provider: s3
-  access_key_id: AKIAI2L5BZUIYEJDUBJQ
-  secret_access_key:
-    secure: PoKAcx7p5hdrn6UC3Iiy+y8O3p4Go94V1NM7GSP0+tfoLYwWiGWbbxA+sqeEM1c8uSLWCzar3T83WoC8026VWOchcVybpeXO1aXY4z8dUg4GA5yRm/ghxViZHvPha9aqu8UuFL0Ars3vzODoZBOVmbMd4eqCEjR8XNXDu26XqV8=
-  bucket: project-boilerplate-production
-  local-dir: $TRAVIS_BUILD_DIR/build
-  on:
-    repo: RayPatterson/project-boilerplate
-    branch: master
+  - producton
+  - staging
+# deploy:
+#   provider: s3
+#   access_key_id: AKIAI2L5BZUIYEJDUBJQ
+#   secret_access_key:
+#     secure: PoKAcx7p5hdrn6UC3Iiy+y8O3p4Go94V1NM7GSP0+tfoLYwWiGWbbxA+sqeEM1c8uSLWCzar3T83WoC8026VWOchcVybpeXO1aXY4z8dUg4GA5yRm/ghxViZHvPha9aqu8UuFL0Ars3vzODoZBOVmbMd4eqCEjR8XNXDu26XqV8=
+#   bucket: project-boilerplate-production
+#   local-dir: $TRAVIS_BUILD_DIR/build
+#   on:
+#     repo: RayPatterson/project-boilerplate
+#     branch: master

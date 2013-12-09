@@ -1,36 +1,36 @@
-access_key: "undefined"
-secret_key: "undefined"
+access_key: $S3_ACCESS_KEY_ID
+secret_key: $S3_SECRET_KEY_ID
 elasticbeanstalk:
   name: "undefined"
   region: "us-west-1"
   stack: "64bit Amazon Linux running Tomcat 7"
-localhost: 
+localhost:
   region: "undefined"
   bucket: "undefined"
   subdomain: "undefined"
   distribution_id: "undefined"
   elasticbeanstalk: "undefined"
-development: 
+development:
   region: "us-west-1"
   bucket: "undefined-development"
   subdomain: "undefined"
   distribution_id: "undefined"
   elasticbeanstalk: "dev"
-review: 
+review:
   region: "us-west-1"
   bucket: "undefined-review"
   subdomain: "undefined"
   distribution_id: "undefined"
   elasticbeanstalk: "rev"
-staging: 
+staging:
   region: "us-west-1"
-  bucket: "undefined-staging"
+  bucket: "project-boilerplate-staging"
   subdomain: "undefined"
   distribution_id: "undefined"
   elasticbeanstalk: "stg"
-production: 
+production:
   region: "us-west-1"
-  bucket: "undefined"
+  bucket: "project-boilerplate-production"
   subdomain: "undefined"
   distribution_id: "undefined"
   elasticbeanstalk: "prd"
