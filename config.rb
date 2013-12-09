@@ -43,7 +43,12 @@ set :host, "localhost:8888"
 
 set :relative_assets, true
 
-set :build_dir, "build"
+if ENV['CI'] == true
+  set :build_dir, "deploy"
+else
+  set :build_dir, "build"
+end
+
 set :asset_dir, "assets"
 set :watch_dir, "#{asset_dir}/watch"
 set :js_dir, "#{asset_dir}"
