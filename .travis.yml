@@ -22,3 +22,5 @@ branches:
   only:
   - producton
   - staging
+  - review
+  - development
