@@ -1,5 +1,5 @@
-access_key: <%= ENV['S3_ACCESS_KEY_ID'] =>
-secret_key: <%= ENV['S3_SECRET_KEY_ID'] =>
+access_key: <%= ENV['S3_ACCESS_KEY_ID'] %>
+secret_key: <%= ENV['S3_SECRET_KEY_ID'] %>
 elasticbeanstalk:
   name: "undefined"
   region: "us-west-1"
