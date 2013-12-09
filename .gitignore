@@ -81,7 +81,7 @@ bower_components
 
 # Project specific #
 ####################
-# build/*
+build
 tmp
 dist
 public
