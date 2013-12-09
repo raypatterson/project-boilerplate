@@ -11,11 +11,11 @@ module AWS
   @@aws = Load.yaml "#{path}/aws"
 
   def self.access_key
-    @@aws[ "access_key" ]
+    @@aws[ 'access_key' ]
   end
 
   def self.secret_key
-    @@aws[ "secret_key" ]
+    @@aws[ 'secret_key' ]
   end
 
   def self.region( env )
@@ -47,7 +47,7 @@ module AWS
   end
 
   def self.cloudfront_distribution_id( env )
-    @@aws[ env ].distribution_id
+    @@aws[ env ][ 'distribution_id' ]
   end
 
 end

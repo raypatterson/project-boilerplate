@@ -1,5 +1,5 @@
-access_key: $S3_ACCESS_KEY_ID
-secret_key: $S3_SECRET_KEY_ID
+access_key: <%= ENV['S3_ACCESS_KEY_ID'] %>
+secret_key: <%= ENV['S3_SECRET_KEY_ID'] %>
 elasticbeanstalk:
   name: "undefined"
   region: "us-west-1"
@@ -25,12 +25,12 @@ review:
 staging:
   region: "us-west-1"
   bucket: "project-boilerplate-staging"
-  subdomain: "undefined"
-  distribution_id: "undefined"
+  subdomain: "d3j8fwmkh3oq8e"
+  distribution_id: "E36OCSKSYBD2LH"
   elasticbeanstalk: "stg"
 production:
   region: "us-west-1"
   bucket: "project-boilerplate-production"
-  subdomain: "undefined"
-  distribution_id: "undefined"
+  subdomain: "d15ymlhvm0x51g"
+  distribution_id: "E14RL28O9K5YCY"
   elasticbeanstalk: "prd"

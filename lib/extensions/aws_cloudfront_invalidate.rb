@@ -12,9 +12,9 @@ class AwsCloudfrontInvalidate < Middleman::Extension
 
     app.after_build do | builder |
 
-      puts $options.access_key
-      puts $options.secret_key
-      puts $options.distribution_id
+      # puts $options.access_key
+      # puts $options.secret_key
+      # puts $options.distribution_id
 
       invalidator = CloudfrontInvalidator.new( $options.access_key, $options.secret_key, $options.distribution_id )
 
