@@ -6,7 +6,7 @@ module Version
 
     include Rake::DSL
 
-    @@FILE_NAME = File.expand_path "." + "/data/version.yaml"
+    @@FILE_NAME = File.expand_path "." + "/data/version.yml"
     @@VERSION_VAL_PREFIX = "v"
     @@VERSION_VAL_DEFAULT = "#{@@VERSION_VAL_PREFIX}000"
     @@VERSION_KEY = "build_version"
@@ -49,7 +49,7 @@ module Version
       s = i.to_s.rjust 3, "0"
 
       val = "#{@@VERSION_VAL_PREFIX}#{s}"
-      
+
       puts "Updated Build Version : #{val}"
 
       delete_file()
@@ -64,7 +64,7 @@ module Version
       if message
         message = "#{val}-#{message}"
       end
-      
+
       puts "Tagging Build Version : #{val}"
 
       begin
@@ -96,5 +96,5 @@ module Version
   def self.tag_build( message = nil )
     @@m.tag_build message
   end
-  
+
 end

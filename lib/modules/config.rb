@@ -17,7 +17,7 @@ module Cfg
   @@environment = Load.yaml "#{path}/environment"
 
   def self.get_build_version
-    Version.get_version()
+    ENV['TRAVIS_BUILD_NUMBER'] || Version.get_version()
   end
 
   def self.get_cache_buster
