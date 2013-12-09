@@ -24,7 +24,6 @@ deploy:
   secret_access_key:
     secure: PoKAcx7p5hdrn6UC3Iiy+y8O3p4Go94V1NM7GSP0+tfoLYwWiGWbbxA+sqeEM1c8uSLWCzar3T83WoC8026VWOchcVybpeXO1aXY4z8dUg4GA5yRm/ghxViZHvPha9aqu8UuFL0Ars3vzODoZBOVmbMd4eqCEjR8XNXDu26XqV8=
   bucket: project-boilerplate-production
-  local-dir: "./build"
   on:
     repo: RayPatterson/project-boilerplate
     branch: master
