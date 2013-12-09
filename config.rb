@@ -123,8 +123,8 @@ configure :build do
       activate :s3_sync do | s3_sync |
         s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
         s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
-        s3_sync.aws_access_key_id = AWS.access_key
-        s3_sync.aws_secret_access_key = AWS.secret_key
+        s3_sync.aws_access_key_id = ENV['S3_ACCESS_KEY_ID'] #AWS.access_key
+        s3_sync.aws_secret_access_key = ENV['S3_SECRET_KEY_ID'] #AWS.secret_key
         s3_sync.delete = true # We delete stray files by default.
         s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
       end
