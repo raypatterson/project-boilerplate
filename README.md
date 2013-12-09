@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=master)](https://travis-ci.org/RayPatterson/project-boilerplate)
+Staging: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
 
 ## Objectives
 
