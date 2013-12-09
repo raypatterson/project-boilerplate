@@ -16,7 +16,6 @@ module AWS
 
   def self.secret_key
     @@aws[ 'secret_key' ]
-    ENV['S3_SECRET_KEY_ID']
   end
 
   def self.region( env )
