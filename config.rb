@@ -130,11 +130,11 @@ configure :build do
       end
 
       # Invalidate CloudFront
-      # activate :aws_cloudfront_invalidate do | invalidator |
-      #   invalidator.access_key = AWS.access_key
-      #   invalidator.secret_key = AWS.secret_key
-      #   invalidator.distribution_id = AWS.distribution_id environment_type
-      # end
+      activate :aws_cloudfront_invalidate do | invalidator |
+        invalidator.access_key = AWS.access_key
+        invalidator.secret_key = AWS.secret_key
+        invalidator.distribution_id = AWS.distribution_id environment_type
+      end
 
     elsif deploy_target == Deployment.TARGET_GITHUB_PAGES
 
