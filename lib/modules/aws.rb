@@ -11,10 +11,11 @@ module AWS
   @@aws = Load.yaml "#{path}/aws"
 
   def self.access_key
-    ENV['S3_ACCESS_KEY_ID']
+    @@aws[ 'access_key' ]
   end
 
   def self.secret_key
+    @@aws[ 'secret_key' ]
     ENV['S3_SECRET_KEY_ID']
   end
 
@@ -47,7 +48,7 @@ module AWS
   end
 
   def self.cloudfront_distribution_id( env )
-    @@aws[ env ].distribution_id
+    @@aws[ env ][ 'distribution_id' ]
   end
 
 end
