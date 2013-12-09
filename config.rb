@@ -39,15 +39,15 @@ set :site_url, Site.get_url( environment_type )
 # Paths #
 #########
 
-set :host, "localhost:8888"
-
 set :relative_assets, true
 
-if ENV['CI'] == true
-  set :build_dir, "deploy"
-else
-  set :build_dir, "build"
-end
+set :build_dir, "deploy"
+
+# if ENV['CI'] == true
+#   set :build_dir, "deploy"
+# else
+#   set :build_dir, "build"
+# end
 
 set :asset_dir, "assets"
 set :watch_dir, "#{asset_dir}/watch"
