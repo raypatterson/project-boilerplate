@@ -120,7 +120,6 @@ configure :build do
 
     if deploy_target == Deployment.TARGET_AWS
 
-
       activate :s3_sync do | s3_sync |
         s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
         s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
