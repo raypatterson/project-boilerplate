@@ -22,5 +22,3 @@ branches:
   only:
   - production
   - staging
-  - review
-  - development

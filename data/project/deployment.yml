@@ -10,7 +10,7 @@ environments:
     target: "github_pages"
   review:
     active: true
-    target: "github_pages"
+    target: "heroku"
   staging:
     active: true
     target: "aws"
