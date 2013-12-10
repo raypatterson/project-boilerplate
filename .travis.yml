@@ -12,8 +12,8 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: WJ7/EimVAtTAJ52e88t5x4K6ktQouWoXKtcSMFjXLd026Qu7kKf4Q5YvV3+4ZG48kslpw9cYYdEZ51C8UYnlZ2ksrDtUHhk24Z8amna+mllr8CQqaa4jgRYpT4KTxsUncf+pgU8p1XwQSIWHmeFb/tHcC3AypLy20Yo5L6o7rrk=
-  - secure: G1qWMB3itXVwyPAvOPoMqQtBdbWIWoZOMhgmzrxu63r/YSLBwWMTLcHbGT0S4RCY/3rrLq3MkNSi4YE9Uu1GQittDRu4h48NhucQHoiEcRtHaUuo9sBOyMFL+rMmISIrBybMNOysCjZobJBfJaYnmlMEqw0L99rR0O6kwygRxe0=
+  - secure: m7ETLoFnkLv/ZMxRVRC1DaffoUcXPcmcfGnewM3SJZ/2baeNoy/pEtzIOG0oqFRAPFgeACwXgIBSHlEKbWTM9mvNnAm7B/OnpVz1rhQMIXztirW/B8aR8Y8O/sdh29kv+wZt3EjD0c0XqO9zxxWyB25qt479CoPvElqICf7aHJU=
+  - secure: Nr2Rd/I9tKTslbygawQAzuf0XHHdpUqxnAGqJjldNVix2VLhant8WrteR6i4PY29nFCYLQCwBZU75ngltZpDxycDaO3nFsTQtwYpx2XaDEnjx3X/OAOuJQe6H0W3FAaJH4b0h3bwhuS/MfwFI/BypVKrBVmfa67MBodjZLDPZ70=
 install: bundle install
 before_script:
 - npm install -g bower
