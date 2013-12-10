@@ -20,5 +20,5 @@ before_script:
 script: rake mm:build:$TRAVIS_BRANCH
 branches:
   only:
-  - producton
+  - production
   - staging
