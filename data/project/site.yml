@@ -8,5 +8,5 @@ url:
   localhost: "http://localhost:8888"
   development: "http://raypatterson.github.io/project-boilerplate"
   review: "http://raypatterson.github.io/project-boilerplate"
-  staging: "http://staging.project-boilerplate.com"
-  production: "http://project-boilerplate.com"
+  staging: "http://d3j8fwmkh3oq8e.cloudfront.net"
+  production: "http://d15ymlhvm0x51g.cloudfront.net"
