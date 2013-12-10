@@ -6,7 +6,7 @@ environments:
     active: false
     target: nil
   development:
-    active: false
+    active: true
     target: "github_pages"
   review:
     active: true

@@ -116,9 +116,14 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
+  puts "Environment Type: #{environment_type}"
+  puts "Deploy Active: #{deploy_active}"
+  puts "Deploy Target: #{deploy_target}"
+
   if deploy_active == true
 
     if deploy_target == Deployment.TARGET_AWS
+
 
       activate :s3_sync do | s3_sync |
         s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
