@@ -20,8 +20,6 @@ GEM
       sass (>= 3.2.1)
     builder (3.2.2)
     chunky_png (1.2.9)
-    cloudfront-invalidator (0.2.0)
-      ruby-hmac
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -92,6 +90,9 @@ GEM
       uglifier (~> 2.1.0)
     middleman-bourbon (0.0.2)
       bourbon (>= 2.1.0)
+    middleman-cloudfront (0.0.6)
+      fog (~> 1.9)
+      middleman-core (~> 3.0)
     middleman-clowncar (0.0.1)
       middleman-core (>= 3.1.5)
     middleman-core (3.2.0)
@@ -206,11 +207,11 @@ PLATFORMS
 DEPENDENCIES
   breakpoint
   breakpoint-slicer
-  cloudfront-invalidator (~> 0.2.0)
   eb_deployer
   handlebars_assets
   middleman (~> 3.2.0)
   middleman-bourbon
+  middleman-cloudfront
   middleman-clowncar
   middleman-deploy
   middleman-favicon-maker (~> 3.2)
