@@ -1,19 +1,35 @@
 targets:
   aws: "aws"
   github_pages: "github_pages"
+  heroku: "heroku"
 environments:
   localhost:
     active: false
     target: nil
+    increment: false
+    tag: false
+    message: nil
   development:
-    active: false
-    target: "github_pages"
-  review:
     active: true
+    target: "github_pages"
+    increment: false
+    tag: false
+    message: nil
+  review:
+    active: false
     target: "heroku"
+    increment: false
+    tag: false
+    message: nil
   staging:
     active: true
     target: "aws"
+    increment: false
+    tag: false
+    message: nil
   production:
     active: true
     target: "aws"
+    increment: false
+    tag: false
+    message: nil

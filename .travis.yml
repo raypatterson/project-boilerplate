@@ -3,7 +3,8 @@ rvm:
 - 2.0.0-p247
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush
+- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng
+  pngcrush
 - wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
 - tar -xzf pngout-*-linux.tar.gz
 - mv pngout-*-linux pngout-linux
@@ -11,8 +12,8 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: MdTkOLKi3OpPxrJb0E6kTgau3wj0B5GDPfHO08Zz2EI8ayvzlwRnISZgXaI9wSWzF3JpFFRrhvaW4k5om7l4KBQQwD+/J8xRxHzReiMkzXF0o1IBqUYeF0NrMlRLLNFRr7py46hERBA0TBgm2PlM1uMznuhGsJZHIuulwERmpyA=
-  - secure: SXxPzeVlVr9qMrYeG/PRZMAl7aIDHCHbodknTTYAG0F435TPa6M7Im+XfCkdWiBY/rbJWuxPPT9E9vxbirk2sAMoo/2w8ytVJnVEqWFPvgYj7EiF5NdViI1gogizjhQEzWFqoobb1CqmE98abc3PRAWpzOjsmFcstX6NMRYH//I=
+  - secure: m7ETLoFnkLv/ZMxRVRC1DaffoUcXPcmcfGnewM3SJZ/2baeNoy/pEtzIOG0oqFRAPFgeACwXgIBSHlEKbWTM9mvNnAm7B/OnpVz1rhQMIXztirW/B8aR8Y8O/sdh29kv+wZt3EjD0c0XqO9zxxWyB25qt479CoPvElqICf7aHJU=
+  - secure: Nr2Rd/I9tKTslbygawQAzuf0XHHdpUqxnAGqJjldNVix2VLhant8WrteR6i4PY29nFCYLQCwBZU75ngltZpDxycDaO3nFsTQtwYpx2XaDEnjx3X/OAOuJQe6H0W3FAaJH4b0h3bwhuS/MfwFI/BypVKrBVmfa67MBodjZLDPZ70=
 install: bundle install
 before_script:
 - npm install -g bower
