@@ -6,11 +6,11 @@ environments:
     active: false
     target: nil
   development:
-    active: true
+    active: false
     target: "github_pages"
   review:
     active: true
-    target: "github_pages"
+    target: "heroku"
   staging:
     active: true
     target: "aws"

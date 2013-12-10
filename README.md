@@ -2,10 +2,6 @@ Production: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerpl
 
 Staging: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
 
-Review: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=review)](https://travis-ci.org/RayPatterson/project-boilerplate)
-
-Development: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=development)](https://travis-ci.org/RayPatterson/project-boilerplate)
-
 ## Objectives
 
 For small-to-mid sized projects - centralize and define:
