@@ -17,7 +17,7 @@ install: bundle install
 before_script:
 - npm install -g bower
 - bower install
-script: rake mm:build:$TRAVIS_BRANCH
+script: rake mm:build:$TRAVIS_BRANCH[true]
 branches:
   only:
   - production
