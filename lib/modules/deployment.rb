@@ -18,12 +18,28 @@ module Deployment
     @@doc[ "targets" ][ "github_pages" ]
   end
 
+  def self.TARGET_HEROKU
+    @@doc[ "targets" ][ "heroku" ]
+  end
+
   def self.get_active( env )
     @@doc[ "environments" ][ env ][ "active" ]
   end
 
   def self.get_target( env )
     @@doc[ "environments" ][ env ][ "target" ]
+  end
+
+  def self.get_increment( env )
+    @@doc[ "environments" ][ env ][ "increment" ]
+  end
+
+  def self.get_tag( env )
+    @@doc[ "environments" ][ env ][ "tag" ]
+  end
+
+  def self.get_message( env )
+    @@doc[ "environments" ][ env ][ "message" ]
   end
 
 end
