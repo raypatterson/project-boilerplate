@@ -1,7 +1,6 @@
-Production: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
+Production: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=production)](https://travis-ci.org/RayPatterson/project-boilerplate)
+
 Staging: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
-Review: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
-Development: [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate)
 
 ## Objectives
 
