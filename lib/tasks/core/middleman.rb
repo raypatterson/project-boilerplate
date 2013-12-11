@@ -87,6 +87,6 @@ def build( env, args )
     Version.tag_build message
   end
 
-  sh %{middleman build --verbose}
+  sh %{middleman build}
 
 end
