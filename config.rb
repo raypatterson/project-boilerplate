@@ -3,8 +3,8 @@ require "./lib/modules/deployment"
 require "./lib/modules/social"
 require "./lib/modules/site"
 require "./lib/modules/aws"
-require "./lib/extensions/github_pages_deploy"
-# require "./lib/extensions/aws_cloudfront_invalidate"
+require "./lib/extensions/deploy/github"
+require "./lib/extensions/deploy/aws"
 
 require "handlebars_assets"
 require "sass-globbing"
@@ -14,16 +14,20 @@ require "susy"
 # Config #
 ##########
 
-# Middleman::Extensions.register(:aws_cloudfront_invalidate, AwsCloudfrontInvalidate)
-Middleman::Extensions.register(:github_pages_deploy, GitHubPagesDeploy)
+::Middleman::Extensions.register(:deploy_github, DeployGitHub)
+::Middleman::Extensions.register(:deploy_aws, DeployAws)
 
-HandlebarsAssets::Config.template_namespace = "JST"
+::HandlebarsAssets::Config.template_namespace = "JST"
 
-activate :livereload
+set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
+
+if environment_type == Cfg.get_localhost_env
+  activate :livereload
+end
+
 activate :directory_indexes
 activate :clowncar
 
-set :environment_type, ENV[ "ENVIRONMENT" ] || Cfg.get_localhost_env
 set :deploy_active, Deployment.get_active( environment_type ) || false
 set :deploy_target, Deployment.get_target( environment_type )
 
@@ -71,10 +75,6 @@ end
 # Build #
 #########
 
-activate :deploy do | deploy |
-  deploy.method = :git
-end
-
 configure :build do
 
   activate :relative_assets
@@ -85,7 +85,6 @@ configure :build do
   }
 
   activate :asset_hash, {:ignore => [ "#{cache_dir}/*" ] }
-  # activate :asset_hash, {:ignore => [ "#{source}/#{cache_dir}/**/*" ] }
 
   activate :minify_css
   activate :minify_javascript
@@ -105,8 +104,7 @@ configure :build do
     # Image extensions to attempt to compress
     image_optim.image_extensions = %w(.png .jpg .gif)
 
-    # compressor worker options, individual optimisers can be disabled by passing
-    # false instead of a hash
+    # compressor worker options, individual optimisers can be disabled by passing false instead of a hash
     image_optim.pngcrush_options  = {:chunks => ["alla"], :fix => false, :brute => false}
     image_optim.pngout_options    = {:copy_chunks => false, :strategy => 0}
     image_optim.optipng_options   = {:level => 6, :interlace => false}
@@ -118,38 +116,37 @@ configure :build do
 
 end
 
+# Deploy #
+##########
+
+activate :deploy do | deploy |
+  deploy.method = :git
+end
+
+activate :s3_sync do | s3_sync |
+  s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
+  s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
+  s3_sync.aws_access_key_id = AWS.access_key
+  s3_sync.aws_secret_access_key = AWS.secret_key
+  s3_sync.delete = true # We delete stray files by default.
+end
+
+activate :cloudfront do | cloudfront |
+  cloudfront.access_key_id = AWS.access_key
+  cloudfront.secret_access_key = AWS.secret_key
+  cloudfront.distribution_id = AWS.cloudfront_distribution_id environment_type
+  cloudfront.filter = /\.html$/i
+end
+
 if deploy_active == true
 
   if deploy_target == Deployment.TARGET_AWS
 
-    activate :s3_sync do | s3_sync |
-      s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
-      s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
-      s3_sync.aws_access_key_id = AWS.access_key
-      s3_sync.aws_secret_access_key = AWS.secret_key
-      s3_sync.delete = true # We delete stray files by default.
-      s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
-    end
-
-    # Invalidate CloudFront
-
-    activate :cloudfront do | cloudfront |
-      cloudfront.access_key_id = AWS.access_key
-      cloudfront.secret_access_key = AWS.secret_key
-      cloudfront.distribution_id = AWS.cloudfront_distribution_id environment_type
-      cloudfront.filter = /\.html$/i
-      cloudfront.after_build = true
-    end
-
-    # activate :aws_cloudfront_invalidate do | invalidator |
-    #   invalidator.access_key = AWS.access_key
-    #   invalidator.secret_key = AWS.secret_key
-    #   invalidator.distribution_id = AWS.cloudfront_distribution_id environment_type
-    # end
+    activate :deploy_aws
 
   elsif deploy_target == Deployment.TARGET_GITHUB_PAGES
 
-    activate :github_pages_deploy
+    activate :deploy_github
 
   else
 
