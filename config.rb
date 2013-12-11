@@ -3,8 +3,8 @@ require "./lib/modules/deployment"
 require "./lib/modules/social"
 require "./lib/modules/site"
 require "./lib/modules/aws"
-require "./lib/extensions/aws_cloudfront_invalidate"
 require "./lib/extensions/github_pages_deploy"
+# require "./lib/extensions/aws_cloudfront_invalidate"
 
 require "handlebars_assets"
 require "sass-globbing"
@@ -14,7 +14,7 @@ require "susy"
 # Config #
 ##########
 
-Middleman::Extensions.register(:aws_cloudfront_invalidate, AwsCloudfrontInvalidate)
+# Middleman::Extensions.register(:aws_cloudfront_invalidate, AwsCloudfrontInvalidate)
 Middleman::Extensions.register(:github_pages_deploy, GitHubPagesDeploy)
 
 HandlebarsAssets::Config.template_namespace = "JST"
@@ -116,37 +116,46 @@ configure :build do
     image_optim.gifsicle_options  = {:interlace => false}
   end
 
-  if deploy_active == true
+end
 
-    if deploy_target == Deployment.TARGET_AWS
+if deploy_active == true
 
-      activate :s3_sync do | s3_sync |
-        s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
-        s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
-        s3_sync.aws_access_key_id = AWS.access_key
-        s3_sync.aws_secret_access_key = AWS.secret_key
-        s3_sync.delete = true # We delete stray files by default.
-        s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
-      end
+  if deploy_target == Deployment.TARGET_AWS
 
-      # Invalidate CloudFront
-      activate :aws_cloudfront_invalidate do | invalidator |
-        invalidator.access_key = AWS.access_key
-        invalidator.secret_key = AWS.secret_key
-        invalidator.distribution_id = AWS.cloudfront_distribution_id environment_type
-      end
-
-    elsif deploy_target == Deployment.TARGET_GITHUB_PAGES
-
-      activate :github_pages_deploy
-
-    else
-
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      puts "Unknown Deploy Target: #{deploy_target}"
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
+    activate :s3_sync do | s3_sync |
+      s3_sync.bucket = AWS.bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
+      s3_sync.region = AWS.region environment_type # The AWS region for your bucket.
+      s3_sync.aws_access_key_id = AWS.access_key
+      s3_sync.aws_secret_access_key = AWS.secret_key
+      s3_sync.delete = true # We delete stray files by default.
+      s3_sync.after_build = true # We chain after the build step by default. This may not be your desired behavior...
     end
+
+    # Invalidate CloudFront
+
+    activate :cloudfront do | cloudfront |
+      cloudfront.access_key_id = AWS.access_key
+      cloudfront.secret_access_key = AWS.secret_key
+      cloudfront.distribution_id = AWS.cloudfront_distribution_id environment_type
+      cloudfront.filter = /\.html$/i
+      cloudfront.after_build = true
+    end
+
+    # activate :aws_cloudfront_invalidate do | invalidator |
+    #   invalidator.access_key = AWS.access_key
+    #   invalidator.secret_key = AWS.secret_key
+    #   invalidator.distribution_id = AWS.cloudfront_distribution_id environment_type
+    # end
+
+  elsif deploy_target == Deployment.TARGET_GITHUB_PAGES
+
+    activate :github_pages_deploy
+
+  else
+
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "Unknown Deploy Target: #{deploy_target}"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
   end
 

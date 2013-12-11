@@ -20,7 +20,8 @@ gem "handlebars_assets"
 ##########
 gem "middleman-deploy"
 gem "middleman-s3_sync"
-gem "cloudfront-invalidator", "~> 0.2.0"
+gem "middleman-cloudfront"
+# gem "cloudfront-invalidator", "~> 0.2.0"
 gem "eb_deployer"
 
 # Layout #
