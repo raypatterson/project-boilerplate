@@ -1,9 +1,8 @@
 ## Status
 
-| Environment | Status |
-|-------------|--------|
-| Production  | [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=production)](https://travis-ci.org/RayPatterson/project-boilerplate) |
-| Staging     | [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate) |
+| Staging  | Production  |
+|----------|-------------|
+| [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=staging)](https://travis-ci.org/RayPatterson/project-boilerplate) | [![Build Status](https://travis-ci.org/RayPatterson/project-boilerplate.png?branch=production)](https://travis-ci.org/RayPatterson/project-boilerplate) |
 
 
 ## Objectives
@@ -60,7 +59,7 @@ To run the server on a different port:
 $ rake mm:s[1234]
 ```
 
-### Rbenv Fun
+### rbenv Fun
 
 If you don't have [rbenv](https://github.com/sstephenson/rbenv), now's the time to get it.
 
@@ -83,7 +82,7 @@ You path needs to look something like:
 
 ```
 $ mkdir /usr/local/var/rbenv/plugins; git clone https://github.com/sstephenson/rbenv-gem-rehash.git /usr/local/var/rbenv/plugins/rbenv-gem-rehash
-$ rbenv install 1.9.3-p385
+$ rbenv install 1.9.3-p247
 ```
 
 ### Building Files
@@ -162,6 +161,132 @@ The Middleman `config.rb` can also be used to pass the values from `data/config.
 In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted to multiple types by multiple processing engines during compiling routine. The order is dictated by the chainign of file extensions. The process for the default Middleman [templating](http://middlemanapp.com/templates/) is explained [here](https://github.com/sstephenson/sprockets#invoking-ruby-with-erb) but in short, if you add the `.erb` extension to any file, you can write Ruby in it access the data object as well as Middleman [Template Helpers](http://middlemanapp.com/helpers/).
 
 ---
+
+## Builds
+
+There are currently 4 types of builds to support a variety of workstreams and approval processes:
+
+| Environment | Audience        | Task                          |
+|-------------|--------------------------------------------------
+| Production  | User            | `$ rake mm:build:production`  |
+| Staging     | Tester          | `$ rake mm:build:staging`     |
+| Review      | Stakeholder     | `$ rake mm:build:review`      |
+| Development | Developer       | `$ rake mm:build:development` |
+
+
+## Deployments
+
+Activating deployments and their repective targets is configured in: `data/project/deployment.yml`
+
+Available build targets are:
+
+1. [GitHub Pages](http://pages.github.com/)
+1. [Amazon Web Services](http://aws.amazon.com/)
+
+The option to deploy review builds to [Heroku](https://www.heroku.com/) with [basic auth](http://en.wikipedia.org/wiki/Basic_access_authentication) is forthcoming.
+
+#### GitHub Pages
+
+By default, the `development` build is configured to automatically deploy to [GitHub Pages](http://raypatterson.github.io/project-boilerplate/).
+
+#### AWS S3 + CloudFront
+
+> **INFO**
+<br>
+Setting up [S3](http://aws.amazon.com/s3/) origin buckets and corresponding [CloudFront](http://aws.amazon.com/cloudfront/) CDN distributions is currently beyond the scope of this documentation. 
+
+AWS is configured in: `data/project/aws.yml`
+
+```
+staging:
+  region: "us-west-1"                     # S3 bucket region
+  bucket: "project-boilerplate-staging"   # S3 bucket name
+  subdomain: "d3j8fwmkh3oq8e"             # CloudFront subdomain
+  distribution_id: "E36OCSKSYBD2LH"       # CloudFront distribution id
+```
+
+Deployment is configured in: `data/project/deployment.yml`
+
+```
+staging:
+  active: false    # Activates deployment process
+  target: "aws"    # Defines deploy target
+```
+
+#### Travis CI
+
+> **INFO**
+<br>
+Setting up [Travis CI](https://travis-ci.org/RayPatterson/project-boilerplate/) is currently beyond the scope of this documentation. 
+
+Pushing to either the `staging` or `production` branches will trigger Travis to perform a build and deploy.
+
+Encypting your AWS keys:
+
+```
+$ travis encrypt S3_ACCESS_KEY_ID=AKQA… --add env.global
+$ travis encrypt S3_SECRET_KEY_ID=SHHH… --add env.global
+```
+
+Replace the the secure keys in: `.travis.yml`
+
+```
+env:
+  global:
+  - secure: m7ET...
+  - secure: Nr2R…
+```
+
+> **INFO**
+<br>
+When the site debugging flag is `true` the Travis build number will be visible within the console.
+<br>
+E.g. `Build Version --> 99`
+
+
+#### Versioning Builds
+
+Versioning is configured in: `data/project/deployment.yml`
+
+```
+staging:
+  increment: true   # Increments the build version
+```
+
+The build version ID will be visible in the console.
+
+E.g. `Build Version --> v0099`
+
+
+The build can be manually versioned with:
+
+```
+$ rake version:increment
+```
+
+#### Tagging Builds
+
+Tagging is configured in: `data/project/deployment.yml`
+
+```
+production:
+  tag: true                     # Activates tagging process
+  message: "Today is the day"   # Optional Message
+```
+
+The build can be manually tagged with:
+
+```
+$ rake version:tag
+```
+
+Then push with the following:
+
+```
+$ git push --tags
+```
+
+---
 	
 ## Optional
 
@@ -169,6 +294,8 @@ In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted
 
 The relationships between desktop/tablet/mobile apps for each environment are set within the `data/config.yaml` file. 
 
+> **INFO**
+<br>
 <span style="color:red">In both the middleware and client-side soltions, Android tablets are treated the same as Android mobile devices.</span>
 
 ###### _Client-Side JavaScript Solution_
@@ -186,65 +313,12 @@ If the redirect needs to rely on JavaScript you may follow these steps:
 <br>
 Once the redirects have been verified, it's recommended for optimial performance that you minify this script and replace the embed of the external file and copy the minified code block into the script tags.
 
-###### _Rack Middleware Solution_
+###### <span style="color:red">Depricated</span> _Rack Middleware Solution_ 
 
 If you are deploying to a hosting service such as Heroku that supports Rack middleware, you may use a middleware based solution. 
 
 The current solution in place is <https://github.com/talison/rack-mobile-detect>
 
 There is some additional configuration that can take place within the Rack config `config.ru` file.
-
----
-
-## Deployment
-
-#### Unversioned Development Builds
-
-The build can be compiled without incrementing the build version Id with the following command:
-
-```
-$ rake mm:build:development
-```
-
-#### Versioned Staging Builds
-
-The build can be versioned manually with the following command:
-
-```
-$ rake version:increment
-```
-
-The build will be versioned automatically when compiling a Staging build for release using the following command:
-
-```
-$ rake mm:build:staging
-```
-
-Each build has a version number that is always visible on the client as long as the `console` object exists. 
-
-E.g. `Build Version --> v0099`
-
-When in testing and production phases, build version Ids can correspond with the names of the released build versions in the issue tracking system.
-
-These associations can be made by the Release Manager.
-
-#### Tagged Production Builds
-
-Once the `develop` branch has been merged successfully into the `master` branch, the build can be tagged in with the following command:
-
-```
-$ rake version:tag
-```
-
-In order for the production release tags to make it to the origin (GitHub) repository, you must use the following command:
-
-```
-$ git push origin master --tags
-```
-
-#### Amazon Web Services (S3 + CloudFront)
-
-Documentation pending.
-
 
 ---
