@@ -3,8 +3,7 @@ rvm:
 - 2.0.0-p247
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng
-  pngcrush
+- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush
 - wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
 - tar -xzf pngout-*-linux.tar.gz
 - mv pngout-*-linux pngout-linux
@@ -14,11 +13,23 @@ env:
   global:
   - secure: m7ETLoFnkLv/ZMxRVRC1DaffoUcXPcmcfGnewM3SJZ/2baeNoy/pEtzIOG0oqFRAPFgeACwXgIBSHlEKbWTM9mvNnAm7B/OnpVz1rhQMIXztirW/B8aR8Y8O/sdh29kv+wZt3EjD0c0XqO9zxxWyB25qt479CoPvElqICf7aHJU=
   - secure: Nr2Rd/I9tKTslbygawQAzuf0XHHdpUqxnAGqJjldNVix2VLhant8WrteR6i4PY29nFCYLQCwBZU75ngltZpDxycDaO3nFsTQtwYpx2XaDEnjx3X/OAOuJQe6H0W3FAaJH4b0h3bwhuS/MfwFI/BypVKrBVmfa67MBodjZLDPZ70=
+  - secure: k3mOzk7h9+22KacHSh7hv9Cs6QCkgvMl6XZnNzGEaXf/W80y5lQfL7DUED3GFL6ffEP/XhdD+fAkamfm82LuE2/8UolLjwTwAgFHGgRp2+qNmkCJCL3gzpUxhAWTeXfGQ9KAcxRjt0yBhQiQdB2KxHAu0l05cozwTuCQvEt8kms=
+  - secure: VaCclrQxwoHgbCt1GLVWIlDl+w0CO5ORHCXgJhzJiWbbQLWvZrrvjk7FOYfJHjwzszX5BJgQCZhSTfD6dTQsVq1NS/U7H4Xd1yoFRqi0c6gZLLJHONHhjuW12LT0u96c65yY1wG5RD68zC3FKL9dEncu8WO2XfEOULn/wNYRb6I=
+  - secure: QPOLgURoSAvNYWMFp2HExDViaLI7x49vkHYW1Chc/vmf+HR+jNt0/YS3A2Prp2m7C+haQNKFwVbMYt2uANB84+5kAMdZmUR/19P2XZqXbg4mv8CfvlqkeCI2C3YMGEtUR7eerDb7XWPwkZrdsDe+lnGyveVxJrgoEQH3zdADCiI=
 install: bundle install
 before_script:
 - npm install -g bower
 - bower install
 script: rake mm:build:$TRAVIS_BRANCH
+after_success:
+- git config --global user.email "$GH_EMAIL"
+- git config --global user.name "$GH_NAME"
+- git config credential.helper "store --file=.git/credentials"
+- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+- git config remote.origin.url https://$GH_NAME:$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git
+- export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
+- git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
+- git push origin $GIT_TAG -q
 branches:
   only:
   - production
