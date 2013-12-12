@@ -59,7 +59,7 @@ To run the server on a different port:
 $ rake mm:s[1234]
 ```
 
-### rbenv Fun
+### Installing rbenv
 
 If you don't have [rbenv](https://github.com/sstephenson/rbenv), now's the time to get it.
 
@@ -74,11 +74,9 @@ export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ```
 
-Also add `/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:` to your command search path.
+In order for rbenv commands to be found you will also need to add the line:
 
-You path needs to look something like:
-
-`PATH="/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:/usr/local/bin:/usr/bin:/bin:$PATH"`
+`export PATH="$PATH:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv"`
 
 ```
 $ mkdir /usr/local/var/rbenv/plugins; git clone https://github.com/sstephenson/rbenv-gem-rehash.git /usr/local/var/rbenv/plugins/rbenv-gem-rehash
