@@ -2,7 +2,6 @@
 // Bower
 // --------------------------------------------------------------
 //= require modernizr/modernizr
-//= require handlebars/handlebars.runtime
 //= require jquery/jquery
 // --------------------------------------------------------------
 // Vendor
