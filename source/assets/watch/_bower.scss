@@ -1,8 +1,5 @@
 // --------------------------------------------------------------
-// Vendor
-//
-// Note: Globbing *should* work as vendor
-// styles rules *should* not override each other.
+// Bower
 // --------------------------------------------------------------
 
-@import "vendor/styles/**";
+@import "normalize-css/normalize";
