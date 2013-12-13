@@ -1,0 +1,5 @@
+;(function() {
+var loc = window.location, qs = window.__query_string__, fb = qs.value('fb_ref'), hash = undefined;
+if (fb) {hash = fb;}
+if (hash) {window.location = '/#' + hash;}
+})();
