@@ -1,0 +1,48 @@
+// --------------------------------------------------------------
+// Bower
+// --------------------------------------------------------------
+//= require flexslider/jquery.flexslider
+
+// --------------------------------------------------------------
+// Vendor
+// --------------------------------------------------------------
+//= require vendor/bxslider/jquery.bxslider
+//= require vendor/mediaelement/mediaelement-and-player
+
+// --------------------------------------------------------------
+// Library
+// --------------------------------------------------------------
+//= require library/media/youtube/scripts
+
+// --------------------------------------------------------------
+// Project
+// --------------------------------------------------------------
+//= require project/models/video-collection
+
+//= require project/modules/video-selector/scripts
+//= require project/modules/video-player/scripts
+//= require project/modules/video-grid/scripts
+
+//= require_self
+
+//= require project/routers/video
+
+// --------------------------------------------------------------
+
+;
+(function(win) {
+
+  var site_namespace = win.__site_namespace__;
+
+  var namespace = site_namespace + '.Page1';
+
+  var logger = Logger.get(namespace);
+
+  logger.info('Load');
+
+  var Page1 = Namespace(namespace);
+
+  var Models = Namespace(site_namespace + '.Models');
+  Models.videoCollection.reset( <%= data.project.models.video_collection.to_json %> );
+
+}(window));
