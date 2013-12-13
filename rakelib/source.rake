@@ -27,7 +27,7 @@ namespace :source do
       git rm -r $SOURCE_REPO_ALIAS
       git add -A
       git commit -m "Removed $SOURCE_REPO_ALIAS files."
-      git read-tree -P $SOURCE_REPO_ALIAS/ -u $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH
+      git read-tree --prefix=$SOURCE_REPO_ALIAS/ -u $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH
     }
 
   end
