@@ -38,7 +38,7 @@ GEM
     excon (0.28.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    favicon_maker (0.2.3)
+    favicon_maker (0.2.4)
       mini_magick (~> 3.5)
     ffi (1.9.3)
     fog (1.18.0)
