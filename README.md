@@ -75,7 +75,7 @@ Each `<branchname>` listed expands on the previous one. Current options are:
 1. single-page - [Component architecture](https://github.com/yeoman/generator-angular/issues/109), [Bourbon](http://bourbon.io/) and [Neat](http://neat.bourbon.io/), [clowncar image](http://coding.smashingmagazine.com/2013/06/02/clown-car-technique-solving-for-adaptive-images-in-responsive-web-design/), [placeholders](http://middlemanapp.com/basics/helpers/#toc_7)
 1. multi-page - [Backbone Marionette](http://marionettejs.com/), [Mediaelement.js](http://mediaelementjs.com/) + [YouTube](http://mediaelementjs.com/examples/?name=youtube), [some](http://www.woothemes.com/flexslider/) [carousels](http://bxslider.com/) 
 
-### rbenv Fun
+### Installing rbenv
 
 If you don't have [rbenv](https://github.com/sstephenson/rbenv), now's the time to get it.
 
@@ -90,11 +90,9 @@ export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ```
 
-Also add `/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:` to your command search path.
+In order for rbenv commands to be found you will also need to add the line:
 
-You path needs to look something like:
-
-`PATH="/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv:/usr/local/bin:/usr/bin:/bin:$PATH"`
+`export PATH="$PATH:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv"`
 
 ```
 $ mkdir /usr/local/var/rbenv/plugins; git clone https://github.com/sstephenson/rbenv-gem-rehash.git /usr/local/var/rbenv/plugins/rbenv-gem-rehash
@@ -174,7 +172,7 @@ The Middleman `config.rb` can also be used to pass the values from `data/config.
 
 > **INFO**
 <br>
-In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted to multiple types by multiple processing engines during compiling routine. The order is dictated by the chainign of file extensions. The process for the default Middleman [templating](http://middlemanapp.com/templates/) is explained [here](https://github.com/sstephenson/sprockets#invoking-ruby-with-erb) but in short, if you add the `.erb` extension to any file, you can write Ruby in it access the data object as well as Middleman [Template Helpers](http://middlemanapp.com/helpers/).
+In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted to multiple types by multiple processing engines during compiling routine. The order is dictated by the chaining of file extensions. The process for the default Middleman [templating](http://middlemanapp.com/templates/) is explained [here](https://github.com/sstephenson/sprockets#invoking-ruby-with-erb) but in short, if you add the `.erb` extension to any file, you can write Ruby in it access the data object as well as Middleman [Template Helpers](http://middlemanapp.com/helpers/).
 
 ---
 
@@ -183,7 +181,7 @@ In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted
 There are currently 4 types of builds to support a variety of workstreams and approval processes:
 
 | Environment | Audience        | Task                          |
-|-------------|--------------------------------------------------
+|-------------|-----------------|-------------------------------|
 | Production  | User            | `$ rake mm:build:production`  |
 | Staging     | Tester          | `$ rake mm:build:staging`     |
 | Review      | Stakeholder     | `$ rake mm:build:review`      |
