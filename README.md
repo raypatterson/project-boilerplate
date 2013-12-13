@@ -181,7 +181,7 @@ In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted
 There are currently 4 types of builds to support a variety of workstreams and approval processes:
 
 | Environment | Audience        | Task                          |
-|-------------|--------------------------------------------------
+|-------------|-----------------|-------------------------------|
 | Production  | User            | `$ rake mm:build:production`  |
 | Staging     | Tester          | `$ rake mm:build:staging`     |
 | Review      | Stakeholder     | `$ rake mm:build:review`      |
