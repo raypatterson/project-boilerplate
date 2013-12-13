@@ -1,0 +1,42 @@
+// --------------------------------------------------------------
+// Vendor
+// --------------------------------------------------------------
+
+@import "vendor/styles/vars-bourbon";
+
+// --------------------------------------------------------------
+// Gems
+// --------------------------------------------------------------
+
+@import "_gems";
+
+// --------------------------------------------------------------
+// Page 1
+// --------------------------------------------------------------
+
+@import "flexslider/flexslider";
+@import "vendor/mediaelement/mediaelementplayer";
+@import "vendor/bxslider/jquery.bxslider";
+@import "vendor/bxslider/jquery.bxslider-overrides";
+
+@import "project/modules/video-selector/styles";
+@import "project/modules/video-player/styles";
+@import "project/modules/video-grid/styles";
+
+body {
+
+  .header {
+
+    .page-1 {
+
+      a {
+        pointer-events: none;
+        cursor: default;
+      }
+
+      p {
+        background: red;
+      }
+    }
+  }
+}
