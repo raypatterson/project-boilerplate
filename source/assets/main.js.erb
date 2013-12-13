@@ -1,0 +1,49 @@
+//= require _vendor
+//= require_self
+//= require _library
+//= require _project
+
+;
+(function(win, loc) {
+
+  win.__site_namespace__ = '<%= site_namespace %>';
+
+  var namespace = win.__site_namespace__ + '.Main';
+
+  var Main = Namespace(namespace);
+
+  Main.QueryString = KweryString.getVars(loc.href, {
+    'parseBool': true,
+    'parseNum': true
+  });
+
+  Main.debugFlag = Main.QueryString.debugFlag || <%= debug_flag %> || false;
+  Main.buildVersion = '<%= build_version %>' || 'v0000';
+  Main.environmentType = '<%= environment_type %>' || 'localhost';
+
+  // Directories for runtime asset requests
+
+  Main.Directory = {
+    images: '<%= images_dir %>' || '',
+    data: '<%= data_dir %>' || ''
+  };
+
+  // Bootstrap model data?
+
+  // Main.Data = <%= data.project.models.to_json %> || {};?
+
+  // Configure Logger
+
+  Logger.useDefaults();
+
+  if (Main.debugFlag === false) {
+    Logger.setLevel(Logger.ERROR);
+  }
+
+  var logger = Logger.get(namespace);
+
+  logger.info('Debug Flag --> ', Main.debugFlag);
+  logger.info('Build Version --> ', Main.buildVersion);
+  logger.info('Environment Type --> ', Main.environmentType);
+
+}(window, location));
