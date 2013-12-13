@@ -59,6 +59,22 @@ To run the server on a different port:
 $ rake mm:s[1234]
 ```
 
+### Changing Files
+
+In the interests of segregating the top-level Middleman framework configuration workstream from any related to application development, the `source` directory is imported from a [separate GitHub project](https://github.com/RayPatterson/project-boilerplate-source).
+
+The default configuration is using the [development](https://github.com/RayPatterson/project-boilerplate-source/tree/development) branch. If you wish to begin your project with another branch run:
+
+```
+$ rake source:change[<branchname>]
+```
+
+Each `<branchname>` listed expands on the previous one. Current options are:
+
+1. minimal - [Modernizr](http://modernizr.com/) and [Normalize.css](http://necolas.github.io/normalize.css/), [application bootstrapping](http://api.jquery.com/deferred.promise/)
+1. single-page - [Component architecture](https://github.com/yeoman/generator-angular/issues/109), [Bourbon](http://bourbon.io/) and [Neat](http://neat.bourbon.io/), [clowncar image](http://coding.smashingmagazine.com/2013/06/02/clown-car-technique-solving-for-adaptive-images-in-responsive-web-design/), [placeholders](http://middlemanapp.com/basics/helpers/#toc_7)
+1. multi-page - [Backbone Marionette](http://marionettejs.com/), [Mediaelement.js](http://mediaelementjs.com/) + [YouTube](http://mediaelementjs.com/examples/?name=youtube), [some](http://www.woothemes.com/flexslider/) [carousels](http://bxslider.com/) 
+
 ### rbenv Fun
 
 If you don't have [rbenv](https://github.com/sstephenson/rbenv), now's the time to get it.
