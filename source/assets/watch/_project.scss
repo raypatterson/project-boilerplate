@@ -1,0 +1,9 @@
+// --------------------------------------------------------------
+// Project
+//
+// Note: Globbing *should* work as module styles rules
+// only override common and page level style rules.
+// --------------------------------------------------------------
+
+@import "project/common/**/*";
+@import "project/modules/**/*";

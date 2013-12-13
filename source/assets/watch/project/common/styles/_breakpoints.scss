@@ -1,0 +1,21 @@
+/* 
+ * Configuration Specific Breakpoints
+ */
+
+$bp-iphone-portrait: (max-device-width 320px) (orientation portrait);
+$bp-iphone-landscape: (min-device-width 320px) (max-device-width 480px) (orientation landscape);
+$bp-ipad-portrait: (min-device-width 480px) (max-device-width 768px) (orientation portrait);
+$bp-ipad-landscape: (min-device-width 768px) (max-device-width 1024px) (orientation landscape);
+
+/*
+ * Resolution Specific Breakpoints
+ */
+
+$slicer-breakpoints: 0 320px 480px 768px 1024px 1280px 1600px;
+//   1   Mobile Portrait        0px  -->   320px
+//   2   Mobile Landscape     320px  -->   480px
+//   3   Tablet Portrait      480px  -->   768px
+//   4   Tablet Landscape     768px  -->  1024px
+//   5   Desktop Small       1024px  -->  1280px
+//   6   Desktop Medium      640px  -->  970px
+//   7   Desktop Large       970px  -->  ????px
