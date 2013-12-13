@@ -26,7 +26,7 @@ namespace :source do
 
       git rm -r $SOURCE_REPO_ALIAS
       git add -A
-      git commit -m "Removed $SOURCE_REPO_ALIAS files."
+      git commit -m "Change to $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH files."
       git subtree add -P $SOURCE_REPO_ALIAS --squash $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH
     }
 
