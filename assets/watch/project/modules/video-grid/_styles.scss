@@ -1,0 +1,27 @@
+.module-video-grid {
+
+  .bx-wrapper .bx-viewport {
+
+    border: none;
+    box-shadow: none;
+    left: 0;
+    // height: 100% !important;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+
+    img {
+
+      width: 100%;
+    }
+  }
+
+  .selected {
+
+    border: 2px solid red;
+  }
+}

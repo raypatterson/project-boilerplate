@@ -1,0 +1,19 @@
+.bx-wrapper .bx-loading {
+	background: image-url('vendor/bxslider/bx_loader.gif') center center no-repeat #fff;
+}
+
+.bx-wrapper .bx-prev {
+	background: image-url('vendor/bxslider/controls.png') no-repeat 0 -32px;
+}
+
+.bx-wrapper .bx-next {
+	background: image-url('vendor/bxslider/controls.png') no-repeat -43px -32px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+	background: image-url('vendor/bxslider/controls.png') -86px -11px no-repeat;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+	background: image-url('vendor/bxslider/controls.png') -86px -44px no-repeat;
+}
