@@ -172,7 +172,7 @@ The Middleman `config.rb` can also be used to pass the values from `data/config.
 
 > **INFO**
 <br>
-In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted to multiple types by multiple processing engines during compiling routine. The order is dictated by the chainign of file extensions. The process for the default Middleman [templating](http://middlemanapp.com/templates/) is explained [here](https://github.com/sstephenson/sprockets#invoking-ruby-with-erb) but in short, if you add the `.erb` extension to any file, you can write Ruby in it access the data object as well as Middleman [Template Helpers](http://middlemanapp.com/helpers/).
+In [Sprockets](https://github.com/sstephenson/sprockets), files can be converted to multiple types by multiple processing engines during compiling routine. The order is dictated by the chaining of file extensions. The process for the default Middleman [templating](http://middlemanapp.com/templates/) is explained [here](https://github.com/sstephenson/sprockets#invoking-ruby-with-erb) but in short, if you add the `.erb` extension to any file, you can write Ruby in it access the data object as well as Middleman [Template Helpers](http://middlemanapp.com/helpers/).
 
 ---
 
