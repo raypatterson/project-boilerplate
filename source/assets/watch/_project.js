@@ -1,6 +1,7 @@
 // --------------------------------------------------------------
 // Project
 // --------------------------------------------------------------
+
 //= require project/app/config
 //= require project/app/init
 
@@ -14,6 +15,7 @@
 // --------------------------------------------------------------
 // NOTE: Order is significant for routers
 // --------------------------------------------------------------
+
 //= require project/routers/notfound
 
 //= require project/app/start

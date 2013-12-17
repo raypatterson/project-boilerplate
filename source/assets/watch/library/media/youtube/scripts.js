@@ -27,6 +27,11 @@
     return false;
   }();
 
+  var that = this;
+  var $win = $(win);
+  var $playerContainer;
+  var $playerTarget;
+
   var getElementDimensions = function($el) {
     var width = $el
       .width();
@@ -37,14 +42,19 @@
     };
   };
 
-  var resizeElement = function($el, $playerTarget) {
+  var resizeElement = function($el) {
     var dimensions = getElementDimensions($playerTarget);
     $el.width(dimensions.width + 'px');
     $el.height(dimensions.height + 'px');
   };
 
-  var createPlayer = function($playerTarget, videoId) {
+  var resizePlayer = function() {
+    resizeElement($playerContainer);
+  };
 
+  var createPlayer = function($el, videoId) {
+
+    $playerTarget = $el;
 
     var attributes = '';
     attributes += ' controls';
@@ -52,7 +62,26 @@
     attributes += ' preload="auto"';
 
     var options = {
-      plugins: ['youtube']
+      plugins: ['youtube'],
+      success: function(mediaElement, domObject) {
+
+        logger.info('Initilization Success');
+
+        resizePlayer();
+
+        $win.on('resize', function() {
+          resizePlayer();
+        });
+
+        $win.on('orientationchange', function() {
+          resizePlayer();
+        });
+      },
+      error: function(msg) {
+
+        logger.error('Initilization Error', msg);
+
+      }
     };
 
     if (hasFlash === true) {
@@ -66,6 +95,7 @@
     }
 
     var template = JST['watch/library/media/youtube/templates/player'];
+
     var html = template({
       id: videoId,
       attributes: attributes
@@ -74,22 +104,10 @@
     $playerTarget.html(html)
       .ready(function() {
 
-        var $playerContainer = $playerTarget.find('.video-player-container');
-
-        resizeElement($playerContainer, $playerTarget);
+        $playerContainer = $playerTarget.find('.video-player-container');
 
         $('video')
           .mediaelementplayer(options);
-
-        var $win = $(win);
-
-        $win.on('resize', function() {
-          resizeElement($playerContainer, $playerTarget);
-        });
-
-        $win.on('orientationchange', function() {
-          resizeElement($playerContainer, $playerTarget);
-        });
       });
   };
 

@@ -18,47 +18,64 @@
     videoSelector: '.module-video-selector .flexslider'
   });
 
+  // Slider
+  new Backbone.Marionette.Controller()
+    .listenTo(Models.videoCollection, 'selected', function(model) {
+      createSlider(model);
+      this.close();
+
+      new Backbone.Marionette.Controller()
+        .listenTo(Models.videoCollection, 'selected', function(model) {
+          updateSlider(model);
+        });
+    });
+
   var hasSlider = false;
 
-  var initFlexslider = function(model) {
+  var createSlider = function(model) {
 
-    var index = model.get('index');
+    var index = model.get('index') + 1;
     var $el = App.videoSelector.$el;
 
-    if (hasSlider === true) {
+    $el.flexslider({
+      startAt: index,
+      animation: 'slide',
+      animationLoop: true,
+      controlNav: false,
+      smoothHeight: false,
+      after: function(slider) {
+        // console.log('After: ', slider);
+      }
+    });
 
-      $el.flexslider(index);
+    var $selectors = App.videoSelector.$el.find('.selector');
 
-    } else {
+    $selectors.on('click', function(event) {
 
-      hasSlider = true;
+      var episodeId = $(event.currentTarget)
+        .data('episode-id');
 
-      $el.flexslider({
-        startAt: index,
-        animation: 'slide',
-        animationLoop: true,
-        controlNav: false,
-        smoothHeight: false
-      });
-    }
+      Routers.video.controller.navigateToEpisode(episodeId);
+
+      return false;
+    });
+  };
+
+  var updateSlider = function(model) {
+
+    var index = model.get('index') + 1;
+    var $el = App.videoSelector.$el;
+
+    $el.flexslider(index);
   };
 
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
     template: JST['watch/project/modules/video-selector/templates/item'],
     tagName: 'li',
-    events: {
-      'click .selector': function(event) {
-
-        var episodeId = this.model.get('episode_id');
-
-        Routers.video.controller.navigateToEpisode(episodeId);
-      }
-    },
+    events: {},
     initialize: function() {
       this.listenTo(this.model, 'selected', function(model) {
         this.$el.addClass('selected');
-
-        initFlexslider(model);
       });
       this.listenTo(this.model, 'deselected', function(model) {
         this.$el.removeClass('selected');
@@ -76,10 +93,6 @@
       collection: Models.videoCollection,
       tagName: 'ul',
       className: 'slides'
-    });
-
-    collectionView.on('show', function(view) {
-      // Transition here
     });
 
     // Show

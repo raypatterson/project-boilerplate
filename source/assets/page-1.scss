@@ -3,6 +3,9 @@
 // --------------------------------------------------------------
 
 @import "vendor/styles/vars-bourbon";
+@import "vendor/mediaelement/mediaelementplayer";
+@import "vendor/bxslider/jquery.bxslider";
+@import "vendor/bxslider/jquery.bxslider-overrides";
 
 // --------------------------------------------------------------
 // Gems
@@ -11,13 +14,14 @@
 @import "_gems";
 
 // --------------------------------------------------------------
-// Page 1
+// Bower
 // --------------------------------------------------------------
 
 @import "flexslider/flexslider";
-@import "vendor/mediaelement/mediaelementplayer";
-@import "vendor/bxslider/jquery.bxslider";
-@import "vendor/bxslider/jquery.bxslider-overrides";
+
+// --------------------------------------------------------------
+// Page 1
+// --------------------------------------------------------------
 
 @import "project/modules/video-selector/styles";
 @import "project/modules/video-player/styles";
