@@ -47,18 +47,6 @@
         // console.log('After: ', slider);
       }
     });
-
-    var $selectors = App.videoSelector.$el.find('.selector');
-
-    $selectors.on('click', function(event) {
-
-      var episodeId = $(event.currentTarget)
-        .data('episode-id');
-
-      Routers.video.controller.navigateToEpisode(episodeId);
-
-      return false;
-    });
   };
 
   var updateSlider = function(model) {
@@ -92,7 +80,16 @@
       itemView: SelectorItemView,
       collection: Models.videoCollection,
       tagName: 'ul',
-      className: 'slides'
+      className: 'slides',
+      events: {
+        'click .selector': function(event) {
+
+          var episodeId = $(event.currentTarget)
+            .data('episode-id');
+
+          Routers.video.controller.navigateToEpisode(episodeId);
+        }
+      }
     });
 
     // Show

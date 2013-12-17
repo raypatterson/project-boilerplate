@@ -15,7 +15,9 @@
   var $videoPlayerTarget = $(".video-player-target");
 
   Models.videoCollection.on('selected', function(model) {
+
     YouTube.createPlayer($videoPlayerTarget, model.get('video_id'));
+
   });
 
 }(window));

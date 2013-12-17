@@ -24,26 +24,25 @@ $slicer-breakpoints: 0 320px 480px 768px 1024px 1280px 1600px;
  * JS Integrations
  */
 
+$js-breakpoints:
+"mobile-portrait"
+"mobile-landscape"
+"tablet-portrait"
+"tablet-landscape"
+"desktop-small"
+"desktop-medium"
+"desktop-large"
+;
+
 body {
-   @include at(1) {
-      @include defineBreakpoint("MOBILE_PORTRAIT");
-   }
-   @include at(2) {
-      @include defineBreakpoint("MOBILE_LANDSCAPE");
-   }
-   @include at(3) {
-      @include defineBreakpoint("TABLET_PORTRAIT");
-   }
-   @include at(4) {
-      @include defineBreakpoint("TABLET_LANDSCAPE");
-   }
-   @include at(5) {
-      @include defineBreakpoint("DESKTOP_SMALL");
-   }
-   @include at(6) {
-      @include defineBreakpoint("DESKTOP_MEDIUM");
-   }
-   @include at(7) {
-      @include defineBreakpoint("DESKTOP_LARGE");
+
+   @each $breakpoint in $js-breakpoints {
+
+      // Index is 1 based.
+      $i: index($js-breakpoints, $breakpoint);
+
+      @include at($i) {
+         @include defineBreakpoint($breakpoint);
+      }
    }
 }

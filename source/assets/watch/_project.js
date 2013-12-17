@@ -2,6 +2,8 @@
 // Project
 // --------------------------------------------------------------
 
+//= require_tree ./project/common
+
 //= require project/app/config
 //= require project/app/init
 
