@@ -49,12 +49,17 @@
   };
 
   var resizePlayer = function() {
+    resizeElement($playerTarget);
     resizeElement($playerContainer);
   };
 
-  var createPlayer = function($el, videoId) {
+  var createPlayer = function($el, videoId, index) {
 
     $playerTarget = $el;
+
+    $playerTarget.css({
+      'position': 'relative'
+    });
 
     var attributes = '';
     attributes += ' controls';
@@ -66,8 +71,6 @@
       success: function(mediaElement, domObject) {
 
         logger.info('Initilization Success');
-
-        resizePlayer();
 
         $win.on('resize', function() {
           resizePlayer();
@@ -104,15 +107,28 @@
     $playerTarget.html(html)
       .ready(function() {
 
-        $playerContainer = $playerTarget.find('.video-player-container');
+        $playerContainer = $playerTarget.find('.video-player-container')
+          .css({
+            'top': 0,
+            'left': 0,
+            'z-index': index,
+            'position': 'absolute'
+          });
+
+        resizePlayer();
 
         $('video')
           .mediaelementplayer(options);
       });
   };
 
+  var removePlayer = function() {
+    $playerTarget.html('');
+  };
+
   // Expose API
 
   YouTube.createPlayer = createPlayer;
+  YouTube.removePlayer = removePlayer;
 
 }(window));
