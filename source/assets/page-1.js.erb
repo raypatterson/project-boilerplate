@@ -21,6 +21,9 @@
 // Project
 // --------------------------------------------------------------
 
+//= require project/backbone/config
+//= require project/backbone/init
+
 //= require project/models/video-collection
 
 //= require project/modules/video-selector/scripts
@@ -29,7 +32,14 @@
 
 //= require_self
 
+// --------------------------------------------------------------
+// NOTE: Order is significant for routers
+// --------------------------------------------------------------
+
+//= require project/routers/notfound
 //= require project/routers/video
+
+//= require project/backbone/start
 
 // --------------------------------------------------------------
 
@@ -42,11 +52,16 @@
 
   var logger = Logger.get(namespace);
 
-  logger.info('Load');
-
   var Page1 = Namespace(namespace);
 
+  logger.info('Load');
+
+  // Bootstrap model
+
   var Models = Namespace(site_namespace + '.Models');
+
   Models.videoCollection.reset( <%= data.project.models.video_collection.to_json %> );
+
+  logger.info('Models', Models);
 
 }(window));
