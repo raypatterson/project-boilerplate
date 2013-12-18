@@ -18,41 +18,52 @@
     videoGrid: '.module-video-grid'
   });
 
-  var hasSlider = false;
+  var collectionView;
+  var $slider;
 
-  var initFlexslider = function(model) {
+  // Slider
+  new Backbone.Marionette.Controller()
+    .listenTo(Models.videoCollection, 'selected', function(model) {
+      createSlider(model, 4);
+      this.close();
 
-    if (hasSlider === false) {
+      new Backbone.Marionette.Controller()
+        .listenTo(Models.videoCollection, 'selected', function(model) {
+          updateSlider(model, 4);
+        });
+    });
 
-      hasSlider = true;
+  var updateSlider = function(model, itemsPerPage) {
 
-      var itemsPerPage = 5;
-      var startPageIndex = Math.floor(model.get('index') / itemsPerPage);
+    logger.info('Update Slider');
 
-      var $slider = App.videoGrid.$el.find('.bxslider');
+    var pageIndex = Math.floor(model.get('index') / itemsPerPage);
 
-      $slider.bxSlider({
-        pager: false,
-        minSlides: itemsPerPage,
-        maxSlides: itemsPerPage,
-        moveSlides: itemsPerPage,
-        startSlide: startPageIndex,
-        slideWidth: 300,
-        adaptiveHeight: true,
-        onSliderLoad: function() {
+    $slider.goToSlide(pageIndex);
+  };
 
-          var $selectors = App.videoGrid.$el.find('.selector');
+  var createSlider = function(model, itemsPerPage) {
 
-          $selectors.on('click', function(event) {
+    logger.info('Create Slider');
 
-            var episodeId = $(event.currentTarget)
-              .data('episode-id');
+    var pageIndex = Math.floor(model.get('index') / itemsPerPage);
 
-            Routers.video.controller.navigateToEpisode(episodeId);
-          });
-        }
-      });
-    }
+    $slider = App.videoGrid.$el.find('.bxslider');
+
+    $slider.bxSlider({
+      pager: false,
+      minSlides: itemsPerPage,
+      maxSlides: itemsPerPage,
+      moveSlides: itemsPerPage,
+      startSlide: pageIndex,
+      slideMargin: 10,
+      slideWidth: 300,
+      adaptiveHeight: true,
+      onSliderLoad: function() {
+
+        logger.info('Slider Ready');
+      }
+    });
   };
 
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
@@ -60,14 +71,13 @@
     tagName: 'li',
     events: {},
     initialize: function() {
+
       this.listenTo(this.model, 'selected', function(model) {
 
         var index = model.get('index');
 
         App.videoGrid.$el.find('li [data-index=' + index + ']')
           .addClass('selected');
-
-        initFlexslider(model);
       });
 
       this.listenTo(this.model, 'deselected', function(model) {
@@ -85,15 +95,20 @@
     logger.info('Init');
 
     // Init CollectionView
-    var collectionView = new Backbone.Marionette.CollectionView({
+    collectionView = new Backbone.Marionette.CollectionView({
       itemView: SelectorItemView,
       collection: Models.videoCollection,
       tagName: 'ul',
-      className: 'bxslider'
-    });
+      className: 'bxslider',
+      events: {
+        'click .selector': function(event) {
 
-    collectionView.on('show', function(view) {
-      // Transition here
+          var episodeId = $(event.currentTarget)
+            .data('episode-id');
+
+          Routers.video.controller.navigateToEpisode(episodeId);
+        }
+      }
     });
 
     // Show

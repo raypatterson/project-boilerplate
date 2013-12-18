@@ -10,6 +10,7 @@
     "backbone.marionette": "~1.4.0",
     "lodash": "~2.4.1",
     "handlebars": "~1.1.2",
-    "flexslider": "*"
+    "flexslider": "*",
+    "purecss": "~0.3.0"
   }
 }

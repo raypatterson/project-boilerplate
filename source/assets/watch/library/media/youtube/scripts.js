@@ -27,6 +27,11 @@
     return false;
   }();
 
+  var that = this;
+  var $win = $(win);
+  var $playerContainer;
+  var $playerTarget;
+
   var getElementDimensions = function($el) {
     var width = $el
       .width();
@@ -37,14 +42,24 @@
     };
   };
 
-  var resizeElement = function($el, $playerTarget) {
+  var resizeElement = function($el) {
     var dimensions = getElementDimensions($playerTarget);
     $el.width(dimensions.width + 'px');
     $el.height(dimensions.height + 'px');
   };
 
-  var createPlayer = function($playerTarget, videoId) {
+  var resizePlayer = function() {
+    resizeElement($playerTarget);
+    resizeElement($playerContainer);
+  };
 
+  var createPlayer = function($el, videoId, index) {
+
+    $playerTarget = $el;
+
+    $playerTarget.css({
+      'position': 'relative'
+    });
 
     var attributes = '';
     attributes += ' controls';
@@ -52,7 +67,24 @@
     attributes += ' preload="auto"';
 
     var options = {
-      plugins: ['youtube']
+      plugins: ['youtube'],
+      success: function(mediaElement, domObject) {
+
+        logger.info('Initilization Success');
+
+        $win.on('resize', function() {
+          resizePlayer();
+        });
+
+        $win.on('orientationchange', function() {
+          resizePlayer();
+        });
+      },
+      error: function(msg) {
+
+        logger.error('Initilization Error', msg);
+
+      }
     };
 
     if (hasFlash === true) {
@@ -66,6 +98,7 @@
     }
 
     var template = JST['watch/library/media/youtube/templates/player'];
+
     var html = template({
       id: videoId,
       attributes: attributes
@@ -74,27 +107,28 @@
     $playerTarget.html(html)
       .ready(function() {
 
-        var $playerContainer = $playerTarget.find('.video-player-container');
+        $playerContainer = $playerTarget.find('.video-player-container')
+          .css({
+            'top': 0,
+            'left': 0,
+            'z-index': index,
+            'position': 'absolute'
+          });
 
-        resizeElement($playerContainer, $playerTarget);
+        resizePlayer();
 
         $('video')
           .mediaelementplayer(options);
-
-        var $win = $(win);
-
-        $win.on('resize', function() {
-          resizeElement($playerContainer, $playerTarget);
-        });
-
-        $win.on('orientationchange', function() {
-          resizeElement($playerContainer, $playerTarget);
-        });
       });
+  };
+
+  var removePlayer = function() {
+    $playerTarget.html('');
   };
 
   // Expose API
 
   YouTube.createPlayer = createPlayer;
+  YouTube.removePlayer = removePlayer;
 
 }(window));
