@@ -14,10 +14,4 @@
 //= require project/modules/module-b/scripts
 //= require project/modules/module-c/scripts
 
-// --------------------------------------------------------------
-// NOTE: Order is significant for routers
-// --------------------------------------------------------------
-
-//= require project/routers/notfound
-
 //= require project/app/start
