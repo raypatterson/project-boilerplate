@@ -18,47 +18,52 @@
     videoSelector: '.module-video-selector .flexslider'
   });
 
+  // Slider
+  new Backbone.Marionette.Controller()
+    .listenTo(Models.videoCollection, 'selected', function(model) {
+      createSlider(model);
+      this.close();
+
+      new Backbone.Marionette.Controller()
+        .listenTo(Models.videoCollection, 'selected', function(model) {
+          updateSlider(model);
+        });
+    });
+
   var hasSlider = false;
 
-  var initFlexslider = function(model) {
+  var createSlider = function(model) {
 
-    var index = model.get('index');
+    var index = model.get('index') + 1;
     var $el = App.videoSelector.$el;
 
-    if (hasSlider === true) {
+    $el.flexslider({
+      startAt: index,
+      animation: 'slide',
+      animationLoop: true,
+      controlNav: false,
+      smoothHeight: false,
+      after: function(slider) {
+        // console.log('After: ', slider);
+      }
+    });
+  };
 
-      $el.flexslider(index);
+  var updateSlider = function(model) {
 
-    } else {
+    var index = model.get('index') + 1;
+    var $el = App.videoSelector.$el;
 
-      hasSlider = true;
-
-      $el.flexslider({
-        startAt: index,
-        animation: 'slide',
-        animationLoop: true,
-        controlNav: false,
-        smoothHeight: false
-      });
-    }
+    $el.flexslider(index);
   };
 
   var SelectorItemView = Backbone.Marionette.ItemView.extend({
     template: JST['watch/project/modules/video-selector/templates/item'],
     tagName: 'li',
-    events: {
-      'click .selector': function(event) {
-
-        var episodeId = this.model.get('episode_id');
-
-        Routers.video.controller.navigateToEpisode(episodeId);
-      }
-    },
+    events: {},
     initialize: function() {
       this.listenTo(this.model, 'selected', function(model) {
         this.$el.addClass('selected');
-
-        initFlexslider(model);
       });
       this.listenTo(this.model, 'deselected', function(model) {
         this.$el.removeClass('selected');
@@ -75,11 +80,16 @@
       itemView: SelectorItemView,
       collection: Models.videoCollection,
       tagName: 'ul',
-      className: 'slides'
-    });
+      className: 'slides',
+      events: {
+        'click .selector': function(event) {
 
-    collectionView.on('show', function(view) {
-      // Transition here
+          var episodeId = $(event.currentTarget)
+            .data('episode-id');
+
+          Routers.video.controller.navigateToEpisode(episodeId);
+        }
+      }
     });
 
     // Show

@@ -17,17 +17,18 @@
 
   $(function() {
 
-    var done = function() {
-      logger.info('Start Success');
+    Util.PromiseMaker.checkPromises(
 
-      App.start();
-    };
+      function() {
 
-    var fail = function() {
-      logger.error('!!! Start Failure !!!');
-    };
+        logger.info('Start Success');
 
-    Util.PromiseMaker.checkPromises(done, fail);
+        App.start();
+      },
+
+      function() {
+        logger.error('!!! Start Failure !!!');
+      });
   });
 
 }(window));

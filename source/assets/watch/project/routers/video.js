@@ -21,20 +21,20 @@
     },
 
     video: function(id) {
-      logger.info('Video');
+      logger.info('Video', id);
       Models.videoCollection.where({
         video_id: id
       })[0].select();
     },
 
     episode: function(id) {
-      logger.info('Episode');
+      logger.info('Episode', id);
       Models.videoCollection.where({
         episode_id: id
       })[0].select();
     },
 
-    // Helper methods to keep all the route constants centralize.
+    // Helper methods to centralized the route constants.
     navigateToVideo: function(id) {
       Routers.video.navigate('video/' + id, {
         trigger: true

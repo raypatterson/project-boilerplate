@@ -5,4 +5,5 @@
 // styles rules *should* not override each other.
 // --------------------------------------------------------------
 
-@import "vendor/styles/**";
+@import "vendor/styles/**/*";
+@import "vendor/breakpoints/breakpoints";
