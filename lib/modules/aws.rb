@@ -10,43 +10,43 @@ module AWS
 
   @@aws = Load.yaml "#{path}/aws"
 
-  def self.access_key
+  def self.get_access_key
     @@aws[ 'access_key' ]
   end
 
-  def self.secret_key
+  def self.get_secret_key
     @@aws[ 'secret_key' ]
   end
 
-  def self.region( env )
+  def self.get_region( env )
     @@aws[ env ][ "region" ]
   end
 
-  def self.bucket( env )
+  def self.get_bucket( env )
     @@aws[ env ][ "bucket" ]
   end
 
-  def self.eb_name
+  def self.get_eb_name
     @@aws[ "elasticbeanstalk" ][ "name" ]
   end
 
-  def self.eb_region
+  def self.get_eb_region
     @@aws[ "elasticbeanstalk" ][ "region" ]
   end
 
-  def self.eb_stack
+  def self.get_eb_stack
     @@aws[ "elasticbeanstalk" ][ "stack" ]
   end
 
-  def self.eb_env( env )
+  def self.get_eb_env( env )
     @@aws[ env ][ "elasticbeanstalk" ]
   end
 
-  def self.cloudfront_url( env )
+  def self.get_cloudfront_url( env )
     "//#{@@aws[ env ][ "subdomain" ]}.cloudfront.net"
   end
 
-  def self.cloudfront_distribution_id( env )
+  def self.get_cloudfront_distribution_id( env )
     @@aws[ env ][ 'distribution_id' ]
   end
 
