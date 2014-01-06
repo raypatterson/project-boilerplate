@@ -18,6 +18,7 @@ env:
   - secure: QPOLgURoSAvNYWMFp2HExDViaLI7x49vkHYW1Chc/vmf+HR+jNt0/YS3A2Prp2m7C+haQNKFwVbMYt2uANB84+5kAMdZmUR/19P2XZqXbg4mv8CfvlqkeCI2C3YMGEtUR7eerDb7XWPwkZrdsDe+lnGyveVxJrgoEQH3zdADCiI=
 install: bundle install
 before_script:
+- npm install
 - npm install -g bower
 - bower install
 script: rake mm:build:$TRAVIS_BRANCH
