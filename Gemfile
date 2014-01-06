@@ -21,8 +21,8 @@ gem "handlebars_assets"
 gem "middleman-deploy"
 gem "middleman-s3_sync"
 gem "middleman-cloudfront"
-# gem "cloudfront-invalidator", "~> 0.2.0"
 gem "eb_deployer"
+# gem "cloudfront-invalidator", "~> 0.2.0"
 
 # Layout #
 ##########
@@ -30,5 +30,3 @@ gem "middleman-bourbon"
 gem "middleman-neat"
 gem "breakpoint"
 gem "breakpoint-slicer"
-gem "semantic-ui-sass"
-gem "susy"

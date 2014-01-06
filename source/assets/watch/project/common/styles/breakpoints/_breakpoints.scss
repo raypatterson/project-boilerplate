@@ -1,0 +1,72 @@
+/*
+ * Breakpoints
+ *
+ */
+
+$breakpoint-list:
+  "xxxx-small"   400px,
+   "xxx-small"   500px,
+    "xx-small"   600px,
+     "x-small"   700px,
+       "small"   800px,
+      "medium"   1100px,
+       "large"   1400px,
+     "x-large"   1800px,
+    "xx-large"   99999px
+;
+
+$breakpoint-list-keys: null;
+$breakpoint-list-vals: null;
+
+@each $breakpoint in $breakpoint-list {
+  $breakpoint-list-keys: append($breakpoint-list-keys, nth($breakpoint, 1));
+  $breakpoint-list-vals: append($breakpoint-list-vals, nth($breakpoint, 2));
+}
+
+@debug $breakpoint-list-keys;
+@debug $breakpoint-list-vals;
+
+$slicer-breakpoints: $breakpoint-list-vals;
+
+// config
+$debug: true;
+
+head {
+  font-family: "#{$breakpoint-list-keys}";
+}
+
+body {
+
+  @each $breakpoint in $breakpoint-list {
+
+    // Index is 1 based.
+    $i: index($breakpoint-list, $breakpoint);
+
+    @include at($i) {
+      @include defineBreakpoint(nth($breakpoint, 1));
+    }
+  }
+}
+
+// debug styles to see breakpoint info
+body:after {
+  display: none;
+}
+
+@if $debug == true {
+  body:after {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    color: #FFF;
+    padding: 10px;
+    z-index: 1000;
+    font-size: 12px;
+    font-family: sans-serif;
+  }
+}

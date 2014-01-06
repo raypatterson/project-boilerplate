@@ -1,0 +1,49 @@
+{
+  "name": "project-boilerplate",
+  "version": "0.0.0",
+  "description": "A Middleman based project boilerplate.",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "karma": "~0.10.8",
+    "karma-chrome-launcher": "~0.1.1",
+    "karma-jasmine": "~0.1.4",
+    "karma-firefox-launcher": "~0.1.2",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-requirejs": "~0.2.0",
+    "requirejs": "~2.1.9",
+    "karma-script-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "karma-coffee-preprocessor": "~0.1.1",
+    "karma-safari-launcher": "~0.1.1",
+    "glob": "~3.2.7",
+    "grunt": "~0.4.2",
+    "grunt-conventional-changelog": "~0.1.1",
+    "grunt-bump": "0.0.6",
+    "grunt-s3": "~0.2.0-alpha.3",
+    "grunt-phantomas": "~0.3.0",
+    "load-grunt-tasks": "~0.1.0",
+    "time-grunt": "~0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./node_modules/.bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RayPatterson/project-boilerplate.git"
+  },
+  "keywords": [
+    "Project",
+    "Boilerplate",
+    "Middleman"
+  ],
+  "author": "Ray Patterson",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/RayPatterson/project-boilerplate/issues"
+  },
+  "homepage": "https://github.com/RayPatterson/project-boilerplate"
+}

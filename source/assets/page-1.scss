@@ -1,31 +1,10 @@
 // --------------------------------------------------------------
-// Vendor
+// *** Page 1
 // --------------------------------------------------------------
 
-@import "vendor/styles/vars-bourbon";
-@import "vendor/mediaelement/mediaelementplayer";
-@import "vendor/bxslider/jquery.bxslider";
-@import "vendor/bxslider/jquery.bxslider-overrides";
+@import "_page-1";
 
 // --------------------------------------------------------------
-// Gems
-// --------------------------------------------------------------
-
-@import "_gems";
-
-// --------------------------------------------------------------
-// Bower
-// --------------------------------------------------------------
-
-@import "flexslider/flexslider";
-
-// --------------------------------------------------------------
-// Page 1
-// --------------------------------------------------------------
-
-@import "project/modules/video-selector/styles";
-@import "project/modules/video-player/styles";
-@import "project/modules/video-grid/styles";
 
 body {
 
