@@ -12,6 +12,10 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
+  - secure: jIEiBCkTZHkFvhhGOqin/G2TYOtvMCdkl6kGlBqWpWBVKjjYm6z7Ir+vroN6eRn9NKAhrL/eurZt++6dG3ZkgfS3Z/N8fxiQ9TjUL3CJ91CTBwqU0STS8PCe7VnFzN33XICUdFjqgf3dzqZajmougJT8X8zLOLRdxnDYC2eoEPg=
+  - secure: l0fV7cXeBn9wjIjOW8C2pbA9Pm6hD0jInK3DE9gz25lY20B1R5H2Ao4KLS2Ju+GjW8+NXSLvR/FsVi1zMbVM8xePVOMv0ykiPOx2/wnmajq0RSbsnEAUiSUMRJpnO/rH7BzhJZC10A5qg3fRhTO5hbeeFCk2CRi8aOTnL3ZS3M8=
+  - secure: X3p8XLrLahV0C5jqeab77Z4S/W7vC4SqkZncFWsNOXv8u74ONp6KBaoVRv9kDPf1mR7EhveDwc8dyrOk1TeWGabPjN6afP2Npoa3oqP1kcUuS7JA5uc1DDgvOvM0HR/U2ZKHiPsUIi5Q8XhiH4e7UWYyEbgN8RODZKmSW2vgg0I=
+  - secure: k5PKRwXaFPaUzjdhZPcCzk4/ZX0a1x/wyHsRu/UghEd4GJ0uQ7svm0TOc/Q9iHH9s4mYmXDk+7OGqLGmnW6IEw0ayxkdNYeDieFaQQaH0N5kX76bI3H02c24Ze5a0TgsaszBLT0KsZe/oSMHdlPFaihXjMuSlGbKOZ/smkHOFj4=
 install:
 - npm install
 - npm install -g grunt-cli
