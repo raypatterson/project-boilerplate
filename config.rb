@@ -25,7 +25,6 @@ end
 
 activate :directory_indexes
 activate :clowncar
-activate :pipeline
 
 set :deploy_active, Deployment.get_active( environment_type ) || false
 set :deploy_target, Deployment.get_target( environment_type )
