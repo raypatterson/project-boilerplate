@@ -12,10 +12,11 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: jIEiBCkTZHkFvhhGOqin/G2TYOtvMCdkl6kGlBqWpWBVKjjYm6z7Ir+vroN6eRn9NKAhrL/eurZt++6dG3ZkgfS3Z/N8fxiQ9TjUL3CJ91CTBwqU0STS8PCe7VnFzN33XICUdFjqgf3dzqZajmougJT8X8zLOLRdxnDYC2eoEPg=
-  - secure: l0fV7cXeBn9wjIjOW8C2pbA9Pm6hD0jInK3DE9gz25lY20B1R5H2Ao4KLS2Ju+GjW8+NXSLvR/FsVi1zMbVM8xePVOMv0ykiPOx2/wnmajq0RSbsnEAUiSUMRJpnO/rH7BzhJZC10A5qg3fRhTO5hbeeFCk2CRi8aOTnL3ZS3M8=
-  - secure: X3p8XLrLahV0C5jqeab77Z4S/W7vC4SqkZncFWsNOXv8u74ONp6KBaoVRv9kDPf1mR7EhveDwc8dyrOk1TeWGabPjN6afP2Npoa3oqP1kcUuS7JA5uc1DDgvOvM0HR/U2ZKHiPsUIi5Q8XhiH4e7UWYyEbgN8RODZKmSW2vgg0I=
-  - secure: k5PKRwXaFPaUzjdhZPcCzk4/ZX0a1x/wyHsRu/UghEd4GJ0uQ7svm0TOc/Q9iHH9s4mYmXDk+7OGqLGmnW6IEw0ayxkdNYeDieFaQQaH0N5kX76bI3H02c24Ze5a0TgsaszBLT0KsZe/oSMHdlPFaihXjMuSlGbKOZ/smkHOFj4=
+  - secure: lR2EWvvjPKcVQh6tASgoOp6AJTBcn+iPrFxeW+i1WcuczVCsysN8sRnQ4Ly+rGoisynDQxTawakR9uvNpxKu2xZokRnjOXxZGvVjy5hOKn8nIbdTuyf154Ys6Zjl8Cxh2O0kjaPSpN0AmbNg0NluUjVtcaI2GfsbYhzz+LPoMSk=
+  - secure: hWNO5hjK/7SO34G1pRo2jF5MQQRGQNOMBQCM6PULpXwtU71p1Fl8/a1MIiUA1f6NuHwc3WnZsy+qismLpk4gaxnEotzk1nUdniZrmh3+gW378zr2kgswavxKmzePcpdm+ybMGZPePDxVf07jx7RpqecRxPW/v58AlLT+RhzRRCs=
+  - secure: RsNbOg509CwpOIwYn4HQuhuJcxVIWoa4zEgR6D1O/A1soibRkZ8Nxa0Ebku/sb3VJrTbsQtdfX+XGuAnDC9INVHuFccAnXkP+pt22fb6/Ttvz336ZiYd/M0wxJj3hhHtD/NggbP6yWFhSVIhpgzFEATY0zS5eWKwTsMl+iYDv68=
+  - secure: GJOPgTtKlODboVGGrxGG2gewn+WLvH9Aq96nKqo1OB6ed6FXN/4SBO5xApL46dTGFMTpZQ4t1FALlmQuw4upgv8hcdZf+LVynI5cIm+b7bFFVDOcsyUJdHU/+egN9A8wjig3wO/i9pkIIw2TAjTxB57FN0faJRKHS6u83yIgUdg=
+  - secure: hNSmvqI1kjKB6T8hltxT29j23QrI14Q/sx9iHfHBg8UHoL6K2De+1eAJNEcJjcjdLNiGCrCEDHRF9lQLANZTGll7Nq26imqfnXqCR8B+mu+pnpVJXTp/DoK0igEJ7pul5JVlMUpUysJn/vjYeQeuP6W06FsRsYjM2p5odJXuJ90=
 install:
 - npm install
 - npm install -g grunt-cli
