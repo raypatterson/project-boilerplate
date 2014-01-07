@@ -22,7 +22,7 @@ gem "middleman-deploy"
 gem "middleman-s3_sync"
 gem "middleman-cloudfront"
 gem "eb_deployer"
-# gem "cloudfront-invalidator", "~> 0.2.0"
+gem "travis", "~> 1.6.6"
 
 # Layout #
 ##########
