@@ -90,10 +90,4 @@ def build( env, args )
 
   sh %{middleman build}
 
-  ENV[ 'SITE_URL' ] = Site.get_url env
-  ENV[ 'S3_BUCKET' ] = AWS.get_bucket "reports"
-  ENV[ 'S3_REGION' ] = AWS.get_region "reports"
-
-  sh %{grunt performance}
-
 end
