@@ -11,11 +11,11 @@ module AWS
   @@aws = Load.yaml "#{path}/aws"
 
   def self.get_access_id
-    @@aws[ 'access' ]
+    @@aws[ 'access_id' ]
   end
 
   def self.get_secret_id
-    @@aws[ 'secret' ]
+    @@aws[ 'secret_id' ]
   end
 
   def self.get_s3_region( env )
