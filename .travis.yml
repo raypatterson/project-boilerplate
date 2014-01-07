@@ -16,11 +16,12 @@ env:
   - secure: k3mOzk7h9+22KacHSh7hv9Cs6QCkgvMl6XZnNzGEaXf/W80y5lQfL7DUED3GFL6ffEP/XhdD+fAkamfm82LuE2/8UolLjwTwAgFHGgRp2+qNmkCJCL3gzpUxhAWTeXfGQ9KAcxRjt0yBhQiQdB2KxHAu0l05cozwTuCQvEt8kms=
   - secure: VaCclrQxwoHgbCt1GLVWIlDl+w0CO5ORHCXgJhzJiWbbQLWvZrrvjk7FOYfJHjwzszX5BJgQCZhSTfD6dTQsVq1NS/U7H4Xd1yoFRqi0c6gZLLJHONHhjuW12LT0u96c65yY1wG5RD68zC3FKL9dEncu8WO2XfEOULn/wNYRb6I=
   - secure: QPOLgURoSAvNYWMFp2HExDViaLI7x49vkHYW1Chc/vmf+HR+jNt0/YS3A2Prp2m7C+haQNKFwVbMYt2uANB84+5kAMdZmUR/19P2XZqXbg4mv8CfvlqkeCI2C3YMGEtUR7eerDb7XWPwkZrdsDe+lnGyveVxJrgoEQH3zdADCiI=
-install: bundle install
-before_script:
+install:
 - npm install
+- npm install -g grunt-cli
 - npm install -g bower
 - bower install
+- bundle install
 script: rake mm:build:$TRAVIS_BRANCH
 after_success:
 - git config --global user.email "$GH_EMAIL"
