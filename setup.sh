@@ -1,23 +1,37 @@
 #!/bin/sh
-echo 'Setting up project...'
 echo '.'
 echo '.'
 echo '.'
-echo 'This is good time to get a coffee.'
+echo '. . . Welcome'
+echo '.'
+echo '.'
+echo '.'
+echo '. . . Updating'
 echo '.'
 echo '.'
 echo '.'
 brew update
+echo '.'
+echo '.'
+echo '.'
+echo '. . . Installing'
+echo '.'
+echo '.'
+echo '.'
 brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush
 bower install
 gem install bundler
 rm -f Gemfile.lock
 bundle install
+npm install
 echo '.'
 echo '.'
 echo '.'
-echo 'Project setup complete!'
-echo 'Starting server...'
+echo '. . . Complete'
+echo '.'
+echo '.'
+echo '.'
+echo '. . . Starting'
 echo '.'
 echo '.'
 echo '.'

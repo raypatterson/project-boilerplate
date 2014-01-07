@@ -1,0 +1,4 @@
+/**
+ * Default
+ */
+module.exports = {};

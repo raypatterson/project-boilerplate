@@ -8,8 +8,8 @@
 
 		<meta charset="utf-8">
 
-    <% if is_production %>
-		<meta name="robots" content="noindex, nofollow">
+    <% if is_production == false %>
+		<meta name="robots" content="none">
     <% end %>
 
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
@@ -25,8 +25,10 @@
 
 		<%= yield_content :head %>
 
-	  <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "main" %>
     <%= yield_content :stylesheet %>
+
+    <%= javascript_inline_tag "vendor/util/modernizr" %>
 
 	</head>
 
@@ -37,7 +39,7 @@
     data-environment-type="<%= environment_type %>"
     >
 
-    <div class="top-level-container main-region">
+    <div class="top-level-container main-region breakpoints">
 
       <div class="row">
         <%= partial "project/modules/header/_partial" %>

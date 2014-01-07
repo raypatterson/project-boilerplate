@@ -12,7 +12,6 @@
   var Models = Namespace(site_namespace + '.Models');
   var YouTube = Namespace(site_namespace + '.Media.YouTube');
 
-
   var $videoPlayerTarget = $('.video-player-target');
 
   Models.videoCollection.on('selected', function(model) {
