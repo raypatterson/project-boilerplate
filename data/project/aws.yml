@@ -4,6 +4,9 @@ elasticbeanstalk:
   name: "undefined"
   region: "us-west-1"
   stack: "64bit Amazon Linux running Tomcat 7"
+reports:
+  region: "us-west-1"
+  bucket: "project-boilerplate-reporting"
 localhost:
   region: "undefined"
   bucket: "undefined"

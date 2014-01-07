@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require './lib/modules/aws'
 require './lib/modules/site'
 require './lib/modules/config'
 require './lib/modules/version'
@@ -88,5 +89,11 @@ def build( env, args )
   end
 
   sh %{middleman build}
+
+  ENV[ 'SITE_URL' ] = Site.get_url env
+  ENV[ 'S3_BUCKET' ] = AWS.get_bucket "reports"
+  ENV[ 'S3_REGION' ] = AWS.get_region "reports"
+
+  sh %{grunt performance}
 
 end

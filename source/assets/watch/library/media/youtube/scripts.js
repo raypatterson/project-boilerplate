@@ -43,7 +43,7 @@
   };
 
   var resizeElement = function($el) {
-    var dimensions = getElementDimensions($playerTarget);
+    var dimensions = getElementDimensions($playerTarget.parent());
     $el.width(dimensions.width + 'px');
     $el.height(dimensions.height + 'px');
   };
@@ -71,14 +71,6 @@
       success: function(mediaElement, domObject) {
 
         logger.info('Initilization Success');
-
-        $win.on('resize', function() {
-          resizePlayer();
-        });
-
-        $win.on('orientationchange', function() {
-          resizePlayer();
-        });
       },
       error: function(msg) {
 
@@ -116,6 +108,14 @@
           });
 
         resizePlayer();
+
+        $win.on('resize', function() {
+          resizePlayer();
+        });
+
+        $win.on('orientationchange', function() {
+          resizePlayer();
+        });
 
         $('video')
           .mediaelementplayer(options);

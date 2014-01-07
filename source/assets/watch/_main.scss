@@ -1,0 +1,36 @@
+// --------------------------------------------------------------
+// Vendor
+//
+// Note: Globbing *should* work as vendor
+// styles rules *should* not override each other.
+// --------------------------------------------------------------
+
+@import "vendor/styles/**/*";
+@import "vendor/breakpoints/breakpoints";
+
+// --------------------------------------------------------------
+// Bower
+// --------------------------------------------------------------
+
+@import "normalize-css/normalize";
+
+// --------------------------------------------------------------
+// Gems
+// --------------------------------------------------------------
+
+@import "gems";
+
+// --------------------------------------------------------------
+// Library
+// --------------------------------------------------------------
+
+// --------------------------------------------------------------
+// Project
+//
+// Note: Globbing *should* work as module styles rules
+// only override common and page level style rules.
+// --------------------------------------------------------------
+
+@import "project/common/**/*";
+@import "project/modules/header/**/*";
+@import "project/modules/footer/**/*";
