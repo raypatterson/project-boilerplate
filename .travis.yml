@@ -3,7 +3,8 @@ rvm:
 - 2.0.0-p247
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush
+- sudo apt-get install -qq advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng
+  pngcrush
 - wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz
 - tar -xzf pngout-*-linux.tar.gz
 - mv pngout-*-linux pngout-linux
@@ -11,11 +12,11 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: m7ETLoFnkLv/ZMxRVRC1DaffoUcXPcmcfGnewM3SJZ/2baeNoy/pEtzIOG0oqFRAPFgeACwXgIBSHlEKbWTM9mvNnAm7B/OnpVz1rhQMIXztirW/B8aR8Y8O/sdh29kv+wZt3EjD0c0XqO9zxxWyB25qt479CoPvElqICf7aHJU=
-  - secure: Nr2Rd/I9tKTslbygawQAzuf0XHHdpUqxnAGqJjldNVix2VLhant8WrteR6i4PY29nFCYLQCwBZU75ngltZpDxycDaO3nFsTQtwYpx2XaDEnjx3X/OAOuJQe6H0W3FAaJH4b0h3bwhuS/MfwFI/BypVKrBVmfa67MBodjZLDPZ70=
-  - secure: k3mOzk7h9+22KacHSh7hv9Cs6QCkgvMl6XZnNzGEaXf/W80y5lQfL7DUED3GFL6ffEP/XhdD+fAkamfm82LuE2/8UolLjwTwAgFHGgRp2+qNmkCJCL3gzpUxhAWTeXfGQ9KAcxRjt0yBhQiQdB2KxHAu0l05cozwTuCQvEt8kms=
-  - secure: VaCclrQxwoHgbCt1GLVWIlDl+w0CO5ORHCXgJhzJiWbbQLWvZrrvjk7FOYfJHjwzszX5BJgQCZhSTfD6dTQsVq1NS/U7H4Xd1yoFRqi0c6gZLLJHONHhjuW12LT0u96c65yY1wG5RD68zC3FKL9dEncu8WO2XfEOULn/wNYRb6I=
-  - secure: QPOLgURoSAvNYWMFp2HExDViaLI7x49vkHYW1Chc/vmf+HR+jNt0/YS3A2Prp2m7C+haQNKFwVbMYt2uANB84+5kAMdZmUR/19P2XZqXbg4mv8CfvlqkeCI2C3YMGEtUR7eerDb7XWPwkZrdsDe+lnGyveVxJrgoEQH3zdADCiI=
+  - secure: lR2EWvvjPKcVQh6tASgoOp6AJTBcn+iPrFxeW+i1WcuczVCsysN8sRnQ4Ly+rGoisynDQxTawakR9uvNpxKu2xZokRnjOXxZGvVjy5hOKn8nIbdTuyf154Ys6Zjl8Cxh2O0kjaPSpN0AmbNg0NluUjVtcaI2GfsbYhzz+LPoMSk=
+  - secure: hWNO5hjK/7SO34G1pRo2jF5MQQRGQNOMBQCM6PULpXwtU71p1Fl8/a1MIiUA1f6NuHwc3WnZsy+qismLpk4gaxnEotzk1nUdniZrmh3+gW378zr2kgswavxKmzePcpdm+ybMGZPePDxVf07jx7RpqecRxPW/v58AlLT+RhzRRCs=
+  - secure: RsNbOg509CwpOIwYn4HQuhuJcxVIWoa4zEgR6D1O/A1soibRkZ8Nxa0Ebku/sb3VJrTbsQtdfX+XGuAnDC9INVHuFccAnXkP+pt22fb6/Ttvz336ZiYd/M0wxJj3hhHtD/NggbP6yWFhSVIhpgzFEATY0zS5eWKwTsMl+iYDv68=
+  - secure: GJOPgTtKlODboVGGrxGG2gewn+WLvH9Aq96nKqo1OB6ed6FXN/4SBO5xApL46dTGFMTpZQ4t1FALlmQuw4upgv8hcdZf+LVynI5cIm+b7bFFVDOcsyUJdHU/+egN9A8wjig3wO/i9pkIIw2TAjTxB57FN0faJRKHS6u83yIgUdg=
+  - secure: hNSmvqI1kjKB6T8hltxT29j23QrI14Q/sx9iHfHBg8UHoL6K2De+1eAJNEcJjcjdLNiGCrCEDHRF9lQLANZTGll7Nq26imqfnXqCR8B+mu+pnpVJXTp/DoK0igEJ7pul5JVlMUpUysJn/vjYeQeuP6W06FsRsYjM2p5odJXuJ90=
 install:
 - npm install
 - npm install -g grunt-cli
@@ -32,6 +33,7 @@ after_success:
 - export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
 - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
 - git push origin $GIT_TAG -q
+- rake test:performance
 branches:
   only:
   - production

@@ -122,16 +122,16 @@ activate :deploy do | deploy |
 end
 
 activate :s3_sync do | s3_sync |
-  s3_sync.bucket = AWS.get_bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
-  s3_sync.region = AWS.get_region environment_type # The AWS region for your bucket.
-  s3_sync.aws_access_key_id = AWS.get_access_key
-  s3_sync.aws_secret_access_key = AWS.get_secret_key
+  s3_sync.bucket = AWS.get_s3_bucket environment_type # The name of the S3 bucket you are targetting. This is globally unique.
+  s3_sync.region = AWS.get_s3_region environment_type # The AWS region for your bucket.
+  s3_sync.aws_access_key_id = AWS.get_access_id
+  s3_sync.aws_secret_access_key = AWS.get_secret_id
   s3_sync.delete = true # We delete stray files by default.
 end
 
 activate :cloudfront do | cloudfront |
-  cloudfront.access_key_id = AWS.get_access_key
-  cloudfront.secret_access_key = AWS.get_secret_key
+  cloudfront.access_key_id = AWS.get_access_id
+  cloudfront.secret_access_key = AWS.get_secret_id
   cloudfront.distribution_id = AWS.get_cloudfront_distribution_id environment_type
   cloudfront.filter = /\.html$/i
 end
