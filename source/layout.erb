@@ -53,10 +53,9 @@
 
     </div>
 
+    <%= javascript_include_tag "main" %>
+    <%= yield_content :javascript %>
 
 	</body>
-
-  <%= javascript_include_tag "main" %>
-  <%= yield_content :javascript %>
 
 </html>
