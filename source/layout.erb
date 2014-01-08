@@ -39,19 +39,28 @@
     data-environment-type="<%= environment_type %>"
     >
 
-    <div class="top-level-container main-region breakpoints">
+    <ol style="padding:0;margin:0">
 
-      <div class="row">
-        <%= partial "project/modules/header/_partial" %>
+      <!--
+        'ol' element wrapper prevents Reader from
+        delaying browser address bar hide on iPhone.
+      -->
+
+      <div class="top-level-container main-region breakpoints">
+
+        <div class="row">
+          <%= partial "project/modules/header/_partial" %>
+        </div>
+
+        <%= yield %>
+
+        <div class="row">
+          <%= partial "project/modules/footer/_partial" %>
+        </div>
+
       </div>
 
-      <%= yield %>
-
-      <div class="row">
-        <%= partial "project/modules/footer/_partial" %>
-      </div>
-
-    </div>
+    </ol>
 
     <%= javascript_include_tag "main" %>
     <%= yield_content :javascript %>
