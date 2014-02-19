@@ -40,21 +40,6 @@ set :site_description, Site.get_description
 set :site_keywords, Site.get_keywords
 set :site_url, Site.get_url( environment_type )
 
-# Activate #
-############
-
-if environment_type == Cfg.get_localhost_env
-  activate :livereload
-end
-
-activate :dotenv, :env => ".env-#{environment_type}"
-
-activate :autoprefixer
-activate :directory_indexes
-activate :automatic_image_sizes # Automatic image dimensions on image_tag helper
-activate :angular_templates
-activate :clowncar
-
 # Paths #
 #########
 
@@ -86,6 +71,21 @@ compass_config do | config |
   config.add_import_path bower_dir
   config.add_import_path watch_dir
 end
+
+# Activate #
+############
+
+if environment_type == Cfg.get_localhost_env
+  activate :livereload
+end
+
+activate :dotenv, :env => ".env-#{environment_type}"
+
+activate :autoprefixer
+activate :directory_indexes
+activate :automatic_image_sizes # Automatic image dimensions on image_tag helper
+activate :angular_templates
+activate :clowncar
 
 # Development #
 ###############
