@@ -84,7 +84,6 @@ activate :dotenv, :env => ".env-#{environment_type}"
 activate :autoprefixer
 activate :directory_indexes
 activate :automatic_image_sizes # Automatic image dimensions on image_tag helper
-activate :angular_templates
 activate :clowncar
 
 # Development #
