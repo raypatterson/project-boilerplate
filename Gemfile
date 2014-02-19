@@ -9,24 +9,38 @@ gem "rack-mobile-detect"
 
 gem "middleman", "~> 3.2.0"
 gem "middleman-livereload", "~> 3.1.0"
-gem "middleman-minify-html"
-gem "middleman-imageoptim", "~> 0.0.4"
-gem "middleman-favicon-maker", "~> 3.2"
+
+# Tools #
+#########
+gem "middleman-dotenv"
+gem "middleman-autoprefixer"
 gem "middleman-clowncar"
-gem "sass-globbing"
+gem "middleman-automatic-clowncar"
 gem "handlebars_assets"
+gem "middleman-angular-templates", git: "git@github.com:damrbaby/middleman-angular-templates.git"
 
-# Deploy #
-##########
-gem "middleman-deploy"
-gem "middleman-s3_sync"
-gem "middleman-cloudfront"
-gem "eb_deployer"
-gem "travis", "~> 1.6.6"
-
-# Layout #
-##########
+# SASS #
+########
+gem "sass-globbing"
 gem "middleman-bourbon"
 gem "middleman-neat"
 gem "breakpoint"
 gem "breakpoint-slicer"
+gem "color-schemer"
+
+# Build #
+#########
+gem "middleman-target"
+gem "middleman-minify-html"
+gem "middleman-imageoptim", "~> 0.1.4"
+gem "middleman-favicon-maker", "~> 3.5"
+
+# Deploy #
+##########
+gem "middleman-packager"
+gem "middleman-deploy"
+gem "middleman-s3_sync"
+gem "middleman-s3_metadata"
+gem "middleman-cloudfront"
+gem "eb_deployer"
+gem "travis", "~> 1.6.6"

@@ -1,6 +1,7 @@
 {
   "name": "project-boilerplate",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "jquery": "~1.10.2",
     "normalize-css": "~2.1.3",
     "json3": "~3.2.6",
@@ -8,6 +9,9 @@
     "lodash": "~2.4.1",
     "handlebars": "~1.1.2",
     "flexslider": "*",
-    "rsvp": "~2.0.4"
+    "rsvp": "~3.0.4",
+    "detectizr": "~1.5.0",
+    "fastclick": "~0.6.11",
+    "scut": "~0.9.1"
   }
 }

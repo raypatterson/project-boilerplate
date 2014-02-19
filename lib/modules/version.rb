@@ -18,7 +18,7 @@ module Version
     end
 
     def create_file( val )
-      file = File.new @@FILE_NAME, 'w'
+      file = File.new @@FILE_NAME, "w"
       file.write "#{@@VERSION_KEY}: #{val}"
       file.close()
     end
@@ -28,7 +28,7 @@ module Version
     end
 
     def get_version
-      ( YAML::load ( File.open @@FILE_NAME, 'r+' ) ).each_pair do | key, val |
+      ( YAML::load ( File.open @@FILE_NAME, "r+" ) ).each_pair do | key, val |
         if key === @@VERSION_KEY
           return val.to_s
         end

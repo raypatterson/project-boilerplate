@@ -7,7 +7,7 @@ def favicon_image( href, rel, sizes = nil )
 end
 
 def share_icon
-  "http:#{AWS.get_cloudfront_url( environment_type )}/#{images_dir}#{Social.get_share_icon}"
+  "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{Social.get_share_icon}"
 end
 
 def is_production
