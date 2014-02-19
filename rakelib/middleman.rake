@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-require './lib/modules/aws'
-require './lib/modules/site'
-require './lib/modules/config'
-require './lib/modules/version'
-require './lib/modules/deployment'
+require "./lib/modules/aws"
+require "./lib/modules/site"
+require "./lib/modules/config"
+require "./lib/modules/version"
+require "./lib/modules/deployment"
 
 namespace :mm do
 
@@ -13,7 +13,7 @@ namespace :mm do
 
     port = args.port || Cfg.get_localport
 
-    ENV[ 'ENVIRONMENT' ] = Cfg.get_localhost_env
+    ENV[ "ENVIRONMENT" ] = Cfg.get_localhost_env
 
     sh %{middleman server -p #{port}}
 
@@ -56,15 +56,15 @@ end
 
 def build( env, args )
 
-  ENV[ 'ENVIRONMENT' ] = env
+  ENV[ "ENVIRONMENT" ] = env
 
   # Deploy
 
-  deploy = ( args.deploy || Deployment.get_active( env ) ) == true ? 'true' : 'false'
+  deploy = ( args.deploy || Deployment.get_active( env ) ) == true ? "true" : "false"
 
   # puts "Deploy: #{deploy}"
 
-  ENV[ 'DEPLOY' ] = deploy
+  ENV[ "DEPLOY" ] = deploy
 
   # Increment
 

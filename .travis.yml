@@ -12,16 +12,15 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: lR2EWvvjPKcVQh6tASgoOp6AJTBcn+iPrFxeW+i1WcuczVCsysN8sRnQ4Ly+rGoisynDQxTawakR9uvNpxKu2xZokRnjOXxZGvVjy5hOKn8nIbdTuyf154Ys6Zjl8Cxh2O0kjaPSpN0AmbNg0NluUjVtcaI2GfsbYhzz+LPoMSk=
-  - secure: hWNO5hjK/7SO34G1pRo2jF5MQQRGQNOMBQCM6PULpXwtU71p1Fl8/a1MIiUA1f6NuHwc3WnZsy+qismLpk4gaxnEotzk1nUdniZrmh3+gW378zr2kgswavxKmzePcpdm+ybMGZPePDxVf07jx7RpqecRxPW/v58AlLT+RhzRRCs=
-  - secure: RsNbOg509CwpOIwYn4HQuhuJcxVIWoa4zEgR6D1O/A1soibRkZ8Nxa0Ebku/sb3VJrTbsQtdfX+XGuAnDC9INVHuFccAnXkP+pt22fb6/Ttvz336ZiYd/M0wxJj3hhHtD/NggbP6yWFhSVIhpgzFEATY0zS5eWKwTsMl+iYDv68=
-  - secure: GJOPgTtKlODboVGGrxGG2gewn+WLvH9Aq96nKqo1OB6ed6FXN/4SBO5xApL46dTGFMTpZQ4t1FALlmQuw4upgv8hcdZf+LVynI5cIm+b7bFFVDOcsyUJdHU/+egN9A8wjig3wO/i9pkIIw2TAjTxB57FN0faJRKHS6u83yIgUdg=
-  - secure: hNSmvqI1kjKB6T8hltxT29j23QrI14Q/sx9iHfHBg8UHoL6K2De+1eAJNEcJjcjdLNiGCrCEDHRF9lQLANZTGll7Nq26imqfnXqCR8B+mu+pnpVJXTp/DoK0igEJ7pul5JVlMUpUysJn/vjYeQeuP6W06FsRsYjM2p5odJXuJ90=
+  - secure: aUjCLzUZ3q3qiJtNPygZbwzGLv7EkQbpnhq09tYi0uHMxGkd9gt7+iElkXtyDkjanrgVS3kvHthdIer7wOyUyIODw7cH1O3IMCyrnDnDyiQ/WKQkFmddLFZSdWASnJkSaKxDGbQVGhPmWi5WEEh6HTKeeaSrcB4+7bYy0M2QuSI=
+  - secure: Awz71PLauouWcJAnkw34PZNFXDsNEeP1KzCcAWehadflAuxWIbPlealDPG66muaR64JBdSoj9tC9ul8P6c8npPNR9+B1DRLIFtWNUuR7k/ATM2VZOaE3ynu2n3ZRp+Qol5oSqF0YydSjtK5ux8n/m+4yyTR3gHy3eATmHNjLffk=
+  - secure: Rsfkle2OM5C5SI45QpO5H5YjoW6usHo4Wnkk8bb/1uhZiIVJeL1Ci6vHlvJ8+QQOrJ4a9rl6upim3rKHpSvh14SOsWZCMbx6q6iqPFtMThCeayVD3hUwZWvLgWU/e4IbaO54ffsxVDhB0gnsOenVAqGPTNE++aHeImEFA8SypZQ=
+  - secure: Jpoum+lak12OwVhnR0RM7iH81LDLr1is5xGncHcpuQn5YD0tr9Gi8nc5vPxjxNd9Jmz0j8yXLDyBSmbLzXkNfRVjXDwQJECtTf1V7lIHtwYLhms5Pg4q7D+4v6LdHdmOyzF8bilaI/adA9LccJc8OQA3zM2EAGjTVx+WCxljYE8=
+  - secure: GY4FH/haUiL4bOVMdE+b9hcJEFnq5G5VhPL+SaD26OzGYdWvzGWd4dqdwHB7nJ/DMfFfqNs/8gO8JxCoElBAa7EsIC8dhjA78NqOmXWtg25S/XdnJE5v1kwAYN393B+QfChnbJ28G6SJ34v9G/R8StmnTvZyocGzJ7RSdpW9ViE=
 install:
-- npm install
-- npm install -g grunt-cli
-- npm install -g bower
-- bower install
+- npm i
+- npm i -g bower grunt-cli
+- bower i
 - bundle install
 script: rake mm:build:$TRAVIS_BRANCH
 after_success:

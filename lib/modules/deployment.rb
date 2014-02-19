@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/modules/load'
+require "./lib/modules/load"
 
 module Deployment
 

@@ -5,9 +5,9 @@ namespace :source do
   desc "Source : Change"
   task :change, [:branchname] do | t, args |
 
-    ENV['SOURCE_REPO_URL'] = 'git@github.com:RayPatterson/project-boilerplate-source.git'
-    ENV['SOURCE_REPO_ALIAS'] = 'source'
-    ENV['SOURCE_REPO_BRANCH'] = args.branchname
+    ENV[ "SOURCE_REPO_URL" ] = "git@github.com:RayPatterson/project-boilerplate-source.git"
+    ENV[ "SOURCE_REPO_ALIAS" ] = "source"
+    ENV[ "SOURCE_REPO_BRANCH" ] = args.branchname
 
     sh %{
       git ls-remote $SOURCE_REPO_URL &>-
@@ -28,6 +28,19 @@ namespace :source do
       git add -A
       git commit -m "Change to $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH files."
       git subtree add -P $SOURCE_REPO_ALIAS --squash $SOURCE_REPO_ALIAS-$SOURCE_REPO_BRANCH
+    }
+
+  end
+
+  desc "Source : Push"
+  task :push, [:branchname] do | t, args |
+
+    ENV[ "SOURCE_REPO_URL" ] = "git@github.com:RayPatterson/project-boilerplate-source.git"
+    ENV[ "SOURCE_REPO_ALIAS" ] = "source"
+    ENV[ "SOURCE_REPO_BRANCH" ] = args.branchname
+
+    sh %{
+      git subtree push --prefix=$SOURCE_REPO_ALIAS $SOURCE_REPO_ALIAS $SOURCE_REPO_BRANCH
     }
 
   end
