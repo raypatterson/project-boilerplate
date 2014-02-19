@@ -6,6 +6,10 @@ def favicon_image( href, rel, sizes = nil )
   tag :link, :rel => rel, :sizes => sizes, :href => "#{cache_dir}/#{href}"
 end
 
+def clowncar_image( dir )
+  "<div class=\"image-clowncar\">" + ( clowncar_tag dir, :host => site_url, :fallback => "small.png" ) + "</div>"
+end
+
 def share_icon
   "http:#{AWS.cloudfront_url( environment_type )}/#{images_dir}#{Social.get_share_icon}"
 end

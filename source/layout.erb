@@ -25,10 +25,10 @@
 
     <%= yield_content :head %>
 
+    <%= javascript_inline_tag "vendor/util/modernizr" %>
+
     <%= stylesheet_link_tag "main" %>
     <%= yield_content :stylesheet %>
-
-    <%= javascript_inline_tag "vendor/util/modernizr" %>
 
   </head>
 

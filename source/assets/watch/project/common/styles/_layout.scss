@@ -10,3 +10,10 @@ body {
 .row {
   @include row();
 }
+
+.module {
+
+  @include span-columns($grid-columns);
+
+  margin: 0 0 1% 0;
+}
