@@ -4,17 +4,17 @@
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--><html class="no-js"><!--<![endif]-->
 
-	<head>
+  <head>
 
-		<meta charset="utf-8">
+    <meta charset="utf-8">
 
     <% if is_production == false %>
-		<meta name="robots" content="none">
+    <meta name="robots" content="none">
     <% end %>
 
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
     <meta name="description" content="<%= site_description %>">
     <meta name="keywords" content="<%= site_keywords %>">
@@ -23,40 +23,61 @@
     <%= partial "library/partials/helpers/embed-icons" %>
     <%= partial "library/partials/helpers/social-tags" %>
 
-		<%= yield_content :head %>
+    <%= yield_content :head %>
+
+    <%= javascript_inline_tag "vendor/util/modernizr" %>
 
     <%= stylesheet_link_tag "main" %>
     <%= yield_content :stylesheet %>
 
-    <%= javascript_inline_tag "vendor/util/modernizr" %>
+  </head>
 
-	</head>
-
-	<body
+  <body
     class="<%= page_classes %>"
     data-debug-flag="<%= debug_flag %>"
     data-build-version="<%= build_version %>"
     data-environment-type="<%= environment_type %>"
     >
 
-    <div class="top-level-container main-region breakpoints">
+    <ol
+      class="content-wrapper"
+      data-fouc-fade-in-delay="1000"
+      data-fouc-fade-in-duration="250"
+      style="padding:0;margin:0;display:none;">
 
-      <div class="row">
-        <%= partial "project/modules/header/_partial" %>
+      <!--
+
+        Content wrapper:
+
+        - Prevents Reader from delaying browser address bar hide on iPhone.
+          Dependencies: 'library/util/hide-address-bar.js'
+          Source: http://stackoverflow.com/questions/2999600/how-to-disable-safari-reader-in-a-web-page#comment29067990_3014224
+
+        - Prevents Flash of Unstyled Content.
+          Dependencies: 'library/util/show-content-wrapper.js'
+          Source: https://gist.github.com/johnpolacek/3827270
+
+      -->
+
+      <div class="top-level-container main-region breakpoints">
+
+        <div class="row">
+          <%= partial "project/modules/header/_partial" %>
+        </div>
+
+        <%= yield %>
+
+        <div class="row">
+          <%= partial "project/modules/footer/_partial" %>
+        </div>
+
       </div>
 
-      <%= yield %>
+    </ol>
 
-      <div class="row">
-        <%= partial "project/modules/footer/_partial" %>
-      </div>
+    <%= javascript_include_tag "main" %>
+    <%= yield_content :javascript %>
 
-    </div>
-
-
-	</body>
-
-  <%= javascript_include_tag "main" %>
-  <%= yield_content :javascript %>
+  </body>
 
 </html>

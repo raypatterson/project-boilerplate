@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/modules/load'
+require "./lib/modules/load"
 
 module Site
 
@@ -11,31 +11,31 @@ module Site
   @@site = Load.yaml path
 
   def self.get_namespace
-    @@site[ 'namespace' ]
+    @@site[ "namespace" ]
   end
 
   def self.get_id
-    @@site[ 'id' ]
+    @@site[ "id" ]
   end
 
   def self.get_name
-    @@site[ 'name' ]
+    @@site[ "name" ]
   end
 
   def self.get_title
-    @@site[ 'title' ]
+    @@site[ "title" ]
   end
 
   def self.get_description
-    @@site[ 'description' ]
+    @@site[ "description" ]
   end
 
   def self.get_keywords
-    @@site[ 'get_keywords' ]
+    @@site[ "get_keywords" ]
   end
 
   def self.get_url( env )
-    @@site[ 'url' ][ env ]
+    @@site[ "url" ][ env ]
   end
-  
+
 end

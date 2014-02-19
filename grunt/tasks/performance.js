@@ -5,29 +5,35 @@ module.exports = function(grunt) {
   /**
    * The `performance` task.
    */
+
+  grunt.registerTask('performancecomplete', function() {
+
+    var url = '';
+    url += 'http://';
+    url += process.env.REPORTS_S3_BUCKET;
+    url += '.s3-website-';
+    url += process.env.REPORTS_S3_REGION;
+    url += '.amazonaws.com/';
+    url += process.env.ENVIRONMENT;
+    url += '/phantomas';
+
+    grunt.log.writeln('');
+    grunt.log.writeln('Performance Report Ready');
+    grunt.log.subhead(url);
+  });
+
   grunt.registerTask('performance', function() {
 
     grunt.log.subhead('Testing performance of', process.env.SITE_URL);
 
     grunt.option('environment', process.env.ENVIRONMENT);
     grunt.option('site_url', process.env.SITE_URL);
-    grunt.option('s3_access', process.env.S3_ACCESS_KEY_ID);
-    grunt.option('s3_secret', process.env.S3_SECRET_KEY_ID);
-    grunt.option('s3_bucket', process.env.S3_BUCKET);
-    grunt.option('s3_region', process.env.S3_REGION);
+    grunt.option('s3_access', process.env.AWS_ACCESS_ID);
+    grunt.option('s3_secret', process.env.AWS_SECRET_ID);
+    grunt.option('s3_bucket', process.env.REPORTS_S3_BUCKET);
+    grunt.option('s3_region', process.env.REPORTS_S3_REGION);
 
-    grunt.task.run(['phantomas', 's3:phantomas']);
-
-    var report_url = '';
-    report_url += 'http://';
-    report_url += process.env.S3_BUCKET;
-    report_url += '.s3-website-';
-    report_url += process.env.S3_REGION;
-    report_url += '.amazonaws.com/';
-    report_url += process.env.ENVIRONMENT;
-    report_url += '/phantomas';
-
-    grunt.log.subhead('Report --> ', report_url);
+    grunt.task.run(['phantomas', 's3:phantomas', 'performancecomplete']);
 
   });
 

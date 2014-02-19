@@ -26,4 +26,4 @@
   PromiseMaker.getDeferred = getDeferred;
   PromiseMaker.checkPromises = checkPromises;
 
-}(window, jQuery));
+}(window, $));

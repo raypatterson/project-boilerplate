@@ -19,11 +19,12 @@ echo '.'
 echo '.'
 echo '.'
 brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush
-bower install
-gem install bundler
-rm -f Gemfile.lock
+npm i
+npm i -g bower grunt-cli
+bower i
+gem i bundler
+rm -rf Gemfile.lock
 bundle install
-npm install
 echo '.'
 echo '.'
 echo '.'

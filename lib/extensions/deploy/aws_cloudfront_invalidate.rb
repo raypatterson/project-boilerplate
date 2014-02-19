@@ -1,8 +1,8 @@
 class AwsCloudFrontInvalidateBlock < Middleman::Extension
   # All the options for this extension
-  option :access_key, false, 'AWS Access Key'
-  option :secret_key, false, 'AWS Secret Key'
-  option :distribution_id, false, 'AWS Distribution ID'
+  option :access_key, false, "AWS Access Key"
+  option :secret_key, false, "AWS Secret Key"
+  option :distribution_id, false, "AWS Distribution ID"
 
   def initialize( app, options_hash = {}, &block )
 

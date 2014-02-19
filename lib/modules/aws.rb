@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/modules/load'
+require "./lib/modules/load"
 
 module AWS
 
@@ -10,44 +10,44 @@ module AWS
 
   @@aws = Load.yaml "#{path}/aws"
 
-  def self.get_access_key
-    @@aws[ 'access_key' ]
+  def self.access_key
+    @@aws[ "access_key" ]
   end
 
-  def self.get_secret_key
-    @@aws[ 'secret_key' ]
+  def self.secret_key
+    @@aws[ "secret_key" ]
   end
 
-  def self.get_region( env )
+  def self.region( env )
     @@aws[ env ][ "region" ]
   end
 
-  def self.get_bucket( env )
+  def self.bucket( env )
     @@aws[ env ][ "bucket" ]
   end
 
-  def self.get_eb_name
+  def self.eb_name
     @@aws[ "elasticbeanstalk" ][ "name" ]
   end
 
-  def self.get_eb_region
+  def self.eb_region
     @@aws[ "elasticbeanstalk" ][ "region" ]
   end
 
-  def self.get_eb_stack
+  def self.eb_stack
     @@aws[ "elasticbeanstalk" ][ "stack" ]
   end
 
-  def self.get_eb_env( env )
+  def self.eb_env( env )
     @@aws[ env ][ "elasticbeanstalk" ]
   end
 
-  def self.get_cloudfront_url( env )
+  def self.cloudfront_url( env )
     "//#{@@aws[ env ][ "subdomain" ]}.cloudfront.net"
   end
 
-  def self.get_cloudfront_distribution_id( env )
-    @@aws[ env ][ 'distribution_id' ]
+  def self.cloudfront_distribution_id( env )
+    @@aws[ env ][ "distribution_id" ]
   end
 
 end
