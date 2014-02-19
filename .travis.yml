@@ -12,17 +12,15 @@ env:
   matrix:
   - PATH=pngout-linux/x86_64:$PATH
   global:
-  - secure: lR2EWvvjPKcVQh6tASgoOp6AJTBcn+iPrFxeW+i1WcuczVCsysN8sRnQ4Ly+rGoisynDQxTawakR9uvNpxKu2xZokRnjOXxZGvVjy5hOKn8nIbdTuyf154Ys6Zjl8Cxh2O0kjaPSpN0AmbNg0NluUjVtcaI2GfsbYhzz+LPoMSk=
-  - secure: hWNO5hjK/7SO34G1pRo2jF5MQQRGQNOMBQCM6PULpXwtU71p1Fl8/a1MIiUA1f6NuHwc3WnZsy+qismLpk4gaxnEotzk1nUdniZrmh3+gW378zr2kgswavxKmzePcpdm+ybMGZPePDxVf07jx7RpqecRxPW/v58AlLT+RhzRRCs=
-  - secure: RsNbOg509CwpOIwYn4HQuhuJcxVIWoa4zEgR6D1O/A1soibRkZ8Nxa0Ebku/sb3VJrTbsQtdfX+XGuAnDC9INVHuFccAnXkP+pt22fb6/Ttvz336ZiYd/M0wxJj3hhHtD/NggbP6yWFhSVIhpgzFEATY0zS5eWKwTsMl+iYDv68=
-  - secure: GJOPgTtKlODboVGGrxGG2gewn+WLvH9Aq96nKqo1OB6ed6FXN/4SBO5xApL46dTGFMTpZQ4t1FALlmQuw4upgv8hcdZf+LVynI5cIm+b7bFFVDOcsyUJdHU/+egN9A8wjig3wO/i9pkIIw2TAjTxB57FN0faJRKHS6u83yIgUdg=
-  - secure: hNSmvqI1kjKB6T8hltxT29j23QrI14Q/sx9iHfHBg8UHoL6K2De+1eAJNEcJjcjdLNiGCrCEDHRF9lQLANZTGll7Nq26imqfnXqCR8B+mu+pnpVJXTp/DoK0igEJ7pul5JVlMUpUysJn/vjYeQeuP6W06FsRsYjM2p5odJXuJ90=
-  - secure: fYXBShxlo+suXdyaL5QLSVbZwEDmeG/ScTZSBVbXXMRoLqcfE+iiM7m8w1pjDkXPXvxKyYIroBMdnbSju66ZBKrK38WJNiMCwXUZdhtvdtXjJN25X4h6/8aeKYuMWg99gfRps8EkWKgU8qg9/3OLxW6Q57ONzlkxmbKfCvDvLmg=
+  - secure: qMKpJC2UdN+aytIBmwpUY3Twii0A8/Wyo4UdNmA3IcBUCvo9ekUTphlh6BzFWE0FuJtldnatnzlaNcI2/aJ/SVrRszVNC9L4rj/HnH9yJl5DIuAPSfBcG0QxHyq7j3QV9c8N7TQg5PwI1eNj/D4TufpWPtcd2RyY2cxT8X0YWLE=
+  - secure: CblK3xhza85DkMoZ60xAsZtPl8XV6rOqNfxHfTjugmkhDKZ1df5pmlxfwbFSBabjS5Ssd496D26iQcMVQckJHE7s5z2Cakeyyfavb6mvTzLXpMcB91dj1g97Kym62mE4CmBz3V3lDUzKd6HIXCZcpE5AwaGXxsUlVclnm8yd4Fg=
+  - secure: RlbeeCDlbTmg+aF4n1D0EM8pcMWBLr6HD/quGyJMWYpH4BTxhZd+qH1TtnlZoFciTybPJAQmy7yR3rF3wNruW1SFTYqog9Z3+g8C/L0qYtrXlsLh0lqETHO4LeMTFx0zaU+DATaOiS3Cfm3PEobypTsyAWY2oWSnuwfpJihDzLU=
+  - secure: fQXijx4JKx2dVz39voH+jRaP4eNetAWqcVzRENc1qIqdwYUyDK/dOR8owWC+9Lf+ZeU/bwhAq8Zq84kZyih/BY62E/3TyxjVqssvQmLobmXOmJ2/2rn22LVqOMBAp+klFymuzPbfhEGmBGLjdIq5OkLEA167j6duBJwu2y71lyA=
+  - secure: OH5Qq9wwMKkYm6BWNqfJvGSDrtKX+ZmKBErCtXU/ik+X52h1GETpKFB8MRTHSxbBOf0EBcimWvh0ewnlyQBiZQcQOCdLErLJv4DXNbWuCePRakS9NvfOLYwy6zrjCLWYxVGRsRZ9el9YAGKF7VUliVSxyrZXBaohA2nWlbkWc2c=
 install:
-- npm install
-- npm install -g grunt-cli
-- npm install -g bower
-- bower install
+- npm i
+- npm i -g bower grunt-cli
+- bower i
 - bundle install
 script: rake mm:build:$TRAVIS_BRANCH
 after_success:
