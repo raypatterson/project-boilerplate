@@ -17,6 +17,7 @@ env:
   - secure: RsNbOg509CwpOIwYn4HQuhuJcxVIWoa4zEgR6D1O/A1soibRkZ8Nxa0Ebku/sb3VJrTbsQtdfX+XGuAnDC9INVHuFccAnXkP+pt22fb6/Ttvz336ZiYd/M0wxJj3hhHtD/NggbP6yWFhSVIhpgzFEATY0zS5eWKwTsMl+iYDv68=
   - secure: GJOPgTtKlODboVGGrxGG2gewn+WLvH9Aq96nKqo1OB6ed6FXN/4SBO5xApL46dTGFMTpZQ4t1FALlmQuw4upgv8hcdZf+LVynI5cIm+b7bFFVDOcsyUJdHU/+egN9A8wjig3wO/i9pkIIw2TAjTxB57FN0faJRKHS6u83yIgUdg=
   - secure: hNSmvqI1kjKB6T8hltxT29j23QrI14Q/sx9iHfHBg8UHoL6K2De+1eAJNEcJjcjdLNiGCrCEDHRF9lQLANZTGll7Nq26imqfnXqCR8B+mu+pnpVJXTp/DoK0igEJ7pul5JVlMUpUysJn/vjYeQeuP6W06FsRsYjM2p5odJXuJ90=
+  - secure: fYXBShxlo+suXdyaL5QLSVbZwEDmeG/ScTZSBVbXXMRoLqcfE+iiM7m8w1pjDkXPXvxKyYIroBMdnbSju66ZBKrK38WJNiMCwXUZdhtvdtXjJN25X4h6/8aeKYuMWg99gfRps8EkWKgU8qg9/3OLxW6Q57ONzlkxmbKfCvDvLmg=
 install:
 - npm install
 - npm install -g grunt-cli

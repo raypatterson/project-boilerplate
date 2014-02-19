@@ -1,15 +1,24 @@
+GIT
+  remote: git@github.com:damrbaby/middleman-angular-templates.git
+  revision: 793f89cf3ccb22f1853662b571f621a11a1e1177
+  specs:
+    middleman-angular-templates (0.0.1)
+      middleman-core (>= 3.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.16)
+    activesupport (3.2.17)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.5)
-    aws-sdk (1.31.3)
+    autoprefixer-rails (0.8.20131213)
+      execjs
+    aws-sdk (1.34.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    backports (3.4.0)
+    backports (3.6.0)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -21,37 +30,47 @@ GEM
       compass (>= 0.12.2)
       sass (>= 3.2.1)
     builder (3.2.2)
-    chunky_png (1.2.9)
+    chunky_png (1.3.0)
     coderay (1.1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.7.0)
+    color-schemer (0.2.8)
+      compass-blend-modes (~> 0.0.2)
     colorize (0.6.0)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    eb_deployer (0.3.0)
+    compass-blend-modes (0.0.2)
+      compass
+    docile (1.1.3)
+    dotenv (0.7.0)
+    eb_deployer (0.3.2)
       aws-sdk
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
-    ethon (0.6.2)
+    ethon (0.6.3)
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
     eventmachine (1.0.3)
     excon (0.31.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faraday (0.8.8)
+    exifr (1.1.3)
+    faraday (0.8.9)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
-    favicon_maker (0.2.4)
+    fastimage (1.5.5)
+      addressable (~> 2.3, >= 2.3.5)
+    favicon_maker (1.1.1)
+      docile (~> 1.1)
       mini_magick (~> 3.5)
     ffi (1.9.3)
-    fog (1.19.0)
+    fog (1.20.0)
       builder
       excon (~> 0.31.0)
       formatador (~> 0.2.0)
@@ -59,19 +78,18 @@ GEM
       multi_json (~> 1.0)
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
-      nokogiri (~> 1.5)
-      ruby-hmac
+      nokogiri (>= 1.5.11)
     formatador (0.2.4)
     fspath (2.0.6)
     fssm (0.2.10)
-    gh (0.13.0)
+    gh (0.13.2)
       addressable
       backports
       faraday (~> 0.8)
       multi_json (~> 1.0)
       net-http-persistent (>= 2.7)
       net-http-pipeline
-    haml (4.0.4)
+    haml (4.0.5)
       tilt
     handlebars_assets (0.15)
       execjs (>= 1.2.9)
@@ -82,33 +100,43 @@ GEM
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
-    image_optim (0.8.1)
-      fspath (~> 2.0.3)
+    image_optim (0.9.1)
+      exifr (~> 1.1.3)
+      fspath (~> 2.0.5)
       image_size (~> 1.1.2)
-      in_threads (~> 1.1.1)
-      progress (~> 2.4.0)
+      in_threads (~> 1.2.0)
+      progress (~> 3.0.0)
     image_size (1.1.5)
-    in_threads (1.1.2)
+    in_threads (1.2.0)
     json (1.8.1)
-    kramdown (1.3.1)
+    kramdown (1.3.2)
     launchy (2.4.2)
       addressable (~> 2.3)
     listen (1.3.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
-    map (6.5.1)
+    map (6.5.2)
     method_source (0.8.2)
-    middleman (3.2.1)
+    middleman (3.2.2)
       coffee-script (~> 2.2.0)
       compass (>= 0.12.2)
       execjs (~> 1.4.0)
       haml (>= 3.1.6)
       kramdown (~> 1.2)
-      middleman-core (= 3.2.1)
+      middleman-core (= 3.2.2)
       middleman-sprockets (>= 3.1.2)
       sass (>= 3.1.20)
-      uglifier (~> 2.1.0)
+      uglifier (~> 2.4.0)
+    middleman-automatic-clowncar (0.0.2)
+      fastimage (~> 1.5.5)
+      middleman-core (~> 3.2.2)
+      middleman-sprockets (~> 3.2.0)
+      mini_magick (~> 3.7.0)
+      sass (~> 3.2.14)
+    middleman-autoprefixer (0.2.3)
+      autoprefixer-rails (~> 0.8)
+      middleman-core
     middleman-bourbon (0.0.2)
       bourbon (>= 2.1.0)
     middleman-cloudfront (0.0.6)
@@ -116,10 +144,10 @@ GEM
       middleman-core (~> 3.0)
     middleman-clowncar (0.0.1)
       middleman-core (>= 3.1.5)
-    middleman-core (3.2.1)
+    middleman-core (3.2.2)
       activesupport (~> 3.2.6)
       bundler (~> 1.1)
-      i18n (~> 0.6.1)
+      i18n (~> 0.6.9)
       listen (~> 1.1)
       rack (>= 1.4.5)
       rack-test (~> 0.6.1)
@@ -129,13 +157,16 @@ GEM
       middleman-core (>= 3.0.0)
       net-sftp
       ptools
-    middleman-favicon-maker (3.3)
-      favicon_maker (~> 0.2.3)
+    middleman-dotenv (0.0.2)
+      dotenv (~> 0.7.0)
+      middleman-core (~> 3.0)
+    middleman-favicon-maker (3.5.2)
+      favicon_maker (~> 1.1.1)
       middleman-core (>= 3.0.0)
-    middleman-imageoptim (0.0.4)
-      image_optim (~> 0.8.0)
+    middleman-imageoptim (0.1.4)
+      image_optim (~> 0.9.1)
       middleman-core (>= 3.0)
-    middleman-livereload (3.1.0)
+    middleman-livereload (3.1.1)
       em-websocket (>= 0.2.0)
       middleman-core (>= 3.0.2)
       multi_json (~> 1.0)
@@ -145,7 +176,12 @@ GEM
     middleman-neat (0.0.4)
       bourbon (>= 2.1)
       neat (>= 1.1.0)
-    middleman-s3_sync (3.0.23)
+    middleman-packager (0.1.0)
+      middleman-core (>= 3.0.0)
+    middleman-s3_metadata (0.1.2)
+      fog
+      middleman-core (>= 3.0.0)
+    middleman-s3_sync (3.0.24)
       colorize
       fog (>= 1.10.1)
       map
@@ -158,27 +194,29 @@ GEM
       sprockets (~> 2.1)
       sprockets-helpers (~> 1.0.0)
       sprockets-sass (~> 1.0.0)
+    middleman-target (0.0.6)
+      middleman (>= 3.0)
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     multipart-post (1.2.0)
     neat (1.5.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
-    net-http-persistent (2.9)
+    net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.7.0)
+    net-ssh (2.8.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pmap (1.0.1)
-    progress (2.4.0)
-    pry (0.9.12.4)
+    progress (3.0.0)
+    pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -200,9 +238,8 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
-    ruby-hmac (0.4.0)
-    ruby-progressbar (1.4.0)
-    sass (3.2.13)
+    ruby-progressbar (1.4.1)
+    sass (3.2.14)
     sass-globbing (1.1.0)
       sass (>= 3.1)
     slop (3.4.7)
@@ -219,7 +256,7 @@ GEM
     subexec (0.2.3)
     thor (0.18.1)
     tilt (1.4.1)
-    travis (1.6.6)
+    travis (1.6.7)
       addressable (~> 2.3)
       backports
       faraday (~> 0.8.7)
@@ -232,9 +269,9 @@ GEM
       typhoeus (~> 0.6)
     typhoeus (0.6.7)
       ethon (~> 0.6.2)
-    uglifier (2.1.2)
+    uglifier (2.4.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
@@ -247,19 +284,27 @@ PLATFORMS
 DEPENDENCIES
   breakpoint
   breakpoint-slicer
+  color-schemer
   eb_deployer
   handlebars_assets
   middleman (~> 3.2.0)
+  middleman-angular-templates!
+  middleman-automatic-clowncar
+  middleman-autoprefixer
   middleman-bourbon
   middleman-cloudfront
   middleman-clowncar
   middleman-deploy
-  middleman-favicon-maker (~> 3.2)
-  middleman-imageoptim (~> 0.0.4)
+  middleman-dotenv
+  middleman-favicon-maker (~> 3.5)
+  middleman-imageoptim (~> 0.1.4)
   middleman-livereload (~> 3.1.0)
   middleman-minify-html
   middleman-neat
+  middleman-packager
+  middleman-s3_metadata
   middleman-s3_sync
+  middleman-target
   nokogiri
   rack
   rack-contrib

@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'securerandom'
-require './lib/modules/load'
-require './lib/modules/site'
-require './lib/modules/version'
+require "securerandom"
+require "./lib/modules/load"
+require "./lib/modules/site"
+require "./lib/modules/version"
 
 module Cfg
 
@@ -17,7 +17,7 @@ module Cfg
   @@environment = Load.yaml "#{path}/environment"
 
   def self.get_build_version
-    ENV['TRAVIS_BUILD_NUMBER'] || Version.get_version()
+    ENV[ "TRAVIS_BUILD_NUMBER" ] || Version.get_version()
   end
 
   def self.get_cache_buster
@@ -25,31 +25,31 @@ module Cfg
   end
 
   def self.get_debug_flag( env )
-    @@debug[ env ] || @@defaults[ 'debug' ] || true
+    @@debug[ env ] || @@defaults[ "debug" ] || true
   end
 
   def self.get_localport
-    @@defaults[ 'localport' ]
+    @@defaults[ "localport" ]
   end
 
   def self.get_localhost_env
-    @@environment[ 'localhost' ]
+    @@environment[ "localhost" ]
   end
 
   def self.get_development_env
-    @@environment[ 'development' ]
+    @@environment[ "development" ]
   end
 
   def self.get_review_env
-    @@environment[ 'review' ]
+    @@environment[ "review" ]
   end
 
   def self.get_staging_env
-    @@environment[ 'staging' ]
+    @@environment[ "staging" ]
   end
 
   def self.get_production_env
-    @@environment[ 'production' ]
+    @@environment[ "production" ]
   end
 
 end
