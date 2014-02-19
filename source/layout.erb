@@ -39,11 +39,24 @@
     data-environment-type="<%= environment_type %>"
     >
 
-    <ol style="padding:0;margin:0">
+    <ol
+      class="content-wrapper"
+      data-fouc-fade-in-delay="1000"
+      data-fouc-fade-in-duration="250"
+      style="padding:0;margin:0;display:none;">
 
       <!--
-        'ol' element wrapper prevents Reader from
-        delaying browser address bar hide on iPhone.
+
+        Content wrapper:
+
+        - Prevents Reader from delaying browser address bar hide on iPhone.
+          Dependencies: 'library/util/hide-address-bar.js'
+          Source: http://stackoverflow.com/questions/2999600/how-to-disable-safari-reader-in-a-web-page#comment29067990_3014224
+
+        - Prevents Flash of Unstyled Content.
+          Dependencies: 'library/util/show-content-wrapper.js'
+          Source: https://gist.github.com/johnpolacek/3827270
+
       -->
 
       <div class="top-level-container main-region breakpoints">

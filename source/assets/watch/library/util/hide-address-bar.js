@@ -3,7 +3,9 @@
 
   $(doc)
     .ready(function() {
-      setTimeout(win.scrollTo, 200, 0, 1);
+      setTimeout(function() {
+        win.scrollTo(0, 1);
+      }, 250);
     });
 
-}(this, document, jQuery));
+}(this, document, $));
