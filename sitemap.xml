@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://raypatterson.github.io/project-boilerplatepage-not-found/</loc>
+    <loc>http://raypatterson.github.io/project-boilerplate/page-not-found/</loc>
     <lastmod>2014-02-18T00:00:00-08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://raypatterson.github.io/project-boilerplatepage-1/</loc>
+    <loc>http://raypatterson.github.io/project-boilerplate/page-1/</loc>
     <lastmod>2014-02-18T00:00:00-08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://raypatterson.github.io/project-boilerplate</loc>
+    <loc>http://raypatterson.github.io/project-boilerplate/</loc>
     <lastmod>2014-02-18T00:00:00-08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
