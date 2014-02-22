@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:damrbaby/middleman-angular-templates.git
+  remote: https://github.com/damrbaby/middleman-angular-templates.git
   revision: 793f89cf3ccb22f1853662b571f621a11a1e1177
   specs:
     middleman-angular-templates (0.0.1)
