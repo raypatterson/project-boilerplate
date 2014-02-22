@@ -1,0 +1,7 @@
+gem "middleman-packager"
+gem "middleman-deploy"
+gem "middleman-s3_sync"
+gem "middleman-s3_metadata"
+gem "middleman-cloudfront"
+gem "eb_deployer"
+gem "travis", "~> 1.6.6"
