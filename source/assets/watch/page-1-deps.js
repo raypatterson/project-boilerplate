@@ -3,10 +3,10 @@
 // --------------------------------------------------------------
 
 //= require flexslider/jquery.flexslider
-//= require handlebars/handlebars.runtime
-//= require lodash/dist/lodash.underscore
-//= require backbone/backbone
-//= require backbone.marionette/lib/backbone.marionette
+//= require handlebars.runtime
+//= require underscore
+//= require backbone
+//= require marionette
 
 // --------------------------------------------------------------
 // Vendor
